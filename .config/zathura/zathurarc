@@ -1,0 +1,20 @@
+# key bindings
+map [normal] [ navigate previous
+#map [normal] p navigate previous
+#map [fullscreen] p navigate previous
+map [fullscreen] [ navigate previous
+map [normal] ] navigate next
+#map [normal] n navigate next
+map [fullscreen] ] navigate next
+#map [fullscreen] n navigate next
+#map [normal] i toggle_index
+#map [fullscreen] i toggle_index
+#map [index] i toggle_index
+#map [normal]     <F11> toggle_fullscreen
+#map [fullscreen] <F11> toggle_fullscreen
+#exprimenting:
+#set default-fg "#CCBBCC"
+#set default-fg "#FFFFFF"
+#set default-bg "#000000"
+#set database "sqlite"
+#set page-padding 1
