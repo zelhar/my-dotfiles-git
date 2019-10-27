@@ -1,6 +1,7 @@
 Config { 
     -- appearance
     font = "xft:sans-serif:size=13:normal:antialias=true"
+-- font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 
    -- layout
        , sepChar = "%"
@@ -18,11 +19,16 @@ Config {
             "%StdinReader% }{ \
             \ [%battery%] \
             \ [%multicpu%] \
+--            \ [%coretemp%] \
             \ [%memory%] \
             \ [%swap%] \
             \ [%dynnetwork%] \
+            \ [%EDDB%] \
             \ %date% \
             \ [%kbd%] "
+
+           
+
 
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
@@ -99,7 +105,14 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
+        --Weather
+        , Run Weather "EDDT" [ "--template" , "<station>: <tempC>C, <skyCondition>"
+                             , "-L","18","-H","25"
+                             , "--normal","green"
+                             , "--high","red"
+                             , "--low","lightblue"] 36000
+        , Run Weather "EDDB" [] 3600
         --keyboard indicator
         , Run Kbd [("us(altgr-intl)", "US"), ("de", "DE"), ("il", "HE")]
         ]
-}
+       }

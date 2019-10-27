@@ -11,9 +11,9 @@ xrdb -merge .Xresources
 # $ startx ~/.xinitrc kde
 # Here Xfce is kept as default
 #session=${1:-xfce}
-session=${1:-xmonad}
+#session=${1:-xmonad}
 
-case $session in
+#case $session in
 #    awesome           ) exec awesome;;
 #    budgie            ) export XDG_CURRENT_DESKTOP="Budgie:GNOME"; exec budgie-desktop;;
 #    #budgie            ) exec XDG_CURRENT_DESKTOP="Budgie:GNOME"  budgie-desktop;;
@@ -26,25 +26,47 @@ case $session in
 #    fluxbox           ) exec startfluxbox;;
 #    gnome             ) exec gnome-session;;
 #    gnome-classic     ) exec gnome-session --session=gnome-classic;;
-    myi3|myi3wm           ) exec ~/bin/i3session.sh;;
-    i3|i3wm           ) exec i3;;
+#    i3|i3wm           ) exec i3;;
 #    icewm             ) exec icewm-session;;
 #    jwm               ) exec jwm;;
-    kde               ) exec startkde;;
+#    kde               ) exec startkde;;
 #    mate              ) exec mate-session;;
 #    monster|monsterwm ) exec monsterwm;;
 #    notion            ) exec notion;;
-    openbox           ) exec openbox-session;;
+#    openbox           ) exec openbox-session;;
 #    kobox             ) exec openbox-kde-session;;
 #    unity             ) exec unity;;
-    xfce|xfce4        ) exec startxfce4;;
+#    xfce|xfce4        ) exec startxfce4;;
 #    xmonad            ) exec /usr/bin/xmonad;;
-    xmonad            ) exec ~/bin/xmonadsession.sh;;
 #    ymonad            ) exec .myxmonadsession; exec /usr/bin/xmonad;;
 #    #xmonad            ) exec dbus-launch /usr/bin/xmonad;;
 #    lxde              ) exec startlxde;;
 #    lxqt              ) exec startlxqt;;
 #    # No known session, try to run it as command
-    *) exec dbus-launch $1;;
-esac
+#    *) exec dbus-launch $1;;
+#esac
 
+#loading ~/.Xresources
+#[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+#Launch xmonad
+#set up icon tray
+exec trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+ --expand true --width 10 --transparent true --tint 0x191970 --height 23 &
+
+# Set the background color<
+#xsetroot -solid midnightblue
+
+# Fire up apps
+exec xscreensaver -no-splash &
+
+# My autostarts
+unclutter -b
+touchpad_config -e 12
+blueberry-tray &
+#exec flameshot  &
+#exec blueman-applet &
+#exec megasync &
+exec udiskie -at &
+#exec /home/zelhar/Downloads/Telegram/Telegram &
+#exec xfce4-clipman &
+exec xmonad

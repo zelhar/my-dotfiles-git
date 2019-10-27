@@ -2,8 +2,8 @@
 # Written by xscreensaver-demo 5.38 for zelhar on Sat Mar  3 11:25:29 2018.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	0:30:00
-cycle:		0:30:00
+timeout:	0:35:00
+cycle:		0:35:00
 lock:		False
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:30
@@ -12,23 +12,23 @@ installColormap:    True
 verbose:	False
 timestamp:	True
 splash:		True
-splashDuration:	0:00:05
+splashDuration:	0:00:25
 demoCommand:	xscreensaver-demo
 prefsCommand:	xscreensaver-demo -prefs
 nice:		10
 memoryLimit:	0
 fade:		True
 unfade:		False
-fadeSeconds:	0:00:05
+fadeSeconds:	0:00:23
 fadeTicks:	20
 captureStderr:	True
 ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
 dpmsQuickOff:	True
-dpmsStandby:	0:30:00
-dpmsSuspend:	0:30:00
-dpmsOff:	0:30:00
+dpmsStandby:	0:35:00
+dpmsSuspend:	0:35:00
+dpmsOff:	0:35:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False

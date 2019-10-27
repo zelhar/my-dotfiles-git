@@ -119,7 +119,7 @@ URxvt*font: xft:Monospace:size=10,\
 
 !URxvt*font: xft:PragmataPro:size=10
 ! trying to set up fonts to look nice and work with powerline too
-URxvt*letterSpace:    0
+URxvt*letterSpace:    -1
 Xft.rgba: none
 Xft.hintstyle: hintfull
 

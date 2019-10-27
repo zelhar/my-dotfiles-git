@@ -5,24 +5,27 @@ autocmd!
 "------- START Plug manager instead of Vundle
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
-Plug 'Townk/vim-autoclose'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'godlygeek/tabular'
-Plug 'vim-scripts/TextFormat'
+"Plug 'Townk/vim-autoclose'
+"Plug 'dhruvasagar/vim-table-mode'
+"Plug 'godlygeek/tabular'
+"Plug 'vim-scripts/TextFormat'
 "Color Themes
-Plug 'altercation/vim-colors-solarized'
 Plug 'Rsidhoum/bushfire'
-Plug 'tomasr/molokai'
-Plug 'nanotech/jellybeans.vim'
 Plug 'crusoexia/vim-monokai'
-Plug 'rakr/vim-one'
-
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'morhetz/gruvbox'
 Plug 'robertmeta/nofrils'
 Plug 'andreypopp/vim-colors-plain'
 Plug 'pbrisbin/vim-colors-off'
 Plug 'vietjtnguyen/toy-blocks'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'nanotech/jellybeans.vim'
+Plug 'rakr/vim-one'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+"Plug 'rafi/awesome-vim-colorschemes'
 
 "Plugins I am testing to see if they are worth using
 Plug 'bling/vim-bufferline'
@@ -30,9 +33,9 @@ Plug 'junegunn/fzf'
 Plug 'mileszs/ack.vim'
 "Plug 'mcchrish/nnn.vim'
 " Track the engine.
-Plug 'SirVer/ultisnips'
+"""""Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
+"""""Plug 'honza/vim-snippets'
 
 "Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
@@ -41,16 +44,43 @@ Plug 'plasticboy/vim-markdown'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
-Plug 'dzhou121/gonvim-fuzzy' "recommended by gonvim
-Plug 'equalsraf/neovim-gui-shim' "for gonvim
+"Plug 'dzhou121/gonvim-fuzzy' "recommended by gonvim
+"Plug 'equalsraf/neovim-gui-shim' "for gonvim
 Plug 'vim-scripts/loremipsum'
-Plug 'echuraev/translate-shell.vim'
-Plug 'Twinside/vim-hoogle'
-Plug 'jpalardy/vim-slime'
-Plug 'parsonsmatt/intero-neovim'
+"Plug 'echuraev/translate-shell.vim'
+"Plug 'jpalardy/vim-slime'
 "Plug 'ron89/thesaurus_query.vim'
 
 Plug 'justmao945/vim-clang'
+Plug 'jalvesaq/Nvim-R'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+"""Plug 'christoomey/vim-tmux-runner'
+
+"interactive python and other REPL
+"Plug 'williamjameshandley/vimteractive'
+"Plug 'sillybun/vim-repl'
+"""Plug 'kassio/neoterm'
+
+"Python plugins
+"deoplete
+"""if has('nvim')
+"""  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"""else
+"""  Plug 'Shougo/deoplete.nvim'
+"""  Plug 'roxma/nvim-yarp'
+"""  Plug 'roxma/vim-hug-neovim-rpc'
+"""endif
+"""let g:deoplete#enable_at_startup = 0
+"""Plug 'deoplete-plugins/deoplete-jedi'
+""""python formatter
+Plug 'psf/black'
+
+"haskell plugins
+"Plug 'parsonsmatt/intero-neovim'
+Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
+Plug 'neovimhaskell/haskell-vim' "syntax highlighter
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
+
 "" Initialize plugin system
 call plug#end()
 "------- END Plug manager instead of Vundle
@@ -81,7 +111,7 @@ endif
 "for solarized, base16 color themes and others
 "let g:solarized_termcolors=256
 "let base16colorspace=256
-set textwidth=72
+set textwidth=68
 set background=dark
 if !has("gui_running")
      "colorscheme solarized
@@ -173,7 +203,9 @@ inoremap <A-Up> <C-u>
 nnoremap <Leader>] :bn<CR>
 nnoremap <Leader>[ :bp<CR>
 nnoremap <Tab> :tabnext<Cr>
+nnoremap <C-Tab> :tabnext<Cr>
 nnoremap <S-Tab> :tabprevious<Cr>
+tnoremap <C-Tab> <C-\><C-n>:tabnext<Cr>
 
 "splits the line after cursor and remain in normal mode
 nnoremap <Leader><Enter> o<Esc>
@@ -271,19 +303,22 @@ set backupcopy=auto
 "And save in the first folder it can of the following:
 "set backupdir=/run/media/zelhar/JetFlash16/backupvimtexts,~/tmp,~/temp,.,~/
 "set backupdir=~/tmp,.,~/
-set backupdir=/run/media/zelhar/yjk-B16gb/backupvimtexts,
+set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
+            \/run/media/zelhar/yjk-B16gb/backupvimtexts,
             \/run/media/zelhar/UF16/backupvimtexts,
             \/run/media/zelhar/JetFlash16/backupvimtexts,~/tmp,~/temp,.,~/,
             \/media/JetFlash16
 "add a dictionary file for word completion:
 "let g:symbols_file = "/$HOME/dictionaries/symbols"
 set dictionary+=/$HOME/dictionaries/symbols
+set dictionary+=/$HOME/dictionaries/chemical_formulas.txt
 set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
 "make autocomplete with ctrl-n search in the also in the dictionary
 set complete+=k
+set completeopt=menuone,preview,longest
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
 autocmd BufEnter * silent! lcd %:p:h
@@ -412,7 +447,8 @@ if has('nvim')
 		\sm:block-blinkwait175-blinkoff150-blinkon175
 endif
 "set a shorter timeout for key-combs and commands (default=1000)
-set timeoutlen=200
+set timeoutlen=1200
+set showcmd
 "set position for new split windows:
 set splitbelow
 set splitright
@@ -424,7 +460,6 @@ set splitright
 "let vim_markdown_preview_hotkey='<C-m>'
 "let vim_markdown_preview_github=1
 "vim-table-mode
-"let g:table_mode_corner = '|'
 let g:table_mode_corner = '+'
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
@@ -459,9 +494,9 @@ endif
 let g:airline_symbols.space = "\ua0"
 "let g:airline#extensions#tabline#enabled = 1
 "Turning off AutoClose only use it when I need to.
-let g:AutoCloseOn = 1
-"let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')', '{': '}'}
-let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')'}
+let g:AutoCloseOn = 0
+let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')', '{': '}'}
+"let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')'}
 "Setting bufferline to my liking
 let g:bufferline_echo = 1
 let g:bufferline_rotate = 1
@@ -478,9 +513,11 @@ let g:monokai_gui_italic = 1
 
 "plasticboy/vim-markdown config
 let g:vim_markdown_math = 1
-let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
+let g:vim_markdown_folding_disabled = 1
 
 "vim-pandoc settings
 "let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
@@ -516,12 +553,15 @@ vnoremap <silent> <leader>t :Trans<CR><C-w><C-w>
 set nojoinspaces
 "my own plugins' settings
 "defaults for my zelharbackup plugin:
-let g:myfileslist = '/run/media/zelhar/yjk-B16gb/original_paths_list.txt'
-let g:mybackupdir="/run/media/zelhar/yjk-B16gb/"
+"let g:myfileslist = '/run/media/zelhar/yjk-B16gb/original_paths_list.txt'
+let g:myfileslist = '/run/media/zelhar/yjk-16g-msd/original_paths_list.txt'
+let g:mybackupdir=  '/run/media/zelhar/yjk-16g-msd/'
+"let g:mybackupdir="/run/media/zelhar/yjk-B16gb/"
 "source $VIMRUNTIME/ftplugin/man.vim
 "vim-slime
-let g:slime_target = "neovim"
-"let g:slime_target = "tmux"
+"let g:slime_target = "neovim"
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 "thesaurus-query
 "nnoremap <Leader>cs :ThesaurusQueryReplaceCurrentWord<CR>
 "vnoremap <Leader>cs y:ThesaurusQueryReplace <C-r>"<CR>
@@ -541,3 +581,78 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+"vim-clang options
+"let g:clang_cpp_options = '-std=c++17'
+"let g:clang_cpp_options = '-std=c++17 -stdlib=libc++'
+
+"nvim-r and rmarkdown options
+let g:markdown_fenced_languages = ['r', 'python']
+let g:rmd_fenced_languages = ['r', 'python']
+let g:rrst_syn_hl_chunk = 1
+let g:rmd_syn_hl_chunk = 1
+let g:R_rmdchunk = 0
+let g:R_assign = 2
+nmap <LocalLeader>sr <Plug>RStart
+command Rstart call StartR("R")
+command RDsendline call SendLineToR("down")
+
+let R_in_buffer = 0
+"let R_term = 'st'
+let R_term = 'st-my-prefs'
+"let R_term_cmd = 'st-my-prefs -title R -e'
+"let R_term_cmd = 'st -f "monospace:size=11" -title R -e'
+
+function! MarkdownHtmlPreview()
+    let s:input_file = expand('%:t')
+    let s:output_file = expand('%:r') . '.html'
+    let s:commandLine = 'pandoc ' . s:input_file
+    let s:commandLine .= ' -o ' . s:output_file
+    "execute "!" . commandLine
+    call system(s:commandLine)
+    call system('surf_tabs.sh' . s:output_file)
+endfunction
+function! MarkdownPdfPreview()
+    let s:input_file = expand('%:t')
+    let s:output_file = expand('%:r') . '.pdf'
+    let s:commandLine = 'pandoc ' . s:input_file
+    let s:commandLine .= ' -o ' . s:output_file
+    "execute "!" . commandLine
+    call system(s:commandLine)
+    call system('zathura_tabs.sh ' . s:output_file)
+endfunction
+function! MarkdownCompilePdfHtml()
+    let s:input_file = expand('%:t')
+    let s:output_file = expand('%:r')
+    let s:commandLine = 'pandoc ' . s:input_file
+    let s:commandLine .= ' -o ' . s:output_file
+    "execute "!" . commandLine
+    call system(s:commandLine . '.html')
+    call system(s:commandLine . '.pdf')
+endfunction
+command MarkdownCompilePdfHtml call MarkdownCompilePdfHtml()
+nnoremap <silent> <leader>mp :call MarkdownHtmlPreview()<cr>
+nnoremap <silent> <leader>pp :call MarkdownPdfPreview()<cr>
+
+"python env
+"let g:python3_host_prog = '/usr/bin/python3'
+"let g:python_host_prog = '/usr/bin/python2'
+"let g:python3_host_prog='/home/zelhar/miniconda3/bin/ipython'
+let g:python3_host_prog='/home/zelhar/miniconda3/bin/python'
+let g:deoplete#sources#jedi#python_path = '/home/zelhar/miniconda3/bin/python'
+
+"neoterm
+" Use gx{text-object} in normal mode
+"nmap gx <Plug>(neoterm-repl-send)
+" Send selected contents in visual mode.
+"xmap gx <Plug>(neoterm-repl-send)
+" send line in normal mode
+"nmap gxx <Plug>(neoterm-repl-send-line)
+"let g:neoterm_default_mod='belowright' " open terminal in bottom split
+"let g:neoterm_size=16 " terminal split size
+"let g:neoterm_autoscroll=1 " scroll to the bottom when running a command
+"nnoremap <C-s> :TREPLSendLine<cr>j " send current line and move down
+"vnoremap <C-s> :TREPLSendSelection<cr> " send current selection
+
+"vim-tmux
+let g:VtrUseVtrMaps=1

@@ -1,6 +1,7 @@
 Config { 
     -- appearance
     font = "xft:sans-serif:size=13:normal:antialias=true"
+-- font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 
    -- layout
        , sepChar = "%"
@@ -16,13 +17,18 @@ Config {
        , persistent =       False    -- enable/disable hiding (True = disabled)
        , template = 
             "%StdinReader% }{ \
-            \ [%battery%] \
-            \ [%multicpu%] \
-            \ [%memory%] \
-            \ [%swap%] \
-            \ [%dynnetwork%] \
-            \ %date% \
-            \ [%kbd%] "
+            \ [ %battery% ] \
+            \ [ %multicpu% ] \
+--            \ [ %coretemp% ] \
+            \ [ %memory% ] \
+            \ [ %swap% ] \
+            \ [ %dynnetwork% ] \
+            \ [ %kbd% ]
+            \ %weather%
+            \ %date% "
+
+           
+
 
    -- plugins
    --   Numbers can be automatically colored according to their value. xmobar
@@ -98,8 +104,14 @@ Config {
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
                              ] 10
-
-        --keyboard indicator
-        , Run Kbd [("us(altgr-intl)", "US"), ("de", "DE"), ("il", "HE")]
+        --keyboard layout indicator
+        --, Run Kbd [("us", "us"), ("de", "de"), ("il", "il")] 1
+        --weather
+        , Run Weather "RJTT" [ "--template"
+                             , "<skyCondition>\
+                             \ | <fc=#4682B4><tempC></fc>°C\
+                             \ | <fc=#4682B4><rh></fc>%\
+                             \ | <fc=#4682B4><pressure></fc>hPa"
+                                                            ] 36000
         ]
-}
+       }
