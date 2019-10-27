@@ -1,5 +1,8 @@
-#!/usr/bin/python3
+#/usr/bin/python3
 import vim
+#import nvim
+#import neovim
+
 import sys
 import os
 import time
@@ -7,6 +10,10 @@ import termios
 import hashlib
 import pickle
 import shutil
+
+# Version 2 stopped working possibly due to changes in
+# os.path.abspath. I replace it with os.pat.expanduser for ~ and 
+
 
 
 def validate_bkp_dir(path):
@@ -69,7 +76,6 @@ class FileSaver:
             print('case 4: files list is set to ' + str(self.paths_list_file))
             time.sleep(5)
             return 
-
     def update_paths_list(self, file_path):
         if (self.paths_list_file == None):
             return False
@@ -87,7 +93,6 @@ class FileSaver:
             my_file.close()
             print('updated the paths list file')
             return True
-
     def backup(self):
         change_time = os.path.getmtime(self.source)
         if (change_time != self.save_time):
@@ -118,10 +123,14 @@ class FileSaver:
             return False
         elif not(validate_bkp_dir(self.bkpdir)):
             print('unable to write into the backupdir')
+            print('backupdir I tried is: ')
+            print(self.bkpdir)
+            print('home dir is:')
+            print(os.path.expanduser('~'))
             return False
         try:
-            #print('backup file is: ', target_path)
             shutil.copy2(self.source, target_path)
+            #print('backup file is: ', target_path)
             print('saved copy of: ' + self.source +  ' as: ' + target_path)
             #time.sleep(5)
             self.update_paths_list(self.source)
