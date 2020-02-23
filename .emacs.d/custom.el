@@ -12,7 +12,7 @@
  '(haskell-process-type (quote cabal-repl))
  '(package-selected-packages
    (quote
-    (latex-pretty-symbols latex-math-preview helm-ag auto-package-update helm pdf-tools fzf tablist flycheck intero plan9-theme haskell-mode w3m slime evil-surround evil))))
+    (ess latex-pretty-symbols latex-math-preview helm-ag auto-package-update helm pdf-tools fzf tablist flycheck intero plan9-theme haskell-mode w3m slime evil-surround evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

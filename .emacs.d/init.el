@@ -227,3 +227,14 @@
 
 
 (helm-mode 1)
+
+;; ess
+(require 'ess-r-mode)
+
+;;(setq bidi-display-reordering nil)
+;;(setq-default bidi-display-reordering nil)
+
+;; FIXME: not the friendliest, but simple.
+;;(require 'info)
+;;(info-initialize)
+;;(push "/home/user/info" Info-directory-list)

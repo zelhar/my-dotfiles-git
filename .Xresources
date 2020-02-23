@@ -4,6 +4,8 @@
 !xrdb -merge ~/.Xresources
 
 !xterm-----------------------------------------------------------------------:
+!Xcursor.core:   1
+Xcursor.core:   0
 
 XTerm*autoWrap: true
 !!XTerm*cursorBlink: true

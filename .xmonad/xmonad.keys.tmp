@@ -1,0 +1,11 @@
+myKeys =  [ ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +1.5%")
+            , ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@  -1.5%")
+            , ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")    
+
+            , ("<XF86AudioPlay>", spawn "playerctl play-pause")    
+            , ("<XF86AudioPrev>", spawn "playerctl previous")    
+            , ("<XF86AudioNext>", spawn "playerctl next")    
+
+            , ("<XF86MonBrightnessUp>", spawn "lux -a 5%")    
+            , ("<XF86MonBrightnessDown>", spawn "lux -s 5%")    
+            ]

@@ -64,3 +64,11 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+HIST_STAMPS="yyyy-mm-dd"
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILESIZE=100000
+export HISTFILE=~/.bash_history
+#setopt HIST_FIND_NO_DUPS
+#setopt inc_append_history
+#setopt share_history

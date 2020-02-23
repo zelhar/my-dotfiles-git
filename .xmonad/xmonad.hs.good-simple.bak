@@ -1,0 +1,109 @@
+module Main where
+import XMonad
+--------------------------------------------------------------------------------
+import           Data.Map                    (Map)
+import qualified Data.Map                    as M
+import           Data.Monoid                 (appEndo)
+
+
+--------------------------------------------------------------------------------
+--import           XMonad
+import           XMonad.Actions.CycleWS      (nextWS, prevWS, shiftToNext,
+                                              shiftToPrev)
+import           XMonad.Hooks.EwmhDesktops   (ewmh)
+import           XMonad.Hooks.ManageDocks    (ToggleStruts (..), avoidStruts,
+                                              manageDocks)
+import           XMonad.Hooks.ManageHelpers  (doFullFloat, doRectFloat)
+import           XMonad.Hooks.DynamicLog     (xmobar)
+import           XMonad.Layout.Circle        (Circle (..))
+import           XMonad.Layout.NoBorders     (smartBorders)
+import           XMonad.Layout.PerWorkspace  (onWorkspace)
+import           XMonad.Layout.SimplestFloat (simplestFloat)
+import           XMonad.StackSet             (RationalRect (..), currentTag)
+import           XMonad.Prompt               (defaultXPConfig)
+import           XMonad.Prompt.Shell         (shellPrompt)
+
+
+--------------------------------------------------------------------------------
+
+main :: IO ()
+--main = do
+main = xmonad =<< xmobar myConfig
+  where
+    myConfig = ewmh $ defaultConfig
+  --xmonad $ defaultConfig
+        { terminal    = myTerminal
+        , modMask     = myModMask
+        , borderWidth = myBorderWidth
+        , normalBorderColor  = "#002b36"
+        , focusedBorderColor = "#688cb3"
+        , keys               = \c -> myKeys c `M.union` keys defaultConfig c
+        , focusFollowsMouse  = True
+        }
+
+--myTerminal    = "urxvt"
+--myTerminal    = "alacritty"
+myTerminal    = "~/bin/st-my-prefs"
+myModMask     = mod4Mask -- Win key or Super_L
+myBorderWidth = 1
+--------------------------------------------------------------------------------
+-- A list of custom keys
+myKeys :: XConfig Layout -> Map (ButtonMask, KeySym) (X ())
+myKeys (XConfig {modMask = myModMask}) = M.fromList $
+    [ -- Some programs
+      ((myModMask, xK_F1), spawn "flameshot")
+    --  ((myModMask, xK_F1), spawn "xfce4-screenshooter")
+    --  ((myModMask, xK_F1), spawn "firefox")
+    --, ((myModMask, xK_F2), spawn "google-chrome-stable")
+    --, ((myModMask, xK_F3), spawn "krusader")
+    , ((myModMask, xK_k), spawn "~/bin/myxkeyboardsetting.sh")
+    , ((myModMask, xK_u), spawn "urxvt")
+    , ((myModMask, xK_s), spawn "st-my-prefs")
+    , ((myModMask, xK_z), spawn "zathura")
+    , ((myModMask, xK_y), spawn "alacritty -v")
+--    , ((myModMask, xK_F2), spawn "thunar")
+--    , ((myModMask, xK_F3), spawn "rhythmbox")
+
+      -- Logout
+    -- , ((myModMask .|. shiftMask, xK_q), spawn "gnome-session-quit")
+    , ((myModMask .|. shiftMask, xK_l), spawn "xscreensaver-command --lock")
+
+      -- launcher keys
+    , ((myModMask, xK_p), spawn "dmenu_run")
+
+      -- Toggle struts
+    , ((myModMask, xK_a), sendMessage ToggleStruts)
+
+      -- Full float
+    , ((myModMask, xK_f), fullFloatFocused)
+
+      -- Centered rectangle float
+    , ((myModMask, xK_r), rectFloatFocused)
+
+      -- Shrik and expand
+    , ((myModMask, xK_Right), sendMessage Expand)
+    , ((myModMask, xK_Left),  sendMessage Shrink)
+
+      -- XF86AudioLowerVolume
+    , ((0, 0x1008ff11), spawn "amixer set Master 10%-")
+      -- XF86AudioRaiseVolume
+    , ((0, 0x1008ff13), spawn "amixer set Master 10%+")
+      -- XF86AudioMute
+    , ((0, 0x1008ff12), spawn "amixer set Master toggle")
+      -- XF86AudioNext
+    , ((0, 0x1008ff17), spawn "rhythmbox-client --next")
+      -- XF86AudioPrev
+    , ((0, 0x1008ff16), spawn "rhythmbox-client --previous")
+      -- XF86AudioPlay
+    , ((0, 0x1008ff14), spawn "rhythmbox-client --play-pause")
+      -- XF86AudioStop
+    , ((0, 0x1008ff15), spawn "rhythmbox-client --stop")
+    ]
+  where
+    -- Function to fullFloat a window
+    fullFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery
+                          doFullFloat f
+
+    -- Function to rectFloat a window
+    rectFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery
+                          (doRectFloat $ RationalRect 0.02 0.05 0.96 0.9) f

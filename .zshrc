@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/zelhar/.oh-my-zsh"
+export ZSH="/home/zelhar/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -77,7 +77,18 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+#History settings
+HIST_STAMPS="yyyy-mm-dd"
+export HISTSIZE=100000
+export SAVEHIST=100000
+export HISTFILESIZE=100000
+export HISTFILE=~/.zhistory
+setopt HIST_FIND_NO_DUPS
+setopt inc_append_history
+setopt share_history
+
 export MANPATH="/usr/local/man:$MANPATH"
+export INFOPATH="/usr/share/info:$INFOPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -198,3 +209,4 @@ unset __conda_setup
 
 alias ipython="ipython --no-autoindent"
 alias import="-0-0-0-0-0-0-0" #cancel this cpmmand which hangs the Xsystem
+alias rscript="Rscript --no-init-file --slave"
