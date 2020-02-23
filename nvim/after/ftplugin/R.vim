@@ -1,1 +1,0 @@
-setlocal formatprg=rindent.sh
