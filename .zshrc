@@ -65,11 +65,11 @@ ZSH_THEME="robbyrussell"
 plugins=(
   git
   tmux
-  tmuxinator
+  #tmuxinator
   #tmux-cssh
   vi-mode
   themes
-  #web-search
+  web-search
   zsh_reload
 )
 
