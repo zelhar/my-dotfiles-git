@@ -316,8 +316,11 @@ set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
-"make autocomplete with ctrl-n search in the also in the dictionary
+"make autocomplete (:help cpt) with ctrl-n search in the also in the dictionary
 set complete+=k
+set complete+=i
+set complete+=t
+set complete+=kspell
 set completeopt=menuone,preview,longest
 
 "Set (locally) working dir to be the same as the file being edited in the buffer

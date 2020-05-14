@@ -31,6 +31,10 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.TwoPane
 import XMonad.Layout.Combo
 import XMonad.Layout.Tabbed
+import XMonad.Layout.Accordion
+import XMonad.Layout.Simplest
+import XMonad.Layout.Grid
+import XMonad.Layout.Spiral
 import qualified XMonad.StackSet as W
 import XMonad.Layout.TabBarDecoration
 --------------------------------------------------------------------------------
@@ -69,17 +73,13 @@ myBorderWidth = 1
 --myLayout = avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 --myLayout = avoidStruts  $ (tiled |||  Mirror tiled ||| Full)
 --myLayout = layoutHook defaultConfig
-myLayout = smartBorders $ ((layoutHook defaultConfig) 
-    ||| TwoPane (3/100) (1/2))
-    ||| tabbed shrinkText tabConfig
-    |||combineTwo (TwoPane 0.03 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig)
---    |||combineTwo (TwoPane 0.03 0.5) (simpleTabBar $ Full) (simpleTabBar $  simpleTabbed)
-  where
-    tiled = ResizableTall nmaster delta ratio []
-    nmaster = 1
-    delta = 3/100
-    ratio = 1/2
-    tabConfig = defaultTheme
+myLayout = smartBorders $ 
+    spiral(0)
+    ||| (layoutHook defaultConfig)
+    ||| TwoPane (3/100) (1/2)
+    ||| Accordion
+    ||| Simplest
+    ||| Grid
 
 --------------------------------------------------------------------------------
 -- A list of custom keys
