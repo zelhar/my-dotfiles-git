@@ -1,0 +1,1 @@
+yay -Syyu --ignore linux

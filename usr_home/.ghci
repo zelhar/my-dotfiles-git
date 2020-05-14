@@ -1,0 +1,8 @@
+-- :set prompt "ghci> "
+:set prompt "\x03BB> "
+:set prompt-cont " > "
+:set +t
+
+-- hoogle integration
+:def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
+:def doc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""

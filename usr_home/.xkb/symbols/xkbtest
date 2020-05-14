@@ -1,0 +1,8 @@
+partial alphanumeric_keys
+xkb_symbols "lgst-intl" {
+   include "us(altgr-intl)"
+   name[Group1]= "English (intl., with AltGr dead keys AND lgst as tilde key)";
+
+   key <LSGT>	{ [asciitilde, notsign, endash, emdash ] };
+   key <AE12>	{ [asciitilde, notsign, endash, emdash ] };
+};

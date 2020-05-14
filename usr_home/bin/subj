@@ -1,0 +1,4 @@
+#!/bin/bash
+conjugator $* subjunctive pronouns list
+conjugator $* subjunctive pronouns list | pager_nvim
+

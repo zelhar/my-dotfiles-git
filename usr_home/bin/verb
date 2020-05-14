@@ -1,0 +1,11 @@
+#!/bin/sh
+conjugator $* indicative pronouns list singular first
+conjugator $* subjunctive pronouns list singular first
+conjugator $* imperative pronouns list singular first
+conjugator $* indicative pronouns list singular third
+conjugator $* subjunctive pronouns list singular third
+conjugator $* imperative pronouns list singular third
+conjugator $* indicative pronouns list | pager_nvim
+conjugator $* subjunctive pronouns list | pager_nvim
+conjugator $* imperative pronouns list | pager_nvim
+#conjugator $* pronouns

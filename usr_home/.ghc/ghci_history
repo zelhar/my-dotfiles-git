@@ -1,0 +1,100 @@
+:q
+concatMap g return
+f g
+h = map f
+map f [1..10]
+(map f)
+map f
+:t f
+f
+g 5
+g = \x -> [x]
+(map f [])
+(map f []) [1..5]
+map f []
+map f [1..10]
+f = \x -> x+1
+f = (+) + (+)
+f 1 2
+f = (+)
+:t toInteger 
+toRational  "7875"
+toInteger "7875"
+toInteger "7875h"
+x in y
+y = "tgabch"
+y = "tgh"
+x = "abc"
+"a" ++ "b"
+import Data.String
+:q
+:q
+:m Data.Vector
+:q
+:m Data.Vector
+:q
+:m Data.Vector
+:q
+:m Data.Vector
+:m Data.Vector
+:m Data.Array
+:q
+a!1
+a
+a = listArray (1,2) [3,4]
+a ! 1
+a
+a = listArray (1,2) [(1,3),(2,4)]
+:m Data.Array
+a = array (1,100) ((1,1) : [(i, i * a!(i-1)) | i <- [2..100]])
+:t listArray
+a = listArray (1,2) [(1,3),(2,4)]
+a = listArray (1,2) [3,4]
+:m Data.Ix
+Data.Ix
+:q
+[(+1),(+2)] <*> [1..10]
+:q
+x
+x ! 1 = 3
+x
+x ! 1 = 2
+x ! 0
+x ! 1
+x !! 1
+x
+x = fromList [1,2]
+Vector x = fromList [1,2]
+Vector x
+:m Data.Vector
+:q
+:q
+Vector a 1
+Vector a
+:m Data.Vector
+:q
+:q
+import Data.Array
+import Data.Vector
+:q
+:k 1
+:k x
+:t kind
+kind Int
+kind z
+type z
+:k t
+:t z
+z
+z = let z=z in z
+z = let z in z
+x
+x = y where y = x
+x
+x = y where y = z where z = let w=1 in z
+x
+x = y where y = z where z = let w=1 in z
+x = y where y = z where z = let 1 in z
+x = y where y = z where z = let 1 in 1
+x = y where y = z where z = let 1 in w
+x = y where y = z where z = let w = 1 in w

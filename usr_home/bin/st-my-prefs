@@ -1,0 +1,2 @@
+#!/bin/bash
+st -f "monospace:size=11" "$@"

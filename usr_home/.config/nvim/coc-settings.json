@@ -1,0 +1,26 @@
+{
+    "languageserver": {
+        "digestif": {
+          "command": "digestif",
+          "filetypes": ["tex", "plaintex", "context", "markdown", "md"]
+        },
+      "haskell": {
+        "command": "hie-wrapper",
+        "rootPatterns": [
+          ".stack.yaml",
+          "cabal.config",
+          "package.yaml"
+        ],
+        "filetypes": [
+          "hs",
+          "lhs",
+          "haskell"
+        ],
+        "initializationOptions": {
+          "languageServerHaskell": {
+          }
+        }
+      }
+    },
+    "suggest.autoTrigger": "always"
+}

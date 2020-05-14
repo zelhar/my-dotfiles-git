@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/zelhar/.config/nvim'
+let g:netrw_dirhist_6='/home/zelhar/.config/nvim/after/plugin'
+let g:netrw_dirhist_5='/home/zelhar/.config/nvim/after'
+let g:netrw_dirhist_4='/home/zelhar/.config/nvim/after/ftplugin'
+let g:netrw_dirhist_3='/home/zelhar/.config/nvim'
+let g:netrw_dirhist_2='/home/zelhar/FU/softpraktikum/vae_for_retina_images'
+let g:netrw_dirhist_1='/'
