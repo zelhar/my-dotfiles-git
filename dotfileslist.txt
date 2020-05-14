@@ -44,3 +44,5 @@ dictionaries
 .config/tuir
 .config/zathura
 .config/mimeapps.list
+
+.xmonad/stack.yaml
