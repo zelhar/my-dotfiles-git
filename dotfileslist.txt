@@ -24,6 +24,7 @@
 XF86keysym.h
 bin
 dictionaries
+.init.vim.minmalistic.bak
 
 # and now configs:
 
