@@ -1,9 +1,8 @@
 {
-    "languageserver": {
-        "digestif": {
-          "command": "digestif",
-          "filetypes": ["tex", "plaintex", "context", "markdown", "md"]
-        },
+  "python.linting.pylintEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pep8Enabled": true,
+  "languageserver": {
       "haskell": {
         "command": "hie-wrapper",
         "rootPatterns": [

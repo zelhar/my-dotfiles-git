@@ -1,13 +1,13 @@
 #! /bin/sh
 
-# Check whether the external monitor is connected
-xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
-# 0 returned if successful
-if [ $? -eq 0 ]; then
-    xrandr --output HDMI-A-0 --primary
-fi
+## Check whether the external monitor is connected
+#xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
+## 0 returned if successful
+#if [ $? -eq 0 ]; then
+#    xrandr --output HDMI-A-0 --primary
+#fi
 
-xrandr --output HDMI-A-0 --primary
+#xrandr --output HDMI-A-0 --primary
 
 sxhkd &
 picom &

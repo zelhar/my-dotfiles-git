@@ -157,8 +157,8 @@ set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
             \/media/JetFlash16
 "add a dictionary file for word completion:
 "let g:symbols_file = "/$HOME/dictionaries/symbols"
-set dictionary+=/$HOME/dictionaries/symbols
-set dictionary+=/$HOME/dictionaries/chemical_formulas.txt
+set dictionary+=$HOME/dictionaries/symbols
+set dictionary+=$HOME/dictionaries/chemical_formulas.txt
 set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
@@ -168,7 +168,7 @@ set complete+=k
 set complete+=i
 set complete+=t
 set complete+=kspell
-set completeopt=menuone,preview,longest
+set completeopt=menuone,preview,longest,noinsert
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
 autocmd BufEnter * silent! lcd %:p:h

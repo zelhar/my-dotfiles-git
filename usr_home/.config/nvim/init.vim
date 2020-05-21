@@ -188,9 +188,9 @@ set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
             \/run/media/zelhar/JetFlash16/backupvimtexts,~/tmp,~/temp,.,~/,
             \/media/JetFlash16
 "add a dictionary file for word completion:
-"let g:symbols_file = "/$HOME/dictionaries/symbols"
-set dictionary+=/$HOME/dictionaries/symbols
-set dictionary+=/$HOME/dictionaries/chemical_formulas.txt
+"let g:symbols_file = "$HOME/dictionaries/symbols"
+set dictionary+=$HOME/dictionaries/symbols
+set dictionary+=$HOME/dictionaries/chemical_formulas.txt
 set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
@@ -232,7 +232,8 @@ set cursorline
 " Setting scrolloff so cursor alsways stays inside that range except the top/bot
 set scrolloff=5
 "set a shorter timeout for key-combs and commands (default=1000)
-set timeoutlen=1200
+"set timeoutlen=1200
+set timeoutlen=820
 set showcmd
 "set position for new split windows:
 set splitbelow
@@ -276,8 +277,9 @@ let g:vim_markdown_folding_disabled = 1
 "let g:pandoc#filetypes#pandoc_markdown = 0
 
 "vimtex settings
-let g:vimtex_indent_enabled = 1
+let g:vimtex_indent_enabled = 0
 let g:vimtex_indent_ignored_envs = ['document', 'enumerate', 'item', 'eqnarray', 'equation', 'array', 'eqnarray']
+let g:tex_flavor = 'latex'
 
 "translate-shell settings
 let g:trans_default_direction = ":es+de"
@@ -367,3 +369,17 @@ endif
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 "inoremap <silent><expr> <space><space> coc#refresh()
+
+"testing clipboard thing
+"let g:clipboard = {
+"      \   'name': 'myClipboard',
+"      \   'copy': {
+"      \      '+': 'tmux load-buffer -',
+"      \      '*': 'tmux load-buffer -',
+"      \    },
+"      \   'paste': {
+"      \      '+': 'tmux save-buffer -',
+"      \      '*': 'tmux save-buffer -',
+"      \   },
+"      \   'cache_enabled': 1,
+"      \ }
