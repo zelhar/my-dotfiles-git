@@ -4,7 +4,8 @@ set nocompatible
 autocmd!
 "------- START Plug manager instead of Vundle
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
+"call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/vim/plugged')
 
 "Color Themes
 Plug 'robertmeta/nofrils'
