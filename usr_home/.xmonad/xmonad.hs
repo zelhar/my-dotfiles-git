@@ -52,6 +52,8 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
 import XMonad.Util.Paste
 ----------
+  --fix java swing gui fuckup
+import XMonad.Hooks.SetWMName
 
 main :: IO ()
 --main = do
@@ -79,6 +81,8 @@ myStartupHook = do
   spawn "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
   spawn "bash ~/bin/trayer_launcher.sh"
   spawn "~/bin/myxkeyboardsetting.sh"
+--for java swing gui
+  setWMName "LG3D"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 --myTerminal    = "urxvt"

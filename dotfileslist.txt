@@ -30,6 +30,7 @@ dictionaries
 
 .ghc/
 .vim/
+.config/alacritty
 .config/bspwm
 .config/caffeine
 .config/dunst

@@ -247,4 +247,5 @@ unset __conda_setup
 
 export PROJECT=/data/analysis/ag-reils/ag-reils-shared-students
 
-#neofetch
+alias condact="conda activate test"
+alias cytoscape="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"

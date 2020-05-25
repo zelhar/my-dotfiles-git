@@ -9,6 +9,13 @@
 
 #xrandr --output HDMI-A-0 --primary
 
+xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
+# 0 returned if successful
+if [ $? -eq 0 ]; then
+    xrandr --output HDMI-A-0 --primary
+    #echo "yes"
+fi
+
 sxhkd &
 picom &
 feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg &
@@ -17,6 +24,8 @@ unclutter &
 udiskie -at &
 xfce4-clipman &
 flameshot &
+exec dunst &
+exec lxqt-policykit-agent &
 
 bspc monitor eDP -d VI VII VIII IX X
 bspc monitor HDMI-A-0 -d I II III IV V
@@ -31,6 +40,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a cytoscape desktop='^8' state=floating follow=on
+bspc rule -a Cytoscape desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
