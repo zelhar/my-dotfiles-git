@@ -1,0 +1,95 @@
+InitConnectionLimits: MaxClients = 2048
+
+Xvnc TigerVNC 1.9.0 - built Nov  1 2019 15:22:11
+Copyright (C) 1999-2018 TigerVNC Team and many others (see README.rst)
+See http://www.tigervnc.org for information on TigerVNC.
+Underlying X server release 12000000, The X.Org Foundation
+
+
+Fri Nov 15 23:35:05 2019
+ vncext:      VNC extension running!
+ vncext:      Listening for VNC connections on local interface(s), port 5901
+ vncext:      created VNC server for screen 0
+Sync Extension 3.1
+Popen: `"/data/data/com.termux/files/usr/bin/xkbcomp" -w 1 "-R/data/data/com.termux/files/usr/share/X11/xkb" -xkm "-" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "/data/data/com.termux/files/usr/tmp/server-1.xkm"', fp = 0x7788a14018
+Pclose: fp = 0x7788a14018
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported high keycode 372 for name <I372> ignored
+>                   X11 cannot support keycodes above 255.
+>                   This warning only shows for the first high keycode.
+Errors from xkbcomp are not fatal to the X server
+Loaded XKB keymap /data/data/com.termux/files/usr/tmp/server-1.xkm, defined=0x7f
+client(0): Reserved pid(27910).
+client(0): Reserved cmdname(/data/data/com.termux/files/usr/bin/Xvnc) and cmdargs(:1 -geometry 2560x1600 -auth /data/data/com.termux/files/home/.Xauthority -desktop localhost:1 () -fp /data/data/com.termux/files/usr/share/fonts/75dpi -pn -rfbauth /data/data/com.termux/files/home/.vnc/passwd -rfbport 5901 -rfbwait 30000 -localhost).
+client(200000): Reserved pid(27917).
+client(200000): Reserved cmdname(i3) and cmdargs(NULL).
+AllocNewConnection: client index = 1, socket fd = 8
+client(400000): Reserved pid(27917).
+client(400000): Reserved cmdname(i3) and cmdargs(NULL).
+AllocNewConnection: client index = 2, socket fd = 10
+/data/data/com.termux/files/usr/bin/sh: 1: xss-lock: not found
+/data/data/com.termux/files/usr/bin/sh: 1: nm-applet: not found
+client(600000): Reserved pid(27927).
+client(600000): Reserved cmdname(i3bar) and cmdargs(--bar_id=bar-0 --socket=/data/data/com.termux/files/usr/tmp/i3-u0_a220.JYSpiF/ipc-socket.27917).
+AllocNewConnection: client index = 3, socket fd = 12
+i3status: trying to auto-detect output_format setting
+i3status: auto-detected "i3bar"
+
+Fri Nov 15 23:35:25 2019
+ Connections: accepted: 127.0.0.1::40016
+ SConnection: Client needs protocol version 3.8
+ SConnection: Client requests security type VncAuth(2)
+
+Fri Nov 15 23:35:26 2019
+ VNCSConnST:  Server default pixel format depth 24 (32bpp) little-endian rgb888
+ VNCSConnST:  Client pixel format depth 6 (8bpp) rgb222
+client(800000): Reserved pid(28028).
+client(800000): Reserved cmdname(rofi) and cmdargs(-show run).
+AllocNewConnection: client index = 4, socket fd = 14
+client(800000): Released pid(28028).
+client(800000): Released cmdline(rofi) and cmdargs(-show run).
+client(800000): Reserved pid(28035).
+client(800000): Reserved cmdname(st) and cmdargs(-f monospace:size=19).
+AllocNewConnection: client index = 4, socket fd = 14
+client(a00000): Reserved pid(28062).
+client(a00000): Reserved cmdname(st) and cmdargs(-f monospace:size=19).
+AllocNewConnection: client index = 5, socket fd = 15
+client(a00000): Released pid(28062).
+client(a00000): Released cmdline(st) and cmdargs(-f monospace:size=19).
+client(200000): Released pid(27917).
+client(200000): Released cmdline(i3) and cmdargs(NULL).
+client(400000): Released pid(27917).
+client(400000): Released cmdline(i3) and cmdargs(NULL).
+[/home/builder/.termux-build/i3/src/../src/i3bar/src/xcb.c:1078] ERROR: X11 connection was closed unexpectedly - maybe your X server terminated / crashed?
+i3status: exiting due to signal.
+[libi3] /home/builder/.termux-build/i3/src/../src/libi3/font.c Using Pango font monospace, size 18
+client(600000): Released pid(27927).
+client(600000): Released cmdline(i3bar) and cmdargs(--bar_id=bar-0 --socket=/data/data/com.termux/files/usr/tmp/i3-u0_a220.JYSpiF/ipc-socket.27917).
+X connection to :1 broken (explicit kill or server shutdown).
+client(800000): Released pid(28035).
+client(800000): Released cmdline(st) and cmdargs(-f monospace:size=19).
+
+Fri Nov 15 23:36:07 2019
+ Connections: closed: 127.0.0.1::40016 (Server shutdown)
+ EncodeManager: Framebuffer updates: 60
+ EncodeManager:   RRE:
+ EncodeManager:     Solid: 118 rects, 4.71808 Mpixels
+ EncodeManager:            1.95898 KiB (1:2352.69 ratio)
+ EncodeManager:   ZRLE:
+ EncodeManager:     Bitmap RLE: 39 rects, 1.31728 Mpixels
+ EncodeManager:                 2.30176 KiB (1:559.078 ratio)
+ EncodeManager:     Indexed RLE: 66 rects, 1.37613 Mpixels
+ EncodeManager:                  13.5381 KiB (1:99.3234 ratio)
+ EncodeManager:   Total: 223 rects, 7.41149 Mpixels
+ EncodeManager:          17.7988 KiB (1:406.791 ratio)
+ ComparingUpdateTracker: 256.563 Mpixels in / 3.3015 Mpixels out
+ ComparingUpdateTracker: (1:77.711 ratio)
+(dix) removing device 2
+(dix) removing device 3
+(dix) removing device 5
+(dix) removing device 4
+(dix) removing device 7
+(dix) removing device 6
+client(0): Released pid(27910).
+client(0): Released cmdline(/data/data/com.termux/files/usr/bin/Xvnc) and cmdargs(:1 -geometry 2560x1600 -auth /data/data/com.termux/files/home/.Xauthority -desktop localhost:1 () -fp /data/data/com.termux/files/usr/share/fonts/75dpi -pn -rfbauth /data/data/com.termux/files/home/.vnc/passwd -rfbport 5901 -rfbwait 30000 -localhost).
+i3: Cannot open display

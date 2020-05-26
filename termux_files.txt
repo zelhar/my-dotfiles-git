@@ -1,0 +1,19 @@
+#generated with ls -AR and edited
+.bashrc
+.termux
+.tmux.conf
+.vim
+.vimrc
+.vnc
+.zshrc
+backup_termux.sh
+bin
+fresh_termux_packages_install.sh
+hebtest.txt
+test.txt
+
+.config/i3
+.config/nvim
+.config/ranger
+
+

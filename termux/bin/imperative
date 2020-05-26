@@ -1,0 +1,4 @@
+#!/bin/sh
+conjugator $* imperative pronouns list
+conjugator $* imperative pronouns list | pager_nvim
+

@@ -1,0 +1,11 @@
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/AlgoDat' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/GTI' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/Stat2' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/R' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/matlab' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/other' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/Berufspraktikum' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/useful_textbooks' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/AlgoBi' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/genetik' ~/FU_link/
+rsync -rvth --delete --progress zelhar@192.168.10.104://'home/zelhar/FU/neuro' ~/FU_link/

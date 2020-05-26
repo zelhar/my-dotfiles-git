@@ -1,0 +1,4 @@
+#!/bin/sh
+conjugator $* indicative pronouns list
+conjugator $* indicative pronouns list | pager_nvim
+#conjugator $* pronouns

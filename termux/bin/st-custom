@@ -1,0 +1,1 @@
+st -f "monospace:size=19" "$@"

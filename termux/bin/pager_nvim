@@ -1,0 +1,1 @@
+nvim -c 'set ft=man' -c 'colorscheme slate' -
