@@ -90,14 +90,22 @@
 # Font configuration
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
+    family: monospace
+    #family: Unifont
+    #family: "SourceCodePro"
+    #family: "mononoki Nerd Font"
+    #family: "Bitsream Vera Sans Mono Nerd Font"
+    #family: "Hack Regular Nerd Font"
+    #family: #list with fallback doesn't seen to work:(
+    #    - "Hack Regular Nerd Font Complete"
+    #    - monospace
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -269,16 +277,16 @@ font:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-#visual_bell:
+visual_bell:
 #  animation: EaseOutExpo
-#  duration: 0
-#  color: '#ffffff'
+  duration: 5
+  color: '#ffffff'
 
 # Background opacity
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-#background_opacity: 1.0
+background_opacity: 0.97
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -338,7 +346,7 @@ live_config_reload: true
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -350,7 +358,7 @@ live_config_reload: true
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  #url:
+  url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -362,8 +370,8 @@ live_config_reload: true
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
+    launcher:
+      program: xdg-open
     #  args: []
 
     # URL modifiers

@@ -5,7 +5,7 @@ setxkbmap -model pc105 -layout us,de,il -variant altgr-intl, -option grp:alt_spa
 # load ~/.Xresources
 xrdb -merge .Xresources
 
-#exec myxkeyboardsetting.sh & #might stuck the startup not sure
+exec myxkeyboardsetting.sh & #might stuck the startup not sure
 
 # Make sure this is before the 'exec' command or it won't be sourced.
 [ -f ~/.xprofile ] && source ~/.xprofile

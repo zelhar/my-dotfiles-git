@@ -28,7 +28,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -249,3 +249,7 @@ export PROJECT=/data/analysis/ag-reils/ag-reils-shared-students
 
 alias condact="conda activate test"
 alias cytoscape="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
+# MY personal zsh plugins
+#export MYPLUGINS="$HOME/.config/zsh/plugins"
+#source "$MYPLUGINS/web-search/web-search.plugin.zsh"
+alias cite="python ~/bin/scholar.py"
