@@ -17,11 +17,11 @@
 # Check whether the external monitor is connected
 xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
 # 0 returned if successful
-if [ $? -eq 0 ]; then
-    xrandr --output HDMI-A-0 --primary
-    bash ~/bin/deactivate_notebookscreen.sh
-    #echo "yes"
-fi
+#if [ $? -eq 0 ]; then
+#    xrandr --output HDMI-A-0 --primary
+#    bash ~/bin/deactivate_notebookscreen.sh
+#    #echo "yes"
+#fi
 
 #start notifications daemon
 exec dunst &
