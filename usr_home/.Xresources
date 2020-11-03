@@ -4,8 +4,8 @@
 !xrdb -merge ~/.Xresources
 !
 !st
-st.alpha: 0.97
-st.alphaUnfocussed: 0.79
+st.alpha: 0.98
+st.alphaUnfocused: 0.80
 st.font: PragmataPro:size=11:antialias=false;
 st.font2: Monospace-11;
 !st.font: Monospace-11;

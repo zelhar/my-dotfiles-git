@@ -25,34 +25,30 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf'
 Plug 'mileszs/ack.vim'
-" Track the engine.
-"""""Plug 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-"""""Plug 'honza/vim-snippets'
 
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'plasticboy/vim-markdown'
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
 "Plug 'scrooloose/nerdtree' "file picker
-Plug 'mcchrish/nnn.vim' "file picker
+"Plug 'mcchrish/nnn.vim' "file picker
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/loremipsum'
+"Plug 'vim-scripts/loremipsum'
 Plug 'echuraev/translate-shell.vim'
+
+"vim-slime
 Plug 'jpalardy/vim-slime'
 
-Plug 'justmao945/vim-clang'
-Plug 'jalvesaq/Nvim-R'
+"Plug 'justmao945/vim-clang'
+"Plug 'jalvesaq/Nvim-R'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
-"Python plugins
+"coc-nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
 
 "haskell plugins
-"Plug 'parsonsmatt/intero-neovim'
 Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
 Plug 'neovimhaskell/haskell-vim' "syntax highlighter
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
 
 "" Initialize plugin system
 call plug#end()
@@ -187,19 +183,18 @@ set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
             \/run/media/zelhar/UF16/backupvimtexts,
             \/run/media/zelhar/JetFlash16/backupvimtexts,~/tmp,~/temp,.,~/,
             \/media/JetFlash16
-"add a dictionary file for word completion:
+"add a dictionary file for word completion (i_CTRL-X_CTRL-K):
 "let g:symbols_file = "$HOME/dictionaries/symbols"
 set dictionary+=$HOME/dictionaries/symbols
 set dictionary+=$HOME/dictionaries/chemical_formulas.txt
-set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
 "make autocomplete (:help cpt) with ctrl-n search in the also in the dictionary
-set complete+=k
-set complete+=i
-set complete+=t
-set complete+=kspell
+"set complete+=k
+"set complete+=i
+"set complete+=t
+"set complete+=kspell
 set completeopt=menuone,preview,longest,noinsert
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
@@ -300,34 +295,26 @@ vnoremap <silent> <leader>t :Trans<CR><C-w><C-w>
 set nojoinspaces
 "my own plugins' settings
 "defaults for my zelharbackup plugin:
-"let g:myfileslist = '/run/media/zelhar/yjk-B16gb/original_paths_list.txt'
 let g:myfileslist = '/run/media/zelhar/yjk-16g-msd/original_paths_list.txt'
 let g:mybackupdir=  '/run/media/zelhar/yjk-16g-msd/'
-"let g:mybackupdir="/run/media/zelhar/yjk-B16gb/"
-"source $VIMRUNTIME/ftplugin/man.vim
+
 "vim-slime
 "let g:slime_target = "neovim"
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+
 "thesaurus-query
 "nnoremap <Leader>cs :ThesaurusQueryReplaceCurrentWord<CR>
 "vnoremap <Leader>cs y:ThesaurusQueryReplace <C-r>"<CR>
-let g:tq_map_keys=0
-let g:tq_openoffice_en_file="/usr/share/mythes/th_en_US_v2"
-let g:tq_openoffice_de_file="/usr/share/mythes/th_de_DE_v2"
-let g:tq_openoffice_es_file="/usr/share/mythes/th_es_ES_v2"
-let g:tq_language=['en', 'de', 'es']
-let g:tq_enabled_backends=["openoffice_en", "openoffice_de", "openoffice_es", "openthesaurus_de", "datamuse_com"]
+"let g:tq_map_keys=0
+"let g:tq_openoffice_en_file="/usr/share/mythes/th_en_US_v2"
+"let g:tq_openoffice_de_file="/usr/share/mythes/th_de_DE_v2"
+"let g:tq_openoffice_es_file="/usr/share/mythes/th_es_ES_v2"
+"let g:tq_language=['en', 'de', 'es']
+"let g:tq_enabled_backends=["openoffice_en", "openoffice_de", "openoffice_es", "openthesaurus_de", "datamuse_com"]
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 "vim-clang options
 "let g:clang_cpp_options = '-std=c++17'
@@ -340,13 +327,13 @@ let g:rrst_syn_hl_chunk = 1
 let g:rmd_syn_hl_chunk = 1
 let g:R_rmdchunk = 0
 let g:R_assign = 2
-nmap <LocalLeader>sr <Plug>RStart
-command Rstart call StartR("R")
-command RDsendline call SendLineToR("down")
+"nmap <LocalLeader>sr <Plug>RStart
+"command Rstart call StartR("R")
+"command RDsendline call SendLineToR("down")
 
-let R_in_buffer = 0
+"let R_in_buffer = 0
 "let R_term = 'st'
-let R_term = 'st-my-prefs'
+"let R_term = 'st-my-prefs'
 "let R_term_cmd = 'st-my-prefs -title R -e'
 "let R_term_cmd = 'st -f "monospace:size=11" -title R -e'
 
@@ -370,16 +357,42 @@ endif
 inoremap <silent><expr> <c-space> coc#refresh()
 "inoremap <silent><expr> <space><space> coc#refresh()
 
-"testing clipboard thing
-"let g:clipboard = {
-"      \   'name': 'myClipboard',
-"      \   'copy': {
-"      \      '+': 'tmux load-buffer -',
-"      \      '*': 'tmux load-buffer -',
-"      \    },
-"      \   'paste': {
-"      \      '+': 'tmux save-buffer -',
-"      \      '*': 'tmux save-buffer -',
-"      \   },
-"      \   'cache_enabled': 1,
-"      \ }
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+set signcolumn=yes
+set hidden
+"set nohidden
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Note coc#float#scroll works on neovim >= 0.5.0 or vim >= 8.2.0750
+"nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
+"inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+
+nnoremap <silent> Z :HoogleInfo<CR>
+"nnoremap <silent> Z :call <SID>hoogle_info()<CR>
+"function! s:hoogle_info()
+"    "execute '!' . &keywordprg . " " . expand('<cword>')
+"    call HoogleLookup('', ' --info')
+"endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300

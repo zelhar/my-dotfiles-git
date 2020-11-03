@@ -156,13 +156,19 @@ export MANWIDTH=80
 alias ttmux="TERM=xterm-256color tmux"
 #add '~/bin' to PATH.
 #export PATH="$HOME/bin:$PATH"
-PATH=$PATH:$HOME/bin
-#add ~/.cabal/bin to $PATH
-PATH=$PATH:~/.cabal/bin
-#recommended by Haskell Stack
-PATH=$PATH:$HOME/.local/bin
-#Lua local installs
-PATH=$PATH:$HOME/.luarocks/bin
+if [[ ! $PATH =~ "$HOME/bin" ]]
+then
+    PATH=$HOME/bin:$PATH
+    #add ~/.cabal/bin to $PATH
+    PATH=~/.cabal/bin:$PATH
+    #recommended by Haskell Stack
+    PATH=$HOME/.local/bin:$PATH
+    #PATH=$PATH:$HOME/.local/bin
+    #Lua local installs
+    PATH=$HOME/.luarocks/bin:$PATH
+    PATH=$HOME/.ghcup/bin:$PATH
+    export PATH
+fi
 
 
 #node.js settings
@@ -205,7 +211,7 @@ fi
 stty -ixon
 
 #Jupyter Notebook and Lab
-export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+#export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 alias ipython="ipython --no-autoindent"
 alias import="-0-0-0-0-0-0-0" #cancel this cpmmand which hangs the Xsystem
@@ -248,7 +254,7 @@ unset __conda_setup
 export PROJECT=/data/analysis/ag-reils/ag-reils-shared-students
 
 alias condact="conda activate test"
-alias cytoscape="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
+alias cytoscapefunfun="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
 # MY personal zsh plugins
 #export MYPLUGINS="$HOME/.config/zsh/plugins"
 #source "$MYPLUGINS/web-search/web-search.plugin.zsh"

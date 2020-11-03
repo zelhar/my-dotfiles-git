@@ -1,10 +1,4 @@
-alpha = 191
+fg_color = #ffffffffffff
+alpha = 223
 use_transbg = true
 wall_picture = 
-cursor_fg_color = #ededd4d40000
-cursor_bg_color = #ffffffffffff
-fg_color = #ffffffffffff
-bel_mode = visual
-fade_ratio = 70
-use_extended_scroll_shortcut = true
-scrollbar_mode = none

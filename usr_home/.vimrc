@@ -6,6 +6,10 @@ autocmd!
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 "call plug#begin('~/.vim/plugged')
 call plug#begin('~/.local/share/vim/plugged')
+"Plug 'Townk/vim-autoclose'
+"Plug 'dhruvasagar/vim-table-mode'
+"Plug 'godlygeek/tabular'
+"Plug 'vim-scripts/TextFormat'
 
 "Color Themes
 Plug 'robertmeta/nofrils'
@@ -25,8 +29,27 @@ Plug 'mileszs/ack.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mcchrish/nnn.vim' "file picker
+"Plug 'plasticboy/vim-markdown'
+"Plug 'lervag/vimtex'
+"Plug 'scrooloose/nerdtree' "file picker
+"Plug 'mcchrish/nnn.vim' "file picker
 Plug 'tpope/vim-surround'
+"Plug 'vim-scripts/loremipsum'
+"Plug 'echuraev/translate-shell.vim'
+
+"vim-slime
+Plug 'jpalardy/vim-slime'
+
+"Plug 'justmao945/vim-clang'
+"Plug 'jalvesaq/Nvim-R'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
+
+"coc-nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
+
+"haskell plugins
+Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
+Plug 'neovimhaskell/haskell-vim' "syntax highlighter
 
 "" Initialize plugin system
 call plug#end()
@@ -35,15 +58,21 @@ call plug#end()
 "make sure it stays on even if I delete Vundle or Neobunlde et al.
 filetype plugin indent on
 
+"set termguicolors
+
 "Switch on syntax highlighting if it wasn't on yet.
 if !exists("syntax_on")
     syntax on
 endif
 
+set nocompatible
 "make backspace function like normal apps in insert mode
 set backspace=indent,eol,start
 
-"set t_Co=256
+set textwidth=68
+set background=dark
+
+set t_Co=256
 if !(&term =~ "rxvt")
     set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
     set t_8b=[48;2;%lu;%lu;%lum        " set background color
@@ -53,9 +82,9 @@ else
     set t_Co=256
     set notermguicolors
 endif
-set textwidth=68
-set background=dark
 
+"bracket highlight (that's on by default):
+"set matchpairs=(:),{:},[:]
 
 " Function that highlights text passing textwidth. Toggle with '\l'
 noremap <silent> <Leader>l
@@ -87,19 +116,19 @@ set smartindent
 
 
 " Tell vim which characters to show for expanded TABs,
+" trailing whitespace, and end-of-lines. VERY useful!
 scriptencoding utf-8
 if has("gui_running")
     set listchars=eol:¶,tab:>»,trail:·
 "    set listchars=eol:¬,tab:>»,trail:·
 else
+"    set listchars=eol:¶,tab:>»,trail:·
     set listchars=eol:¬,tab:>»,trail:·
 endif
 
 " Show whitespace
 "set list
 
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ 
-"            \[POS=%04l,%04v][%p%%]\ [LEN=%L]
 set laststatus=2
 set showtabline=2
 
@@ -123,6 +152,12 @@ nnoremap <Leader>P  "*P
 " can also simply use the unnamed register by default
 set clipboard+=unnamed
 
+"Compile a Latex File with xelatex
+nnoremap <Leader>xe :!xelatex -synctex=1 -interaction=nonstopmode -shell-escape
+
+"wraps selected text in ()
+vnoremap <Leader>0 di()<Esc>hpe
+
 "make esc work as expected in neovim terminal:
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -145,30 +180,31 @@ set incsearch
 " make default search ignore case
 set ignorecase
 
-"set viminfo='50,f1,\"100,h,<500,:100,/100,@100,s10
 set sessionoptions=blank,buffers,curdir,folds,slash,unix,tabpages
 
 au BufNewFile,BufRead *.hs setlocal nospell
+
+"Make vim save backup of the files: 
 set backup
 set backupcopy=auto
+"And save in the first folder it can of the following:
 set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
             \/run/media/zelhar/yjk-B16gb/backupvimtexts,
             \/run/media/zelhar/UF16/backupvimtexts,
             \/run/media/zelhar/JetFlash16/backupvimtexts,~/tmp,~/temp,.,~/,
             \/media/JetFlash16
-"add a dictionary file for word completion:
-"let g:symbols_file = "/$HOME/dictionaries/symbols"
+"add a dictionary file for word completion (i_CTRL-X_CTRL-K):
+"let g:symbols_file = "$HOME/dictionaries/symbols"
 set dictionary+=$HOME/dictionaries/symbols
 set dictionary+=$HOME/dictionaries/chemical_formulas.txt
-set dictionary+=/usr/share/dict/american
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
 "make autocomplete (:help cpt) with ctrl-n search in the also in the dictionary
-set complete+=k
-set complete+=i
-set complete+=t
-set complete+=kspell
+"set complete+=k
+"set complete+=i
+"set complete+=t
+"set complete+=kspell
 set completeopt=menuone,preview,longest,noinsert
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
@@ -181,10 +217,10 @@ autocmd WinEnter * :filetype detect
 
 " (Brace face)
 set showmatch
-"bracket highlight (that's on by default):
-"set matchpairs=(:),{:},[:]
+
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
@@ -200,7 +236,9 @@ set cursorline
 
 " Setting scrolloff so cursor alsways stays inside that range except the top/bot
 set scrolloff=5
-set timeoutlen=1200
+"set a shorter timeout for key-combs and commands (default=1000)
+"set timeoutlen=1200
+set timeoutlen=820
 set showcmd
 "set position for new split windows:
 set splitbelow
@@ -241,6 +279,12 @@ set nojoinspaces
 "defaults for my zelharbackup plugin:
 let g:myfileslist = '/run/media/zelhar/yjk-16g-msd/original_paths_list.txt'
 let g:mybackupdir=  '/run/media/zelhar/yjk-16g-msd/'
+
+"vim-slime
+"let g:slime_target = "neovim"
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
@@ -248,5 +292,51 @@ endif
 "setting colorscheme variables
 if !has("gui_running")
      colorscheme zelhar-darkblue
+     "colorscheme ayu
 endif
 
+"coc-nvim
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <space><space> coc#refresh()
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+set signcolumn=yes
+"set hidden
+set nohidden
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Note coc#float#scroll works on neovim >= 0.5.0 or vim >= 8.2.0750
+nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
+inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+
+nnoremap <silent> Z :HoogleInfo<CR>
+"nnoremap <silent> Z :call <SID>hoogle_info()<CR>
+"function! s:hoogle_info()
+"    "execute '!' . &keywordprg . " " . expand('<cword>')
+"    call HoogleLookup('', ' --info')
+"endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300

@@ -27,8 +27,8 @@ flameshot &
 exec dunst &
 exec lxqt-policykit-agent &
 
-bspc monitor eDP -d VI VII VIII IX X
 bspc monitor HDMI-A-0 -d I II III IV V
+bspc monitor eDP -d VI VII VIII IX X
 #bspc monitor -d I II III IV V VI VII VIII IX X
 #bspc monitor HDMI-A-0 I II III IV V VI VII VIII IX X
 

@@ -4,4 +4,5 @@
 #exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
 #exec /usr/bin/Xorg -nolisten tcp "$@" vt $XDG_VTNR
 #exec /usr/bin/Xorg -keeptty -nolisten tcp "$@" vt $XDG_VTNR
-exec /usr/bin/X -nolisten tcp "$@"
+#exec /usr/bin/X -nolisten tcp "$@"
+exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR

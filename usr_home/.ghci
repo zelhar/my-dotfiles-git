@@ -5,4 +5,4 @@
 
 -- hoogle integration
 :def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
-:def doc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""
+:def hdoc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""

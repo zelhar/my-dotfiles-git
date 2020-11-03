@@ -81,13 +81,15 @@ myStartupHook = do
   spawn "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
   spawn "bash ~/bin/trayer_launcher.sh"
   spawn "~/bin/myxkeyboardsetting.sh"
+--  spawn "pasystray"
 --for java swing gui
   setWMName "LG3D"
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 --myTerminal    = "urxvt"
---myTerminal    = "alacritty"
-myTerminal    = "~/bin/st-my-prefs"
+myTerminal    = "alacritty"
+--myTerminal    = "termite"
+--myTerminal    = "~/bin/st-my-prefs"
 myModMask     = mod4Mask -- Win key or Super_L
 myBorderWidth = 0
 -- | Layout hook
@@ -141,6 +143,9 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     --, ((myModMask .|. shiftMask, xK_q), spawn "sudo pkill -KILL Xorg")
     --, ((myModMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
     --, ((myModMask .|. shiftMask, xK_l), spawn "xscreensaver-command --lock")
+    --make sure restart/compile is done with the system ghc:
+     , ((myModMask, xK_q), spawn "PATH=/usr/bin:$PATH xmonad --recompile && xmonad --restart")
+     --, ((myModMask, xK_q), spawn "PATH=/usr/bin:$PATH xmonad --recompile")
 
       -- launcher keys
     , ((myModMask, xK_p), spawn "dmenu_run")

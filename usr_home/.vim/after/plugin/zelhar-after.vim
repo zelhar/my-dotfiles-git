@@ -16,4 +16,4 @@ endif
 "let g:dict_language = 
 "            \'dictdata/dictd_www.freedict.de_deu-eng.dict'
 "let g:dict_file = g:plugin_dir.'/'.g:dict_language
-call SwitchLanguage('de-en.txt')
+"call SwitchLanguage('de-en.txt')

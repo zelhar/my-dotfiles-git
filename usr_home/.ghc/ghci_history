@@ -1,100 +1,100 @@
 :q
-concatMap g return
-f g
-h = map f
-map f [1..10]
-(map f)
-map f
-:t f
-f
-g 5
-g = \x -> [x]
-(map f [])
-(map f []) [1..5]
-map f []
-map f [1..10]
-f = \x -> x+1
-f = (+) + (+)
-f 1 2
-f = (+)
-:t toInteger 
-toRational  "7875"
-toInteger "7875"
-toInteger "7875h"
-x in y
-y = "tgabch"
-y = "tgh"
-x = "abc"
-"a" ++ "b"
-import Data.String
+insert 1 (B)
+:}
+      insert = S
+      empty = B
+instance Container Stack where
+:{
+insert 1 (B)
+S 1 (B)
+S 1 (S B)
+insert 1 (S B)
+inser 1 (S B)
+:}
+      insert x xs = S x xs
+      empty = B
+instance Container Stack where
+:{
+:}
+      insert x xs = S x xs
+      empty = B
+instance Container S where
+:{
+:}
+      insert :: a -> c a -> c a
+      empty :: c a
+class Container c where
+:{
+S 1 B
+:}
+      insert x xs = S x xs
+      empty = B
+instance Container S where
+:{
+:t (:)
+:t insert
+:}
+    pairS xs ys = xs >>= \x -> ys >>= \y -> pure (x, y)
+let pairS :: Stack a -> Stack b -> Stack (a, b)
+:{
+:}
+      (>>=) (S x xs) g = combine (g x) (xs >>= g)
+      (>>=) B _ = B
+instance Monad Stack where
+:{
+:}
+      (<*>) (S g gs) (xs) = combine (fmap g xs) (gs <*> xs)
+      (<*>) (S g B) xs = fmap g xs
+      (<*>) _ B = B
+      (<*>) B _ = B
+      pure x = S x B
+instance Applicative Stack where
+:{
+:}
+    combine (S x xs) ys = S x (combine xs ys)
+    combine xs B = xs
+    combine B ys = ys
+let combine :: Stack a -> Stack a -> Stack a
+:{
+:}
+      fmap g (S x xs) = S (g x) (fmap g xs)
+      fmap _ B = B
+instance Functor Stack where
+:{
+:}
+      deriving (Eq, Ord, Show, Read)
+      | S x (Stack x)
+      = B
+data Stack x
+:{
+:kind! []
+:t []
+:}
+      deriving (Eq, Ord, Show, Read)
+      | Node x (Tree x) (Tree x)
+      = Nill
+data Tree x
+:{
 :q
+exit
+x :: Int
 :q
-:m Data.Vector
-:q
-:m Data.Vector
-:q
-:m Data.Vector
-:q
-:m Data.Vector
-:m Data.Vector
-:m Data.Array
-:q
-a!1
-a
-a = listArray (1,2) [3,4]
-a ! 1
-a
-a = listArray (1,2) [(1,3),(2,4)]
-:m Data.Array
-a = array (1,100) ((1,1) : [(i, i * a!(i-1)) | i <- [2..100]])
-:t listArray
-a = listArray (1,2) [(1,3),(2,4)]
-a = listArray (1,2) [3,4]
-:m Data.Ix
-Data.Ix
-:q
-[(+1),(+2)] <*> [1..10]
-:q
-x
-x ! 1 = 3
-x
-x ! 1 = 2
-x ! 0
-x ! 1
-x !! 1
-x
-x = fromList [1,2]
-Vector x = fromList [1,2]
-Vector x
-:m Data.Vector
-:q
-:q
-Vector a 1
-Vector a
-:m Data.Vector
-:q
-:q
-import Data.Array
-import Data.Vector
-:q
-:k 1
-:k x
-:t kind
-kind Int
-kind z
-type z
-:k t
-:t z
-z
-z = let z=z in z
-z = let z in z
-x
-x = y where y = x
-x
-x = y where y = z where z = let w=1 in z
-x
-x = y where y = z where z = let w=1 in z
-x = y where y = z where z = let 1 in z
-x = y where y = z where z = let 1 in 1
-x = y where y = z where z = let 1 in w
-x = y where y = z where z = let w = 1 in w
+pairS s l
+:}
+    pairS xs ys = xs >>= \x -> ys >>= \y -> pure (x, y)
+let pairS :: Stack a -> Stack b -> Stack (a, b)
+:{
+:}
+      (>>=) (S x xs) g = combine (g x) (xs >>= g)
+      (>>=) B _ = B
+instance Monad Stack where
+:{
+s
+gs <*> s
+show (+)
+gs
+gs = S (+1) (S (*3) B)
+combine s l
+l
+l = S 4 (S 5 (S 6 (S 7 B)))
+:}

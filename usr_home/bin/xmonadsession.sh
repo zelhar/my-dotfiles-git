@@ -42,7 +42,9 @@ exec flameshot  &
 exec udiskie -at &
 #exec /home/zelhar/Downloads/Telegram/Telegram &
 exec xfce4-clipman &
+exec pasystray &
 # Set background image with feh
 #feh --bg-scale $HOME/Downloads/Wonder_Lake_and_Denali.jpg &
+#exec xmobar &
 exec xmonad
 

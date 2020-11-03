@@ -18,11 +18,12 @@ export VISUAL=nvim
 export BROWSER=qutebrowser
 export MANPAGER="nvim -c 'set ft=man' -c 'colorscheme slate' -"
 export PAGER="less"
-PATH=$PATH:$HOME/bin
+PATH=$HOME/bin:$PATH
 #add ~/.cabal/bin to $PATH
-PATH=$PATH:~/.cabal/bin
+PATH=~/.cabal/bin:$PATH
 #recommended by Haskell Stack
-PATH=$PATH:$HOME/.local/bin
+PATH=$HOME/.local/bin:$PATH
+export PATH
 
 #node.js settings
 PATH="$HOME/node_modules/.bin:$PATH"
