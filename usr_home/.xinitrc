@@ -44,6 +44,7 @@ case $session in
     xfce|xfce4        ) exec startxfce4;;
 #    xmonad            ) exec /usr/bin/xmonad;;
     xmonad            ) exec ~/bin/xmonadsession.sh;;
+    xmonadss            ) exec ~/bin/xmonadsession_singlescreen.sh;;
 #    ymonad            ) exec .myxmonadsession; exec /usr/bin/xmonad;;
 #    #xmonad            ) exec dbus-launch /usr/bin/xmonad;;
 #    lxde              ) exec startlxde;;

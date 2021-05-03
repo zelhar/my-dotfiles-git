@@ -12,6 +12,7 @@ Config {
        , position = TopW L 90
        , border =       BottomB
        , lowerOnStart = True
+       --, lowerOnStart = False
        , hideOnStart =      False   -- start with window unmapped (hidden)
        , allDesktops =      True    -- show on all desktops
        , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
@@ -103,8 +104,8 @@ Config {
                              ] 10
 
         --keyboard indicator
-        --weather
         , Run Kbd [("us(altgr-intl)", "US"), ("de", "DE"), ("il", "HE")]
+        --weather
         , Run Weather "EDDB" ["--template"
                              , "<skyCondition>\
                              \ | <fc=#4682B4><tempC></fc>°C\

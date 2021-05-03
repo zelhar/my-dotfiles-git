@@ -1,4 +1,78 @@
 :q
+w
+let w = foldr f 0 [0 .. 10]
+let w = foldr 0 f [0 .. 10]
+z
+let z = foldl f 0 [1..10]
+f 1 2
+let f = \x y -> x + y
+x
+main
+:m -Main
+:r
+:m -Main
+main
+x
+:r
+:m - Main
+:m - M1
+:m - temp
+:m - temp.hs
+:m -*
+:r
+:m - 
+:module temp.hs
+:r
+:m 
+:m
+:r
+:l temp.hs
+:l temp.hs
+:l temp.hs
+:q
+:l temp.hs 
+:l temp.hs 
+:}
+    addStr x y = x ++ y
+let addStr :: String -> String -> String
+:{
+print "hahaha"
+:q
+show "42"
+respondPalindromes "ABCBA"
+respondPalindromes "ABBA"
+respondPalindromes "uuu"
+respondPalindromes "yesh uye"
+:l palindrom.hs 
+:}
+      fmap f (Node x lub rub) = Node (f x) (fmap f lub) (fmap f rub)
+      fmap _ Nill = Nill
+                                             where
+instance Functor Tree
+:{
+:}
+      deriving (Eq, Ord, Show, Read)
+      | Node x (Tree x) (Tree x)
+      = Nill
+data Tree x
+:{
+Tree Nill
+:}
+      deriving (Eq, Ord, Show, Read)
+      | Node x (Tree x) (Tree x)
+      = Nill
+data Tree x
+:{
+:q
+:q
+exit
+:?
+:q
+f 1
+f = \x -> x+1
+f = \x x+1
+f = \x?
+:q
 insert 1 (B)
 :}
       insert = S
@@ -24,77 +98,3 @@ instance Container S where
       insert :: a -> c a -> c a
       empty :: c a
 class Container c where
-:{
-S 1 B
-:}
-      insert x xs = S x xs
-      empty = B
-instance Container S where
-:{
-:t (:)
-:t insert
-:}
-    pairS xs ys = xs >>= \x -> ys >>= \y -> pure (x, y)
-let pairS :: Stack a -> Stack b -> Stack (a, b)
-:{
-:}
-      (>>=) (S x xs) g = combine (g x) (xs >>= g)
-      (>>=) B _ = B
-instance Monad Stack where
-:{
-:}
-      (<*>) (S g gs) (xs) = combine (fmap g xs) (gs <*> xs)
-      (<*>) (S g B) xs = fmap g xs
-      (<*>) _ B = B
-      (<*>) B _ = B
-      pure x = S x B
-instance Applicative Stack where
-:{
-:}
-    combine (S x xs) ys = S x (combine xs ys)
-    combine xs B = xs
-    combine B ys = ys
-let combine :: Stack a -> Stack a -> Stack a
-:{
-:}
-      fmap g (S x xs) = S (g x) (fmap g xs)
-      fmap _ B = B
-instance Functor Stack where
-:{
-:}
-      deriving (Eq, Ord, Show, Read)
-      | S x (Stack x)
-      = B
-data Stack x
-:{
-:kind! []
-:t []
-:}
-      deriving (Eq, Ord, Show, Read)
-      | Node x (Tree x) (Tree x)
-      = Nill
-data Tree x
-:{
-:q
-exit
-x :: Int
-:q
-pairS s l
-:}
-    pairS xs ys = xs >>= \x -> ys >>= \y -> pure (x, y)
-let pairS :: Stack a -> Stack b -> Stack (a, b)
-:{
-:}
-      (>>=) (S x xs) g = combine (g x) (xs >>= g)
-      (>>=) B _ = B
-instance Monad Stack where
-:{
-s
-gs <*> s
-show (+)
-gs
-gs = S (+1) (S (*3) B)
-combine s l
-l
-l = S 4 (S 5 (S 6 (S 7 B)))
-:}

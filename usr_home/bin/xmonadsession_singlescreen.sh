@@ -49,5 +49,6 @@ exec pasystray &
 # Set background image with feh
 #feh --bg-scale $HOME/Downloads/Wonder_Lake_and_Denali.jpg &
 #exec xmobar &
+exec deactivate_notebookscreen &
 exec xmonad
 

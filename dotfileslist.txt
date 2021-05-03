@@ -1,4 +1,5 @@
 .Renviron
+.Rprofile
 .Xmodmap
 .Xresources
 .bash_logout
@@ -18,6 +19,7 @@
 .xkb
 .xmobarrc
 .xmonad/xmonad.hs
+.xpprc
 .xscreensaver
 .xserverrc
 .zshrc

@@ -76,8 +76,9 @@ main = do
 
 myStartupHook = do
   spawn "picom"
+--  spawn "xdotool windowraise `xdotool search --all --name xmobar`"
 --  spawn "xcompmgr -cfF"
---  spawn "feh --bg-scale ~/Downloads/Wonder_Lake_and_Denali.jpg" 
+----  spawn "feh --bg-scale ~/Downloads/Wonder_Lake_and_Denali.jpg" 
   spawn "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
   spawn "bash ~/bin/trayer_launcher.sh"
   spawn "~/bin/myxkeyboardsetting.sh"

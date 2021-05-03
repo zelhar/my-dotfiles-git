@@ -4,7 +4,6 @@ set nocompatible
 autocmd!
 "------- START Plug manager instead of Vundle
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-"call plug#begin('~/.vim/plugged')
 call plug#begin('~/.local/share/vim/plugged')
 "Plug 'Townk/vim-autoclose'
 "Plug 'dhruvasagar/vim-table-mode'
@@ -26,6 +25,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf'
 Plug 'mileszs/ack.vim'
+"Plug 'Shougo/echodoc.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -158,6 +158,9 @@ nnoremap <Leader>xe :!xelatex -synctex=1 -interaction=nonstopmode -shell-escape
 "wraps selected text in ()
 vnoremap <Leader>0 di()<Esc>hpe
 
+"clear forgotten popup windows
+nnoremap <Leader>p :call popup_clear()<Cr>
+
 "make esc work as expected in neovim terminal:
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -230,7 +233,7 @@ if has('mouse')
 endif
 set mousehide		" Hide the mouse when typing text
 
-set ch=2		" Make command line two lines high
+set ch=2		" Make command line two lines high cmdheight
 set cursorline
 "set cc=81
 
@@ -284,6 +287,7 @@ let g:mybackupdir=  '/run/media/zelhar/yjk-16g-msd/'
 "let g:slime_target = "neovim"
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+"let g:slime_python_ipython = 1
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -292,17 +296,22 @@ endif
 "setting colorscheme variables
 if !has("gui_running")
      colorscheme zelhar-darkblue
-     "colorscheme ayu
+     colorscheme ayu
 endif
 
 "coc-nvim
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <NUL> coc#refresh()
 "inoremap <silent><expr> <space><space> coc#refresh()
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-set signcolumn=yes
+"set signcolumn=yes
+set signcolumn=number
 "set hidden
 set nohidden
 
@@ -319,13 +328,23 @@ function! s:show_documentation()
   endif
 endfunction
 
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  "autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,python,r,haskell setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" Note coc#float#scroll works on neovim >= 0.5.0 or vim >= 8.2.0750
-nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
-inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 nnoremap <silent> Z :HoogleInfo<CR>
 "nnoremap <silent> Z :call <SID>hoogle_info()<CR>

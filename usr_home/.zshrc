@@ -74,6 +74,7 @@ plugins=(
   web-search
   zsh-interactive-cd
   zsh_reload
+  conda-zsh-completion
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,8 +112,10 @@ export LC_CTYPE=en_US.UTF-8
    export EDITOR='vim'
    export VISUAL=vim
  else
-   export EDITOR='nvim'
-   export VISUAL=nvim
+#   export EDITOR='nvim'
+   export EDITOR='vim'
+#   export VISUAL=nvim
+   export VISUAL=vim
  fi
 
 # Compilation flags
@@ -166,7 +169,8 @@ then
     #PATH=$PATH:$HOME/.local/bin
     #Lua local installs
     PATH=$HOME/.luarocks/bin:$PATH
-    PATH=$HOME/.ghcup/bin:$PATH
+    #PATH=$HOME/.ghcup/bin:$PATH
+    PATH=$PATH:$HOME/.ghcup/bin
     export PATH
 fi
 
@@ -175,7 +179,8 @@ fi
 PATH="$HOME/node_modules/.bin:$PATH"
 export npm_config_prefix=~/node_modules
 
-#autoload -Uz compinit promptinit
+# not sure about that, I enabled for conda tab completion
+autoload -Uz compinit promptinit
 #compinit
 #promptinit
 #autoload -Uz compinit
@@ -259,3 +264,7 @@ alias cytoscapefunfun="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
 #export MYPLUGINS="$HOME/.config/zsh/plugins"
 #source "$MYPLUGINS/web-search/web-search.plugin.zsh"
 alias cite="python ~/bin/scholar.py"
+
+
+# R environment (for knime to work with Rserve)
+export R_LIBS=$HOME/R/library

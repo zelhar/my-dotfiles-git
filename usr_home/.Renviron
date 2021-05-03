@@ -46,7 +46,7 @@ R_SYSTEM_ABI='linux,gcc,gxx,gfortran,?'
 R_LIBS=~/R/library
 R_LIBS_USER=~/R/userlib/library
 
-R_PROFILE_USER = ${HOME}/.config/r/.Rprofile
+#R_PROFILE_USER = ${HOME}/.config/r/.Rprofile
 #R_HOME_USER = ${HOME}/Rdir #???
 
 ### Local Variables: ***

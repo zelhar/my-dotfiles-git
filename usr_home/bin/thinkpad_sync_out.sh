@@ -38,7 +38,9 @@ rsync -r -t -P -v --delete-excluded --ignore-errors \
     --exclude '.config/Slack/*' \
     --exclude '.oh-my-zsh/' \
     --exclude '*/.node*/' \
+    --exclude '*/.ghcup*/**' \
     --exclude '**/whats-app' \
+    --exclude '*/VitrualBox VMs' \
     --exclude '.config/Code -*' \
     --exclude '**/node_modules/*' \
     /home/zelhar \

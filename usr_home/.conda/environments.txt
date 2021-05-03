@@ -1,2 +1,3 @@
 /home/zelhar/miniconda3
+/home/zelhar/miniconda3/envs/test2
 /home/zelhar/miniconda3/envs/test

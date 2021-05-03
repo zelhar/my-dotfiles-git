@@ -6,9 +6,9 @@ autocmd!
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Townk/vim-autoclose'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'godlygeek/tabular'
-Plug 'vim-scripts/TextFormat'
+"Plug 'dhruvasagar/vim-table-mode'
+"Plug 'godlygeek/tabular'
+"Plug 'vim-scripts/TextFormat'
 
 "Color Themes
 Plug 'robertmeta/nofrils'
@@ -34,7 +34,7 @@ Plug 'plasticboy/vim-markdown'
 "Plug 'mcchrish/nnn.vim' "file picker
 Plug 'tpope/vim-surround'
 "Plug 'vim-scripts/loremipsum'
-Plug 'echuraev/translate-shell.vim'
+"Plug 'echuraev/translate-shell.vim'
 
 "vim-slime
 Plug 'jpalardy/vim-slime'
@@ -60,7 +60,6 @@ filetype plugin indent on
 set termguicolors
 
 "Switch on syntax highlighting if it wasn't on yet.
-"filetype plugin indent on
 if !exists("syntax_on")
     syntax on
 endif
@@ -68,7 +67,6 @@ endif
 set nocompatible
 "make backspace function like normal apps in insert mode
 set backspace=indent,eol,start
-
 
 set textwidth=80
 set background=dark
@@ -147,6 +145,9 @@ nnoremap <Leader>xe :!xelatex -synctex=1 -interaction=nonstopmode -shell-escape
 
 "wraps selected text in ()
 vnoremap <Leader>0 di()<Esc>hpe
+
+"clear forgotten popup windows
+nnoremap <Leader>p :call popup_clear()<Cr>
 
 "make esc work as expected in neovim terminal:
 tnoremap <Esc> <C-\><C-n>
@@ -345,11 +346,11 @@ if !has("gui_running")
      "colorscheme molokai
      "colorscheme zelhar-molokai
      "colorscheme zelhar-molokai-italic
-     "colorscheme jellybeans
+     colorscheme jellybeans
      "colorscheme bushfire
      "colorscheme zelhar-darkblue
      "colorscheme afterglow
-     colorscheme ayu
+     "colorscheme ayu
 endif
 
 "coc-nvim
@@ -360,7 +361,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 set signcolumn=yes
-set hidden
+"set hidden
 "set nohidden
 
 " Use K to show documentation in preview window.
@@ -376,12 +377,22 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" Note coc#float#scroll works on neovim >= 0.5.0 or vim >= 8.2.0750
-"nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
-"inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json,python,r,haskell setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 nnoremap <silent> Z :HoogleInfo<CR>
 "nnoremap <silent> Z :call <SID>hoogle_info()<CR>
