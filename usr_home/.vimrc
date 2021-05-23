@@ -51,6 +51,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
 Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
 Plug 'neovimhaskell/haskell-vim' "syntax highlighter
 
+"snakemake
+Plug 'snakemake/snakefmt'
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+
+"julia
+Plug 'JuliaEditorSupport/julia-vim'
+
 "" Initialize plugin system
 call plug#end()
 "------- END Plug manager instead of Vundle
@@ -335,6 +342,8 @@ augroup mygroup
   autocmd FileType typescript,json,python,r,haskell setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  "autoread whenever cursor stops moving
+  au CursorHold,CursorHoldI * checktime
 augroup end
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -359,3 +368,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+
+"snakefmt
+au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
+"au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'

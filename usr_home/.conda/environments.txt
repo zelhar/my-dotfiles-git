@@ -1,3 +1,6 @@
 /home/zelhar/miniconda3
 /home/zelhar/miniconda3/envs/test2
 /home/zelhar/miniconda3/envs/test
+/home/zelhar/miniconda3/envs/snakemake
+/home/zelhar/Downloads/appseq/ex06b/workflow/.snakemake/conda/94cebfe832770697e92ad25c935eaeee
+/home/zelhar/Downloads/appseq/ex06c/workflow/.snakemake/conda/59e7f8d142deb3904be484f802d70dad

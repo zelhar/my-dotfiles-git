@@ -50,6 +50,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
 Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
 Plug 'neovimhaskell/haskell-vim' "syntax highlighter
 
+"snakemake
+Plug 'snakemake/snakefmt'
+
 "" Initialize plugin system
 call plug#end()
 "------- END Plug manager instead of Vundle
@@ -407,3 +410,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
+
+"snakefmt
+au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
+"au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'

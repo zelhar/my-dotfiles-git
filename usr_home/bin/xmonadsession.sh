@@ -49,5 +49,7 @@ exec pasystray &
 # Set background image with feh
 #feh --bg-scale $HOME/Downloads/Wonder_Lake_and_Denali.jpg &
 #exec xmobar &
+#exec watch -n 120 myxkeyboardsetting.sh &
+#exec python ~/bin/updateMyKeyboard.py &
 exec xmonad
 

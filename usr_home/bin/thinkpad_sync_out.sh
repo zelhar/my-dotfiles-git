@@ -43,6 +43,13 @@ rsync -r -t -P -v --delete-excluded --ignore-errors \
     --exclude '*/VitrualBox VMs' \
     --exclude '.config/Code -*' \
     --exclude '**/node_modules/*' \
+    --exclude '**/.snakemake/*' \
+    --exclude '**/.julia/*' \
+    --exclude '**/conda/*' \
+    --exclude '**/.git/*' \
+    --exclude '**/.vpython-root/*' \
+    --exclude '$HOME/Jts/*' \
+    --exclude '$HOME/.zoom/*' \
     /home/zelhar \
     /run/media/zelhar/Yiftach_4TB_BKP/Yiftach/Backups/yjk-thinkpad-archarch/
 #    --exclude '~/.*/*' \
