@@ -111,6 +111,7 @@ export LC_CTYPE=en_US.UTF-8
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
    export VISUAL=vim
+   export TERM=xterm
  else
 #   export EDITOR='nvim'
    export EDITOR='vim'

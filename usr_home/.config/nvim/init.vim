@@ -362,7 +362,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "inoremap <silent><expr> <space><space> coc#refresh()
 
 " Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+"set shortmess+=c
 set signcolumn=yes
 "set hidden
 "set nohidden

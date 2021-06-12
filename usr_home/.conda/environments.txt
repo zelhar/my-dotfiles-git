@@ -4,3 +4,6 @@
 /home/zelhar/miniconda3/envs/snakemake
 /home/zelhar/Downloads/appseq/ex06b/workflow/.snakemake/conda/94cebfe832770697e92ad25c935eaeee
 /home/zelhar/Downloads/appseq/ex06c/workflow/.snakemake/conda/59e7f8d142deb3904be484f802d70dad
+/home/zelhar/Downloads/appseq/07/ex07c/workflow/.snakemake/conda/ef473b60439293a056d7979316b0746a
+/home/zelhar/Downloads/appseq/07/ex07c/workflow/.snakemake/conda/6c57969beb6e2057988866a33277caa9
+/home/zelhar/Downloads/appseq/07/ex07c/workflow/.snakemake/conda/92366b18a8d97919018423de56fdb43d

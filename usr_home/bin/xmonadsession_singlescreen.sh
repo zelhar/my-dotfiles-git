@@ -20,11 +20,12 @@ PATH="/usr/bin:$PATH"
 # Check whether the external monitor is connected
 xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
 # 0 returned if successful
-#if [ $? -eq 0 ]; then
+if [ $? -eq 0 ]; then
+    xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --off --output HDMI-A-0 --primary --pos 0x0 --rotate normal
 #    xrandr --output HDMI-A-0 --primary
 #    bash ~/bin/deactivate_notebookscreen.sh
 #    #echo "yes"
-#fi
+fi
 
 #start notifications daemon
 exec dunst &
@@ -33,6 +34,9 @@ exec lxqt-policykit-agent &
 # Fire up apps
 exec xscreensaver -no-splash &
 exec caffeine &
+
+xset dpms 3600 3600 3600
+xset s 3000 3000
 
 # My autostarts
 unclutter -b &
@@ -49,6 +53,8 @@ exec pasystray &
 # Set background image with feh
 #feh --bg-scale $HOME/Downloads/Wonder_Lake_and_Denali.jpg &
 #exec xmobar &
-exec deactivate_notebookscreen &
+
+#xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --off --output HDMI-A-0 --primary --pos 0x0 --rotate normal
+
 exec xmonad
 

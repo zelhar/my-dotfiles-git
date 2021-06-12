@@ -10,6 +10,8 @@ exec myxkeyboardsetting.sh & #might stuck the startup not sure
 # Make sure this is before the 'exec' command or it won't be sourced.
 [ -f ~/.xprofile ] && source ~/.xprofile
 
+#xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --off --output HDMI-A-0 --primary --pos 0x0 --rotate normal
+
 # $ startx ~/.xinitrc kde
 # Here Xfce is kept as default
 #session=${1:-xfce}

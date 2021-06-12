@@ -26,9 +26,10 @@ bowtie2                   2.4.3            py39hbb4e92a_0    bioconda
 brotli                    1.0.9                h9c3ff4c_4    conda-forge
 brotlipy                  0.7.0           py39h3811e60_1001    conda-forge
 brunsli                   0.1                  he1b5a44_0    conda-forge
+bwa                       0.7.17               h5bf99c6_8    bioconda
 bzip2                     1.0.8                h7f98852_4    conda-forge
 c-ares                    1.17.1               h7f98852_1    conda-forge
-ca-certificates           2021.4.13            h06a4308_1  
+ca-certificates           2021.5.25            h06a4308_1  
 certifi                   2020.12.5        py39hf3d152e_1    conda-forge
 cffi                      1.14.5           py39he32792d_0    conda-forge
 chardet                   4.0.0            py39hf3d152e_1    conda-forge
@@ -182,8 +183,9 @@ prometheus_client         0.10.1             pyhd8ed1ab_0    conda-forge
 prompt-toolkit            3.0.18             pyha770c72_0    conda-forge
 pthread-stubs             0.4               h36c2ea0_1001    conda-forge
 ptyprocess                0.7.0              pyhd3deb0d_0    conda-forge
-pulsectl                  21.5.17                  pypi_0    pypi
 py                        1.10.0             pyhd3deb0d_0    conda-forge
+pybind11                  2.6.2            py39h1a9c180_0    conda-forge
+pybind11-global           2.6.2            py39h1a9c180_0    conda-forge
 pycodestyle               2.7.0              pyhd8ed1ab_0    conda-forge
 pycparser                 2.20               pyh9f0ad1d_2    conda-forge
 pygments                  2.9.0              pyhd8ed1ab_0    conda-forge

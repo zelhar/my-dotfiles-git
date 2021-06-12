@@ -1,5 +1,5 @@
 #!/bin/bash
-rsync -tPvr --delete-excluded --delete --ignore-errors \
+rsync -tlPvr --delete-excluded --delete --ignore-errors \
     --munge-links \
     --files-from='./dotfileslist.txt' \
     --exclude '.git/*' \
