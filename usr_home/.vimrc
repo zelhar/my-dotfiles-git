@@ -76,7 +76,7 @@ set nocompatible
 "make backspace function like normal apps in insert mode
 set backspace=indent,eol,start
 
-set textwidth=68
+set textwidth=78
 set background=dark
 
 set t_Co=256
