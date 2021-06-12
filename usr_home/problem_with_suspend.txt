@@ -1,0 +1,62 @@
+# acpid
+to handle event like pressing power button and closing the lead,
+but the actual process that sends to sleep is something else
+https://wiki.archlinux.org/index.php/Acpid
+
+# Power management/Suspend and hibernate
+https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate
+https://wiki.archlinux.org/index.php/Start#Power_management
+https://wiki.archlinux.org/index.php/Power_management#Power_management_with_systemd
+https://wiki.archlinux.org/index.php/Systemd I followed the instruction to allow hibernation into swapfile.
+added resume to initramfs, added kernel parameter. anyway suspend to RAM
+was supposed to work out of the box but instead it freazes.
+
+# pm-utils
+https://www.linuxsecrets.com/archlinux-wiki/wiki.archlinux.org/index.php/Pm-utils
+didn't work either. added stuff to /etc/pm/config.d/config
+didn't help
+
+# uswsusp
+also didn't help
+https://wiki.archlinux.org/index.php/Power_management#Userspace_tools
+https://wiki.archlinux.org/index.php/Uswsusp
+
+kernel problem with ryzen 2500u ?
+
+
+
+https://superuser.com/questions/323484/what-do-the-power-management-tools-in-linux-do-acpi-pm-utils-etc
+
+#notes
+I edited /etc/systemd/logind.conf 
+was all commented out, OI added ignore to try preventing it from
+suspending
+
+#solution so far that seems to work:
+enable acpid, define pm-suspend as the action to do on lid/powe/sleep
+events etc in the file /etc/acpid/handler.sh
+
+diable systemd (systemctl) default actions by editing the file
+/etc/systemd/login.conf, setting all the above events to ignore.
+
+# not related to susped but to power management:
+install tlp, enable tlp.service,
+masked systemd-rfkill.service and systemd-rfkill.socket as recommended
+by arch linux, remember to unmask if tlp causes problems.
+-disabled acpid, uninstalled pm-utils which conflicts tlp, see if it
+works
+suspend didn't work without pm-utils so I reversed the above steps.
+
+#update
+installed also vbetool
+#update
+since kernel 4.19 systemctrl suspend seems to work fine. still need
+to set suspend to disk correctly.
+
+#update
+added kernel parameter iommu=soft to fix xorg bug in 4.20
+
+# DPMS, xset, xscreensaver
+https://wiki.archlinux.org/title/Display_Power_Management_Signaling
+https://wiki.archlinux.org/title/XScreenSaver#DPMS_and_blanking_settings
+'xset s 3600 3600 &&& xset dpms 0 0 0'
