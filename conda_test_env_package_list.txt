@@ -29,8 +29,8 @@ brunsli                   0.1                  he1b5a44_0    conda-forge
 bwa                       0.7.17               h5bf99c6_8    bioconda
 bzip2                     1.0.8                h7f98852_4    conda-forge
 c-ares                    1.17.1               h7f98852_1    conda-forge
-ca-certificates           2021.5.25            h06a4308_1  
-certifi                   2020.12.5        py39hf3d152e_1    conda-forge
+ca-certificates           2021.7.5             h06a4308_1  
+certifi                   2021.5.30        py39hf3d152e_0    conda-forge
 cffi                      1.14.5           py39he32792d_0    conda-forge
 chardet                   4.0.0            py39hf3d152e_1    conda-forge
 charls                    2.2.0                h9c3ff4c_0    conda-forge
@@ -47,6 +47,7 @@ dataclasses               0.8                pyhc8e2a94_1    conda-forge
 dbus                      1.13.18              hb2f20db_0  
 decorator                 5.0.7              pyhd8ed1ab_0    conda-forge
 defusedxml                0.7.1              pyhd8ed1ab_0    conda-forge
+deprecation               2.1.0              pyh9f0ad1d_0    conda-forge
 entrypoints               0.3             py39hde42818_1002    conda-forge
 execnet                   1.8.0              pyh44b312d_0    conda-forge
 expat                     2.3.0                h9c3ff4c_0    conda-forge
@@ -80,12 +81,14 @@ joblib                    1.0.1              pyhd8ed1ab_0    conda-forge
 jpeg                      9d                   h516909a_0    conda-forge
 json5                     0.9.5              pyh9f0ad1d_0    conda-forge
 jsonschema                3.2.0              pyhd8ed1ab_3    conda-forge
+jupyter-packaging         0.10.2             pyhd8ed1ab_0    conda-forge
 jupyter_client            6.1.12             pyhd8ed1ab_0    conda-forge
 jupyter_core              4.7.1            py39hf3d152e_0    conda-forge
 jupyter_server            1.7.0            py39hf3d152e_1    conda-forge
 jupyterlab                3.0.15             pyhd8ed1ab_0    conda-forge
 jupyterlab_pygments       0.1.2              pyh9f0ad1d_0    conda-forge
 jupyterlab_server         2.5.1              pyhd8ed1ab_0    conda-forge
+jupyterlab_vim            0.14.2             pyhd8ed1ab_0    conda-forge
 jxrlib                    1.1                  h516909a_2    conda-forge
 k8                        0.2.5                h9a82719_1    bioconda
 kiwisolver                1.3.1            py39h1a9c180_1    conda-forge
@@ -238,6 +241,7 @@ threadpoolctl             2.1.0              pyh5ca1d4c_0    conda-forge
 tifffile                  2021.4.8           pyhd8ed1ab_0    conda-forge
 tk                        8.6.10               hed695b0_1    conda-forge
 toml                      0.10.2             pyhd8ed1ab_0    conda-forge
+tomlkit                   0.7.2            py39hf3d152e_0    conda-forge
 toolz                     0.11.1                     py_0    conda-forge
 torchvision               0.9.0           py39cuda112hc5182df_0_cuda    conda-forge
 tornado                   6.1              py39h3811e60_1    conda-forge

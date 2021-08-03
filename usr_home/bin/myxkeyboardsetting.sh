@@ -1,4 +1,5 @@
 #!/bin/bash
+# see man xkeyboard-config
 #set up the xkeyboard
 setxkbmap -I $HOME/.xkb/symbols \
     -model pc105 -layout us,de,il \
@@ -7,6 +8,7 @@ setxkbmap -I $HOME/.xkb/symbols \
     -option terminate:ctrl_alt_bksp, \
     -option compose:rctrl-altgr, \
     -option ctrl:nocaps, \
+    -option shift:both_capslock_cancel, \
 #    -option xkbtest:lgst-intl,
 #    -variant lgst-intl, \
 #    -variant altgr-intl, \

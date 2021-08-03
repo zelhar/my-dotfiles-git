@@ -144,8 +144,8 @@ export BROWSER=brave
 #export EDITOR="vim --remote-tab-silent "
 #gvim () { command gvim --remote-tab-silent "$@" || command gvim "$@"; }
 #vim () { command vim --remote-tab-silent "$@" || command vim "$@"; }
-export MANPAGER="nvim -c 'set ft=man' -c 'colorscheme slate' -"
-export PAGER="less"
+export MANPAGER="nvim -M -c 'set ft=man' -c 'colorscheme slate' -"
+export PAGER=less
 export MANWIDTH=80
 
 
@@ -155,7 +155,6 @@ export MANWIDTH=80
 # I chnaged it because drop_box_uploader didn't work with the https://...
 #export https_proxy="http://127.0.0.1:8118"
 
-#alias yyaourt="https_proxy='' yaourt"
 #alias ssteam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' /usr/bin/steam"
 alias ttmux="TERM=xterm-256color tmux"
 #add '~/bin' to PATH.
@@ -219,7 +218,7 @@ stty -ixon
 #Jupyter Notebook and Lab
 #export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
-alias ipython="ipython --no-autoindent"
+alias ipython="ipython --no-autoindent --matplotlib --pylab"
 alias import="-0-0-0-0-0-0-0" #cancel this cpmmand which hangs the Xsystem
 alias rscript="Rscript --no-init-file --slave"
 

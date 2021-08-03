@@ -6,10 +6,6 @@
     "python.linting.pep8Enabled": false,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "autopep8",
-    "jedi.enable": true,
-    "jedi.startupMessage": true,
-    "jedi.jediSettings.autoImportModules": ["numpy", "pandas"],
-    "jedi.diagnostics.enable": true,
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
@@ -19,6 +15,7 @@
         }
     },
     "suggest.autoTrigger": "always",
-    "r.lsp.path": "$HOME/miniconda3/envs/test/bin/R"
+    "r.lsp.path": "$HOME/miniconda3/envs/test/bin/R",
+    "suggest.removeDuplicateItems": true
 }
 

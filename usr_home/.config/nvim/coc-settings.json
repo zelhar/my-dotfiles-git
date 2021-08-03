@@ -6,10 +6,6 @@
     "python.linting.pep8Enabled": true,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "yapf",
-    "jedi.enable": true,
-    "jedi.startupMessage": true,
-    "jedi.jediSettings.autoImportModules": ["numpy", "pandas"],
-    "jedi.diagnostics.enable": true,
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
@@ -18,6 +14,6 @@
             "filetypes": ["haskell", "lhaskell"]
         }
     },
-    "suggest.autoTrigger": "always",
+    "suggest.autoTrigger": "trigger",
     "r.lsp.path": "/usr/bin/R"
 }

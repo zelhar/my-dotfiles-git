@@ -1,13 +1,12 @@
 " ~/.config/init.vim
-"set nocompatible
 " Remove ALL autocommands for the current group:
 autocmd!
 "------- START Plug manager instead of Vundle
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'Townk/vim-autoclose'
+"Plug 'Townk/vim-autoclose'
 "Plug 'dhruvasagar/vim-table-mode'
-"Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 "Plug 'vim-scripts/TextFormat'
 
 "Color Themes
@@ -25,10 +24,11 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf'
 Plug 'mileszs/ack.vim'
+"Plug 'Shougo/echodoc.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 "Plug 'lervag/vimtex'
 "Plug 'scrooloose/nerdtree' "file picker
 "Plug 'mcchrish/nnn.vim' "file picker
@@ -41,7 +41,9 @@ Plug 'jpalardy/vim-slime'
 
 "Plug 'justmao945/vim-clang'
 "Plug 'jalvesaq/Nvim-R'
+"Plugin 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'vim-pandoc/vim-rmarkdown'
 
 "coc-nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
@@ -52,6 +54,10 @@ Plug 'neovimhaskell/haskell-vim' "syntax highlighter
 
 "snakemake
 Plug 'snakemake/snakefmt'
+Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+
+"julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 "" Initialize plugin system
 call plug#end()
@@ -61,6 +67,9 @@ call plug#end()
 filetype plugin indent on
 
 set termguicolors
+"set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
+"set t_8b=[48;2;%lu;%lu;%lum        " set background color
+"set t_Co=256
 
 "Switch on syntax highlighting if it wasn't on yet.
 if !exists("syntax_on")
@@ -135,11 +144,6 @@ tnoremap <C-Tab> <C-\><C-n>:tabnext<Cr>
 nnoremap <Leader><Enter> o<Esc>
 nnoremap <M-Enter> i<Enter><Esc>
 
-" yank/paste to/from PRIMARY (selection) clipboard
-vnoremap <Leader>y  "*y
-nnoremap <Leader>y  "*yy
-nnoremap <Leader>p  "*p
-nnoremap <Leader>P  "*P
 " can also simply use the unnamed register by default
 set clipboard+=unnamed
 
@@ -167,6 +171,30 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+"when popup window is on, make esc return to normal mode
+inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<C-c>" : "\<Esc>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-y>\<Tab>" : "\<Tab>"
+
+"autoclose pairs no plugin
+"inoremap "  ""<left>
+"inoremap (  ()<left>
+"inoremap [  []<left>
+"inoremap {  {}<left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {;<CR>  {<CR>};<Esc>O
+
+"Escape with jj etc.
+"inoremap jj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+"inoremap kk <Esc>
+"vnoremap jk <Esc>
+"vnoremap kj <Esc>
+inoremap <C-l> <right>
+inoremap <C-]> <Esc>ea
+
+
 "highlight all matches to search results
 set hlsearch
 " highlight match while still typing search pattern
@@ -190,7 +218,7 @@ set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
 "add a dictionary file for word completion (i_CTRL-X_CTRL-K):
 "let g:symbols_file = "$HOME/dictionaries/symbols"
 set dictionary+=$HOME/dictionaries/symbols
-set dictionary+=$HOME/dictionaries/chemical_formulas.txt
+"set dictionary+=$HOME/dictionaries/chemical_formulas.txt
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
@@ -204,8 +232,8 @@ set completeopt=menuone,preview,longest,noinsert
 "Set (locally) working dir to be the same as the file being edited in the buffer
 autocmd BufEnter * silent! lcd %:p:h
 "redraw screen when switching buffer, and returning to window (cleans garbage)  
-autocmd BufEnter * :redraw!
-autocmd FocusGained * :redraw! 
+"autocmd BufEnter * :redraw!
+"autocmd FocusGained * :redraw! 
 autocmd WinEnter * :filetype detect
 "autocmd BufEnter * :filetype detect
 
@@ -224,7 +252,7 @@ if has('mouse')
 endif
 set mousehide		" Hide the mouse when typing text
 
-set ch=2		" Make command line two lines high
+set ch=2		" Make command line two lines high cmdheight
 set cursorline
 "set cc=81
 
@@ -232,7 +260,7 @@ set cursorline
 set scrolloff=5
 "set a shorter timeout for key-combs and commands (default=1000)
 "set timeoutlen=1200
-set timeoutlen=820
+set timeoutlen=650
 set showcmd
 "set position for new split windows:
 set splitbelow
@@ -240,20 +268,17 @@ set splitright
 
 " Test section - temp changes
 "vim-table-mode
-let g:table_mode_corner = '+'
-let g:table_mode_corner_corner='+'
-let g:table_mode_header_fillchar='='
+"let g:table_mode_corner = '+'
+"let g:table_mode_corner_corner='+'
+"let g:table_mode_header_fillchar='='
 
-"airline/powerline stuff
+"airline stuff
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 "let g:airline#extensions#tabline#enabled = 1
-"Turning off AutoClose only use it when I need to.
-let g:AutoCloseOn = 0
-let g:AutoClosePairs = {'"': '"', '[': ']', '''': '''', '(': ')', '{': '}'}
 "Setting bufferline to my liking
 let g:bufferline_echo = 1
 let g:bufferline_rotate = 1
@@ -262,14 +287,19 @@ let g:bufferline_fixed_index =  1
 "More Vim-airline settings
 "let g:airline_theme='dark'
 let g:airline_extensions = ['tabline', 'bufferline', 'whitespace']
+"Turning off AutoClose only use it when I need to.
+"let g:AutoCloseOn = 1
+"let g:AutoClosePairs = "\" () [] {} "
+"let g:AutoClosePairs_del = "'"
+"let g:AutoClosePairs_add = "»«" "some bug
 
 "plasticboy/vim-markdown config
-let g:vim_markdown_math = 1
-let g:vim_markdown_auto_insert_bullets = 0
-let g:vim_markdown_new_list_item_indent = 0
-let g:vim_markdown_no_extensions_in_markdown = 1
-let g:vim_markdown_autowrite = 1
-let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_auto_insert_bullets = 0
+"let g:vim_markdown_new_list_item_indent = 0
+"let g:vim_markdown_no_extensions_in_markdown = 1
+"let g:vim_markdown_autowrite = 1
+"let g:vim_markdown_folding_disabled = 1
 
 "vim-pandoc settings
 "let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
@@ -295,7 +325,6 @@ let g:trans_directions_list = [
 nnoremap <silent> <leader>t :Trans<CR><C-w><C-w>
 vnoremap <silent> <leader>t :Trans<CR><C-w><C-w>
 
-"text formatting stuff
 set nojoinspaces
 "my own plugins' settings
 "defaults for my zelharbackup plugin:
@@ -320,26 +349,11 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"vim-clang options
-"let g:clang_cpp_options = '-std=c++17'
-"let g:clang_cpp_options = '-std=c++17 -stdlib=libc++'
-
 "nvim-r and rmarkdown options
-let g:markdown_fenced_languages = ['r', 'python']
-let g:rmd_fenced_languages = ['r', 'python']
-let g:rrst_syn_hl_chunk = 1
-let g:rmd_syn_hl_chunk = 1
-let g:R_rmdchunk = 0
-let g:R_assign = 2
-"nmap <LocalLeader>sr <Plug>RStart
-"command Rstart call StartR("R")
-"command RDsendline call SendLineToR("down")
-
-"let R_in_buffer = 0
-"let R_term = 'st'
-"let R_term = 'st-my-prefs'
-"let R_term_cmd = 'st-my-prefs -title R -e'
-"let R_term_cmd = 'st -f "monospace:size=11" -title R -e'
+"let g:markdown_fenced_languages = ['r', 'python']
+"let g:rmd_fenced_languages = ['r', 'python']
+"let g:rrst_syn_hl_chunk = 1
+"let g:rmd_syn_hl_chunk = 1
 
 "setting colorscheme variables
 let g:afterglow_inherit_background=1
@@ -359,13 +373,18 @@ endif
 "coc-nvim
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <NUL> coc#refresh()
 "inoremap <silent><expr> <space><space> coc#refresh()
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Don't pass messages to |ins-completion-menu|.
-"set shortmess+=c
-set signcolumn=yes
+set shortmess+=c
+"set signcolumn=yes
+set signcolumn=number
 "set hidden
-"set nohidden
+set nohidden
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -383,9 +402,12 @@ endfunction
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
+  "autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd FileType typescript,json,python,r,haskell setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  "autoread whenever cursor stops moving
+  au CursorHold,CursorHoldI * checktime
 augroup end
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -414,3 +436,10 @@ set updatetime=300
 "snakefmt
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
 "au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
+"
+"markdown
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_auto_extension_ext = 'Rmd'
+"let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_fenced_languages = ['{r}=r']
+"let g:pandoc#syntax#conceal#use = 0

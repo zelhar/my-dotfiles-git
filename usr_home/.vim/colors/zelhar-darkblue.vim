@@ -61,6 +61,7 @@ hi CursorLineNr ctermfg=208               cterm=none
 
 
 hi Comment	guifg=#80a0ff ctermfg=darkred
+"hi Comment	guifg=#80a0ff ctermfg=darkred cterm=italic gui=italic
 hi Constant	ctermfg=magenta guifg=#ffa0a0 cterm=none
 hi Special	ctermfg=brown guifg=Orange cterm=none gui=none
 hi Identifier	ctermfg=cyan guifg=#40ffff cterm=none
@@ -75,3 +76,7 @@ hi Pmenu guifg=#c0c0c0 guibg=#404080
 hi PmenuSel guifg=#c0c0c0 guibg=#2050d0
 hi PmenuSbar guifg=blue guibg=darkgray
 hi PmenuThumb guifg=#c0c0c0
+
+" Conceal
+"hi Conceal ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
+hi Conceal ctermfg=LightGrey ctermbg=darkblue guifg=DarkCyan guibg=#000040

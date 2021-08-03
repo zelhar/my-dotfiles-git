@@ -5,7 +5,7 @@ autocmd!
 "------- START Plug manager instead of Vundle
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/vim/plugged')
-"Plug 'Townk/vim-autoclose'
+"Plug 'Townk/vim-autoclose' "has some bug
 "Plug 'dhruvasagar/vim-table-mode'
 "Plug 'godlygeek/tabular'
 "Plug 'vim-scripts/TextFormat'
@@ -42,7 +42,9 @@ Plug 'jpalardy/vim-slime'
 
 "Plug 'justmao945/vim-clang'
 "Plug 'jalvesaq/Nvim-R'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plugin 'vim-pandoc/vim-rmarkdown'
 
 "coc-nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
@@ -65,7 +67,10 @@ call plug#end()
 "make sure it stays on even if I delete Vundle or Neobunlde et al.
 filetype plugin indent on
 
-"set termguicolors
+set termguicolors
+set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
+set t_8b=[48;2;%lu;%lu;%lum        " set background color
+set t_Co=256
 
 "Switch on syntax highlighting if it wasn't on yet.
 if !exists("syntax_on")
@@ -78,17 +83,6 @@ set backspace=indent,eol,start
 
 set textwidth=78
 set background=dark
-
-set t_Co=256
-if !(&term =~ "rxvt")
-    set t_8f=[38;2;%lu;%lu;%lum        " set foreground color
-    set t_8b=[48;2;%lu;%lu;%lum        " set background color
-    set t_Co=256
-    set termguicolors
-else
-    set t_Co=256
-    set notermguicolors
-endif
 
 "bracket highlight (that's on by default):
 "set matchpairs=(:),{:},[:]
@@ -151,11 +145,6 @@ tnoremap <C-Tab> <C-\><C-n>:tabnext<Cr>
 nnoremap <Leader><Enter> o<Esc>
 nnoremap <M-Enter> i<Enter><Esc>
 
-" yank/paste to/from PRIMARY (selection) clipboard
-vnoremap <Leader>y  "*y
-nnoremap <Leader>y  "*yy
-nnoremap <Leader>p  "*p
-nnoremap <Leader>P  "*P
 " can also simply use the unnamed register by default
 set clipboard+=unnamed
 
@@ -183,6 +172,29 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+"when popup window is on, make esc return to normal mode
+inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<C-c>" : "\<Esc>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-y>\<Tab>" : "\<Tab>"
+
+"autoclose pairs no plugin
+"inoremap "  ""<left>
+"inoremap (  ()<left>
+"inoremap [  []<left>
+"inoremap {  {}<left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {;<CR>  {<CR>};<Esc>O
+
+"Escape with jj etc.
+"inoremap jj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
+"inoremap kk <Esc>
+"vnoremap jk <Esc>
+"vnoremap kj <Esc>
+inoremap <C-l> <right>
+inoremap <C-]> <Esc>ea
+
 "highlight all matches to search results
 set hlsearch
 " highlight match while still typing search pattern
@@ -206,7 +218,7 @@ set backupdir=/run/media/zelhar/yjk-16g-msd/backupvimtexts/,
 "add a dictionary file for word completion (i_CTRL-X_CTRL-K):
 "let g:symbols_file = "$HOME/dictionaries/symbols"
 set dictionary+=$HOME/dictionaries/symbols
-set dictionary+=$HOME/dictionaries/chemical_formulas.txt
+"set dictionary+=$HOME/dictionaries/chemical_formulas.txt
 set dictionary+=/usr/share/dict/american-english
 set dictionary+=/usr/share/dict/ngerman
 set dictionary+=/usr/share/dict/spanish
@@ -215,13 +227,14 @@ set dictionary+=/usr/share/dict/spanish
 "set complete+=i
 "set complete+=t
 "set complete+=kspell
-set completeopt=menuone,preview,longest,noinsert
+set completeopt=menuone,preview,popup
+"set completeopt=menuone,preview,popup,noinsert,noselect
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
 autocmd BufEnter * silent! lcd %:p:h
 "redraw screen when switching buffer, and returning to window (cleans garbage)  
-autocmd BufEnter * :redraw!
-autocmd FocusGained * :redraw! 
+"autocmd BufEnter * :redraw!
+"autocmd FocusGained * :redraw! 
 autocmd WinEnter * :filetype detect
 "autocmd BufEnter * :filetype detect
 
@@ -248,15 +261,18 @@ set cursorline
 set scrolloff=5
 "set a shorter timeout for key-combs and commands (default=1000)
 "set timeoutlen=1200
-set timeoutlen=820
+set timeoutlen=650
 set showcmd
 "set position for new split windows:
 set splitbelow
 set splitright
 
 " Test section - temp changes
+"vim-table-mode
+"let g:table_mode_corner = '+'
+"let g:table_mode_corner_corner='+'
+"let g:table_mode_header_fillchar='='
 
-"Neovim stuff
 "trying to fix arrow keys in insert mode in VIM
 if !has('nvim')
     set t_ku=OA
@@ -275,15 +291,17 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-
 let g:bufferline_echo = 1
 let g:bufferline_rotate = 1
 let g:bufferline_fname_mod = ':t'
 let g:bufferline_fixed_index =  1
 let g:airline_extensions = ['tabline', 'bufferline', 'whitespace']
+"Turning off AutoClose only use it when I need to.
+"let g:AutoCloseOn = 1
+"let g:AutoClosePairs = "\" () [] {} "
+"let g:AutoClosePairs_del = "'"
+"let g:AutoClosePairs_add = {'»':'«'}
 
-
-"text formatting stuff
 set nojoinspaces
 "my own plugins' settings
 "defaults for my zelharbackup plugin:
@@ -372,3 +390,10 @@ set updatetime=300
 "snakefmt
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
 "au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
+"
+"markdown
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_auto_extension_ext = 'Rmd'
+"let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_fenced_languages = ['{r}=r']
+"let g:pandoc#syntax#conceal#use = 0

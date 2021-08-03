@@ -1,5 +1,5 @@
 #!/bin/bash
-rsync -r -t -P -v --delete-excluded --ignore-errors \
+rsync -r -t -P -v -l --delete-excluded --ignore-errors \
     --exclude '**.cache/**' \
     --exclude '.cache/*' \
     --exclude '**/.stack-work/*' \
@@ -7,10 +7,15 @@ rsync -r -t -P -v --delete-excluded --ignore-errors \
     --exclude '*.local/share/*' \
     --exclude '*/.cache/*' \
     --exclude '.*ib-tws/*' \
+    --exclude '.vscode/*' \
+    --exclude '.code/*' \
     --exclude '.arduino*/' \
     --exclude '.atom/' \
     --exclude '.cabal*' \
     --exclude '.config/Brave*/*' \
+    --exclude '.config/discord/*' \
+    --exclude '.config/webex*' \
+    --exclude '.zoom/' \
     --exclude '.config/google-chrome*' \
     --exclude '.config/opera*' \
     --exclude '.config/vivaldi*' \
@@ -44,12 +49,12 @@ rsync -r -t -P -v --delete-excluded --ignore-errors \
     --exclude '.config/Code -*' \
     --exclude '**/node_modules/*' \
     --exclude '**/.snakemake/*' \
-    --exclude '**/.julia/*' \
+    --exclude '.julia/*' \
     --exclude '**/conda/*' \
     --exclude '**/.git/*' \
     --exclude '**/.vpython-root/*' \
-    --exclude '$HOME/Jts/*' \
-    --exclude '$HOME/.zoom/*' \
+    --exclude 'Jts/*' \
+    --exclude '.zoom/*' \
     /home/zelhar \
     /run/media/zelhar/Yiftach_4TB_BKP/Yiftach/Backups/yjk-thinkpad-archarch/
 #    --exclude '~/.*/*' \
