@@ -12,6 +12,8 @@ exec myxkeyboardsetting.sh & #might stuck the startup not sure
 
 #xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --off --output HDMI-A-0 --primary --pos 0x0 --rotate normal
 
+xmonad --recompile
+
 # $ startx ~/.xinitrc kde
 # Here Xfce is kept as default
 #session=${1:-xfce}

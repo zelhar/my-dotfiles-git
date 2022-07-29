@@ -73,8 +73,8 @@ plugins=(
   themes
   web-search
   zsh-interactive-cd
-  zsh_reload
   conda-zsh-completion
+#  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -144,7 +144,8 @@ export BROWSER=brave
 #export EDITOR="vim --remote-tab-silent "
 #gvim () { command gvim --remote-tab-silent "$@" || command gvim "$@"; }
 #vim () { command vim --remote-tab-silent "$@" || command vim "$@"; }
-export MANPAGER="nvim -M -c 'set ft=man' -c 'colorscheme slate' -"
+#export MANPAGER="nvim -M -c 'set ft=man' -c 'colorscheme slate' -"
+export MANPAGER='nvim +Man!'
 export PAGER=less
 export MANWIDTH=80
 
@@ -162,6 +163,10 @@ alias ttmux="TERM=xterm-256color tmux"
 if [[ ! $PATH =~ "$HOME/bin" ]]
 then
     PATH=$HOME/bin:$PATH
+    #node.js
+    PATH="$HOME/node_modules/.bin:$PATH"
+    # perl
+    PATH="$HOME/perl5/bin${PATH:+:${PATH}}"
     #add ~/.cabal/bin to $PATH
     PATH=~/.cabal/bin:$PATH
     #recommended by Haskell Stack
@@ -169,14 +174,14 @@ then
     #PATH=$PATH:$HOME/.local/bin
     #Lua local installs
     PATH=$HOME/.luarocks/bin:$PATH
-    #PATH=$HOME/.ghcup/bin:$PATH
-    PATH=$PATH:$HOME/.ghcup/bin
+    PATH=$HOME/.ghcup/bin:$PATH
+    #PATH=$PATH:$HOME/.ghcup/bin
     export PATH
 fi
 
 
 #node.js settings
-PATH="$HOME/node_modules/.bin:$PATH"
+#PATH="$HOME/node_modules/.bin:$PATH"
 export npm_config_prefix=~/node_modules
 
 # not sure about that, I enabled for conda tab completion
@@ -194,7 +199,7 @@ autoload -Uz compinit promptinit
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 #Added by Perl/Cpan
-PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
@@ -218,7 +223,7 @@ stty -ixon
 #Jupyter Notebook and Lab
 #export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
-alias ipython="ipython --no-autoindent --matplotlib --pylab"
+#alias ipython="ipython --no-autoindent --matplotlib --pylab"
 alias import="-0-0-0-0-0-0-0" #cancel this cpmmand which hangs the Xsystem
 alias rscript="Rscript --no-init-file --slave"
 

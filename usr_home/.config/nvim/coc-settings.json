@@ -1,19 +1,28 @@
 {
     "hover.target": "float",
     "hover.autoHide": false,
+    "jedi.enable": true,
+    "jedi.startupMessage": true,
+    "jedi.markupKindPreferred": "markdown",
+    "jedi.diagnostics.enable": true,
+    "jedi.jediSettings.autoImportModules": ["numpy", "pyro", "pandas", "torch", "scipy"],
+    "pyright.enable": true,
     "python.linting.enabled": false,
     "python.linting.pylintEnabled": true,
-    "python.linting.pep8Enabled": true,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "yapf",
+    "python.linting.pylintArgs": [
+        "--generated-members=numpy.*, torch.*, pyro.*",
+        "--errors-only"
+    ],
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
             "args": ["--lsp"],
             "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-            "filetypes": ["haskell", "lhaskell"]
+            "filetypes": ["haskell", "lhaskell", "lhs", "hs"]
         }
     },
-    "suggest.autoTrigger": "trigger",
+    "suggest.autoTrigger": "always",
     "r.lsp.path": "/usr/bin/R"
 }

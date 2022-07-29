@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #loading ~/.Xresources
-PATH="/usr/bin:$PATH"
+#PATH="/usr/bin:$PATH"
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 #Launch xmonad
 #set up icon tray
@@ -18,9 +18,9 @@ PATH="/usr/bin:$PATH"
 # set external screen as primary:
 #xrandr --output HDMI-A-0 --primary
 # Check whether the external monitor is connected
-xrandr | grep "HDMI-A-0" | grep "connected" > /dev/null
+xrandr | grep "HDMI-A-0" | grep "disconnected" > /dev/null
 # 0 returned if successful
-if [ $? -eq 0 ]; then
+if [ $? -eq 1 ]; then
     xrandr --output DisplayPort-1 --off --output DisplayPort-0 --off --output eDP --off --output HDMI-A-0 --primary --pos 0x0 --rotate normal
 #    xrandr --output HDMI-A-0 --primary
 #    bash ~/bin/deactivate_notebookscreen.sh
@@ -39,7 +39,9 @@ xset dpms 3600 3600 3600
 xset s 3000 3000
 
 # My autostarts
-unclutter -b &
+#unclutter -b &
+exec unclutter -idle 2 &
+#unclutter -idle 2 &
 touchpad_config -e &
 #blueman-applet &
 #blueberry-tray &

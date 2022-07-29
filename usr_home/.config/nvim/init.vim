@@ -58,10 +58,14 @@ Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 
 "julia
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'kdheepak/JuliaFormatter.vim'
 
 "" Initialize plugin system
 call plug#end()
 "------- END Plug manager instead of Vundle
+let g:plug_retries = 12
+let g:plug_timeout = 120
+let g:plug_threads = 8
 
 "make sure it stays on even if I delete Vundle or Neobunlde et al.
 filetype plugin indent on
@@ -202,7 +206,7 @@ set incsearch
 " make default search ignore case
 set ignorecase
 
-set sessionoptions=blank,buffers,curdir,folds,slash,unix,tabpages
+set sessionoptions=blank,buffers,curdir,help,folds,tabpages
 
 au BufNewFile,BufRead *.hs setlocal nospell
 
@@ -363,11 +367,11 @@ if !has("gui_running")
      "colorscheme molokai
      "colorscheme zelhar-molokai
      "colorscheme zelhar-molokai-italic
-     colorscheme jellybeans
+     "colorscheme jellybeans
      "colorscheme bushfire
      "colorscheme zelhar-darkblue
      "colorscheme afterglow
-     "colorscheme ayu
+     colorscheme ayu
 endif
 
 "coc-nvim

@@ -1,100 +1,96 @@
 :q
-w
-let w = foldr f 0 [0 .. 10]
-let w = foldr 0 f [0 .. 10]
-z
-let z = foldl f 0 [1..10]
-f 1 2
-let f = \x y -> x + y
-x
+:q
+:hoogle null
+null
+:q
+tail []
+head []
+:q
+:hoogle getArgs
+:hoogle getArgs
+tail $ tail x
+:hoogle pop
+pop
+pop x
+x = [1,2..]
+:q
+head [1,2..]
+head [1..]
+head [1,..]
+head [1,2,..]
+fst
+fst [1,2..]
+fst [1..]
+[1,2..]
+..
+[1,2,3, ...]
+[1,2]
+[1,2,...]
+[1,2,..]
+fst [1...]
+fst [1 ..]
+:hoogle getArgs
+:q
 main
-:m -Main
-:r
-:m -Main
 main
-x
 :r
-:m - Main
-:m - M1
-:m - temp
-:m - temp.hs
-:m -*
-:r
-:m - 
-:module temp.hs
-:r
-:m 
-:m
-:r
-:l temp.hs
-:l temp.hs
-:l temp.hs
+:hoogle IO Str
+:hoogle IO 
+main
+main "sdfsad\n"
+main
+:l test_io.hs 
 :q
-:l temp.hs 
-:l temp.hs 
-:}
-    addStr x y = x ++ y
-let addStr :: String -> String -> String
-:{
-print "hahaha"
+show t
+t
+t = Node 1 [Node 2 [], Node 3 []]
+t
+t = Node 1 []
+:m Data.Tree 
 :q
-show "42"
-respondPalindromes "ABCBA"
-respondPalindromes "ABBA"
-respondPalindromes "uuu"
-respondPalindromes "yesh uye"
-:l palindrom.hs 
-:}
-      fmap f (Node x lub rub) = Node (f x) (fmap f lub) (fmap f rub)
-      fmap _ Nill = Nill
-                                             where
-instance Functor Tree
-:{
-:}
-      deriving (Eq, Ord, Show, Read)
-      | Node x (Tree x) (Tree x)
-      = Nill
-data Tree x
-:{
-Tree Nill
-:}
-      deriving (Eq, Ord, Show, Read)
-      | Node x (Tree x) (Tree x)
-      = Nill
-data Tree x
-:{
+t = Node 1 [Node 2 [], Node 3 [Nil, Nil] ]
+t
+t = Node 1 [Nil,  Nil]
+data Tree a = Nil | Node a [Tree a]
 :q
-:q
-exit
-:?
 :q
 f 1
+f
 f = \x -> x+1
-f = \x x+1
-f = \x?
+x :: String
+:set -XUnicodeSyntax 
 :q
-insert 1 (B)
-:}
-      insert = S
-      empty = B
-instance Container Stack where
-:{
-insert 1 (B)
-S 1 (B)
-S 1 (S B)
-insert 1 (S B)
-inser 1 (S B)
-:}
-      insert x xs = S x xs
-      empty = B
-instance Container Stack where
-:{
-:}
-      insert x xs = S x xs
-      empty = B
-instance Container S where
-:{
-:}
-      insert :: a -> c a -> c a
-      empty :: c a
-class Container c where
+:info do
+:hoogle! do
+:hoogle do
+:q
+:hoogle map
+hoogle
+:hoogle map
+(hoogle map)
+hoogle $ map
+hoogle map
+:q
+:q
+:q
+:q
+:!hoogle map
+:hoogle map
+hoogle fst
+hoogle (+)
+:show language
+:show bindings
+:help
+hoogle 
+hodoc 4
+hdoc
+hoogle "show"
+show (+)
+show 1
+sho 1
+show map
+hoogle $ show map
+:!hoogle "map"
+hoogle mapM
+hoogle?
+hoogle map
