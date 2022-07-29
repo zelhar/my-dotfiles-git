@@ -17,8 +17,8 @@
 .xbindkeysrc
 .xinitrc
 .xkb
-.xmobarrc
-.xmonad/xmonad.hs
+#.xmobarrc
+#.xmonad/xmonad.hs
 .xpprc
 .xscreensaver
 .xserverrc

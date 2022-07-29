@@ -440,7 +440,7 @@ set updatetime=300
 "snakefmt
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
 "au FileType snakemake autocmd BufWritePre <buffer> execute ':Snakefmt'
-"
+""
 "markdown
 "let g:vim_markdown_math = 1
 "let g:vim_markdown_auto_extension_ext = 'Rmd'
