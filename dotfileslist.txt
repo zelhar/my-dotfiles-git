@@ -51,7 +51,7 @@ problem_with_suspend.txt
 .config/zathura
 .config/mimeapps.list
 .config/sxhkd
-.config/xmonad/xmond.hs
+.config/xmonad/xmonad.hs
 .config/xmonad/stack.yaml
 .config/xmobar/xmobarrc
 
