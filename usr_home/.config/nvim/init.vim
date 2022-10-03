@@ -149,7 +149,9 @@ nnoremap <Leader><Enter> o<Esc>
 nnoremap <M-Enter> i<Enter><Esc>
 
 " can also simply use the unnamed register by default
-set clipboard+=unnamed
+"set clipboard+=unnamed
+"set clipboard+=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 "Compile a Latex File with xelatex
 nnoremap <Leader>xe :!xelatex -synctex=1 -interaction=nonstopmode -shell-escape
@@ -177,8 +179,10 @@ nnoremap <A-l> <C-w>l
 
 "when popup window is on, make esc return to normal mode
 inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<C-c>" : "\<Esc>"
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-y>\<Tab>" : "\<Tab>"
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+"inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-y>\<Tab>" : "\<Tab>"
 
 "autoclose pairs no plugin
 "inoremap "  ""<left>
@@ -231,7 +235,7 @@ set dictionary+=/usr/share/dict/spanish
 "set complete+=i
 "set complete+=t
 "set complete+=kspell
-set completeopt=menuone,preview,longest,noinsert
+set completeopt=menuone,preview,longest,noinsert,noselect
 
 "Set (locally) working dir to be the same as the file being edited in the buffer
 autocmd BufEnter * silent! lcd %:p:h
@@ -261,7 +265,7 @@ set cursorline
 "set cc=81
 
 " Setting scrolloff so cursor alsways stays inside that range except the top/bot
-set scrolloff=5
+"set scrolloff=5
 "set a shorter timeout for key-combs and commands (default=1000)
 "set timeoutlen=1200
 set timeoutlen=650
@@ -435,7 +439,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=3000
 
 "snakefmt
 au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake

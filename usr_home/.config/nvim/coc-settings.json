@@ -1,4 +1,6 @@
 {
+    "suggest.noselect": true,
+    "suggest.enablePreselect": true,
     "hover.target": "float",
     "hover.autoHide": false,
     "jedi.enable": true,

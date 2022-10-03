@@ -7,14 +7,13 @@ import           Data.Monoid                 (appEndo)
 
 
 --------------------------------------------------------------------------------
---import           XMonad
 import           XMonad.Actions.CycleWS      (nextWS, prevWS, shiftToNext,
                                               shiftToPrev)
 import           XMonad.Hooks.EwmhDesktops   (ewmh)
-import           XMonad.Hooks.ManageDocks    (ToggleStruts (..), avoidStruts,
-                                              manageDocks)
-import           XMonad.Hooks.ManageHelpers  (doFullFloat, doRectFloat)
-import           XMonad.Hooks.DynamicLog     (xmobar)
+--import           XMonad.Hooks.ManageDocks    (ToggleStruts (..), avoidStruts,
+--import           XMonad.Hooks.ManageDocks
+--import           XMonad.Hooks.ManageHelpers  (doFullFloat, doRectFloat)
+--import           XMonad.Hooks.DynamicLog     (xmobar)
 import           XMonad.Layout.Circle        (Circle (..))
 import           XMonad.Layout.NoBorders     (smartBorders)
 import           XMonad.Layout.PerWorkspace  (onWorkspace)
@@ -46,12 +45,15 @@ import qualified XMonad.Layout.BinarySpacePartition as BSP
 import qualified XMonad.StackSet as W
 import XMonad.Layout.TabBarDecoration
 
-import qualified XMonad.Layout.WindowNavigation as WN
-import qualified XMonad.Actions.WindowNavigation as NAV
+import XMonad.Layout.WindowNavigation
+import XMonad.Actions.WindowNavigation
 --------------------------------------------------------------------------------
 --My additional imports
 --import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Util.EZConfig
+import XMonad.Util.Loggers
+import XMonad.Util.Ungrab
+import XMonad.Hooks.EwmhDesktops
 import Graphics.X11.ExtraTypes.XF86
 import XMonad.Actions.CycleWS
 import XMonad.Util.Paste
@@ -59,6 +61,13 @@ import XMonad.Util.Themes
 import XMonad.Actions.WindowMenu
 import XMonad.Actions.GridSelect
 import XMonad.Actions.Promote
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
+
+
 --import XMonad.Config.Prime (Default)
 --import qualified XMonad.Config.Prime as Prime
 ----------
@@ -68,11 +77,14 @@ import XMonad.Hooks.SetWMName
 main :: IO ()
 --main = do
 main = do
-    --myConfig <- (NAV.withWindowNavigation (xK_w, xK_a, xK_s, xK_d))
+    --myConfig <- (withWindowNavigation (xK_w, xK_a, xK_s, xK_d))
     --xmonad =<< xmobar myConfig
-    xmonad =<< NAV.withWindowNavigation (xK_w, xK_a, xK_s, xK_d) =<< xmobar myConfig
+    xmonad =<< withWindowNavigation (xK_w, xK_a, xK_s, xK_d) =<< xmobar myConfig
       where
-        myConfig = ewmh $ def
+        --myConfig = docks . ewmh $ def
+        myConfig = ewmhFullscreen 
+                   . ewmh
+                   $ def
             { terminal    = myTerminal
             , modMask     = myModMask
             , borderWidth = myBorderWidth
@@ -81,21 +93,31 @@ main = do
             , keys               = \c -> myKeys c `M.union` keys def c
             , focusFollowsMouse  = False
             , layoutHook         = avoidStruts $ myLayout
-            , manageHook         = manageHook def <+> manageDocks
+            , manageHook         = manageHook def <+> manageDocks <+> myManageHook
             , startupHook        = myStartupHook
             }
 
+myManageHook = composeAll
+  [ className =? "Gimp" --> doFloat
+  , isDialog            --> doFloat
+  ]
+
 myStartupHook = do
-  spawn "picom"
+  --spawn "picom"
+--
 --  spawn "xdotool windowraise `xdotool search --all --name xmobar`"
 --  spawn "xcompmgr -cfF"
-----  spawn "feh --bg-scale ~/Downloads/Wonder_Lake_and_Denali.jpg" 
+----  spawnOnce "feh --bg-scale ~/Downloads/Wonder_Lake_and_Denali.jpg" 
+----
   spawnOnce "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
   spawnOnce "bash ~/bin/trayer_launcher.sh"
-  spawn "~/bin/myxkeyboardsetting.sh"
+  spawnOnce "~/bin/myxkeyboardsetting.sh"
+--
 --  spawn "pasystray"
 --for java swing gui
+--
   setWMName "LG3D"
+--
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
 myTerminal    = "alacritty"
@@ -105,13 +127,14 @@ myBorderWidth = 1
 --myLayout = avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 --myLayout = avoidStruts  $ (tiled |||  Mirror tiled ||| Full)
 --myLayout = layoutHook defaultConfig
-myLayout = WN.windowNavigation $ smartBorders $ 
-    BSP.emptyBSP
+myLayout = windowNavigation $ smartBorders $ 
+    Simplest
+    ||| (combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
+    ||| BSP.emptyBSP
     ||| Tall 1 (1/100) (1/2)
     ||| Full
     ||| tabbed shrinkText tabConfig
     ||| simplestFloat
-    ||| (combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
     ||| (combineTwo (TwoPane 0.01 0.5) (Full) (Simplest))
     ||| (Mirror $ combineTwo (TwoPane 0.03 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
 --    ||| spiral(6/7)
@@ -143,12 +166,9 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     , ((myModMask, xK_F12), spawn "systemctl suspend")
       -- launcher keys
     , ((myModMask, xK_p), spawn "dmenu_run")
-      -- Toggle struts
     --, ((myModMask, xK_a), sendMessage ToggleStruts)
     , ((myModMask, xK_z), sendMessage ToggleStruts)
-      -- Full float
     , ((myModMask, xK_f), fullFloatFocused)
-      -- Centered rectangle float
     , ((myModMask, xK_r), rectFloatFocused)
     -- Push window back into tiling.
     , ((myModMask, xK_t), withFocused $ windows . W.sink)
@@ -168,22 +188,22 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     --screen swapping
     , ((myModMask .|. mod1Mask, xK_o), swapNextScreen)
     , ((myModMask .|. shiftMask, xK_o), shiftNextScreen)
-    --combo mode layout navigation (moves pane between the two sub layouts)
-    , ((myModMask .|. controlMask, xK_h), sendMessage $ WN.Move L)
-    , ((myModMask .|. controlMask, xK_l), sendMessage $ WN.Move R)
-    , ((myModMask .|. controlMask, xK_k), sendMessage $ WN.Move U)
-    , ((myModMask .|. controlMask, xK_j), sendMessage $ WN.Move D)
-    , ((myModMask .|. controlMask, xK_Left), sendMessage $ WN.Go L)
-    , ((myModMask .|. controlMask, xK_Right), sendMessage $ WN.Go R)
-    , ((myModMask .|. controlMask, xK_Up), sendMessage $ WN.Go U)
-    , ((myModMask .|. controlMask, xK_Down), sendMessage $ WN.Go D)
-    , ((myModMask .|. controlMask .|. shiftMask, xK_h), sendMessage $ WN.Swap L)
-    , ((myModMask .|. controlMask .|. shiftMask, xK_l), sendMessage $ WN.Swap R)
-    , ((myModMask .|. controlMask .|. shiftMask, xK_k), sendMessage $ WN.Swap U)
-    , ((myModMask .|. controlMask .|. shiftMask, xK_j), sendMessage $ WN.Swap D)
-    , ((myModMask .|. controlMask, xK_o), windowMenu)
     , ((myModMask .|. controlMask, xK_o), windowMenu)
     , ((noModMask, xK_Menu), goToSelected def)
+    , ((myModMask .|. shiftMask .|. controlMask, xK_q), spawn "sudo pkill -KILL Xorg")
+    --combo mode layout navigation (moves pane between the two sub layouts)
+    , ((myModMask, xK_Left), sendMessage $ Go L)
+    , ((myModMask, xK_Right), sendMessage $ Go R)
+    , ((myModMask, xK_Up), sendMessage $ Go U)
+    , ((myModMask, xK_Down), sendMessage $ Go D)
+    , ((myModMask .|. controlMask, xK_Left), sendMessage $ Move L)
+    , ((myModMask .|. controlMask, xK_Right), sendMessage $ Move R)
+    , ((myModMask .|. controlMask, xK_Up), sendMessage $ Move U)
+    , ((myModMask .|. controlMask, xK_Down), sendMessage $ Move D)
+    , ((myModMask .|. shiftMask, xK_Left), sendMessage $ Swap L)
+    , ((myModMask .|. shiftMask, xK_Right), sendMessage $ Swap R)
+    , ((myModMask .|. shiftMask, xK_Up), sendMessage $ Swap U)
+    , ((myModMask .|. shiftMask, xK_Down), sendMessage $ Swap D)
 --  trying to rebind page up/down
     --, ((0, 0x1008FF78), )
     --, ((0, 0x1008FF79), )
