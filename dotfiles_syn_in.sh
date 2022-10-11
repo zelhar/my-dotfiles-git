@@ -9,4 +9,4 @@ rsync -tlPvr --delete-excluded --delete --ignore-errors \
 
 #backup installed packages list
 pacman -Qe > ./package_list.txt
-conda list -n test > ./conda_test_env_package_list.txt
+#conda list -n test > ./conda_test_env_package_list.txt
