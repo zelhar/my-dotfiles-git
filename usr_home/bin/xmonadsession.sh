@@ -33,14 +33,15 @@ exec lxqt-policykit-agent &
 
 # Fire up apps
 exec xscreensaver -no-splash &
-exec caffeine &
+#exec caffeine &
 
 xset dpms 3600 3600 3600
 xset s 3000 3000
 
 # My autostarts
 #unclutter -b &
-exec unclutter -idle 2 &
+#exec unclutter -idle 2 &
+#exec xbanish -t 5 &
 #unclutter -idle 2 &
 touchpad_config -e &
 #blueman-applet &

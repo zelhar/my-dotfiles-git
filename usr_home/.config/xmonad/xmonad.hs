@@ -1,4 +1,4 @@
-module Main where
+---module MyMain where
 import XMonad
 --------------------------------------------------------------------------------
 import           Data.Map                    (Map)
@@ -7,24 +7,17 @@ import           Data.Monoid                 (appEndo)
 
 
 --------------------------------------------------------------------------------
-import           XMonad.Actions.CycleWS      (nextWS, prevWS, shiftToNext,
-                                              shiftToPrev)
-import           XMonad.Hooks.EwmhDesktops   (ewmh)
---import           XMonad.Hooks.ManageDocks    (ToggleStruts (..), avoidStruts,
---import           XMonad.Hooks.ManageDocks
---import           XMonad.Hooks.ManageHelpers  (doFullFloat, doRectFloat)
---import           XMonad.Hooks.DynamicLog     (xmobar)
 import           XMonad.Layout.Circle        (Circle (..))
-import           XMonad.Layout.NoBorders     (smartBorders)
 import           XMonad.Layout.PerWorkspace  (onWorkspace)
 import           XMonad.Layout.SimplestFloat (simplestFloat)
 import           XMonad.StackSet             (RationalRect (..), currentTag)
 --import           XMonad.Prompt               (defaultXPConfig)
 import           XMonad.Prompt.Shell         (shellPrompt)
 import System.Exit
-import XMonad.Util.Run (safeSpawn)
+import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
 
+import XMonad.Config.Xfce
 import XMonad.Layout
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
@@ -37,6 +30,7 @@ import XMonad.Layout.Accordion
 import XMonad.Layout.Simplest
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.Grid
+import XMonad.Layout.Reflect
 import XMonad.Layout.Spiral
 import XMonad.Layout.Cross
 import XMonad.Layout.Column
@@ -66,57 +60,98 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.FadeWindows
 
 
---import XMonad.Config.Prime (Default)
---import qualified XMonad.Config.Prime as Prime
 ----------
   --fix java swing gui fuckup
 import XMonad.Hooks.SetWMName
 
 main :: IO ()
---main = do
-main = do
-    --myConfig <- (withWindowNavigation (xK_w, xK_a, xK_s, xK_d))
-    --xmonad =<< xmobar myConfig
-    xmonad =<< withWindowNavigation (xK_w, xK_a, xK_s, xK_d) =<< xmobar myConfig
-      where
-        --myConfig = docks . ewmh $ def
-        myConfig = ewmhFullscreen 
-                   . ewmh
-                   $ def
-            { terminal    = myTerminal
-            , modMask     = myModMask
-            , borderWidth = myBorderWidth
-            , normalBorderColor  = "#002b36"
-            , focusedBorderColor = "#688cb3"
-            , keys               = \c -> myKeys c `M.union` keys def c
-            , focusFollowsMouse  = False
-            , layoutHook         = avoidStruts $ myLayout
-            , manageHook         = manageHook def <+> manageDocks <+> myManageHook
-            , startupHook        = myStartupHook
-            }
+main = xmonad
+      . ewmhFullscreen 
+     -- . xmobarProp 
+     -- . (withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey)
+      . ewmh =<< xmobar myConfig
+--main = xmonad . ewmhFullscreen . ewmh =<< xmobar  myConfig
+
+myConfig =
+  def
+    { terminal = myTerminal
+    , modMask = myModMask
+    , borderWidth = myBorderWidth
+    --, normalBorderColor = "#002b36"
+    --, focusedBorderColor = "#688cb3"
+    , keys = \c -> myKeys c `M.union` keys def c
+    , focusFollowsMouse = False
+    , layoutHook = avoidStruts $ myLayout
+    , manageHook = insertPosition Below Newer <+> myManageHook
+    --, manageHook =
+    --    manageHook def <+> manageDocks <+> insertPosition Below Newer <+> myManageHook
+    , startupHook = myStartupHook
+    , logHook = fadeWindowsLogHook myFadeHook
+    , handleEventHook = fadeWindowsEventHook
+    }
+
+myXmobarPP :: PP
+myXmobarPP = def
+    { ppSep             = magenta " • "
+    , ppTitleSanitize   = xmobarStrip
+    , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
+    , ppHidden          = white . wrap " " ""
+    , ppHiddenNoWindows = lowWhite . wrap " " ""
+    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    }
+  where
+    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+
+    -- | Windows should have *some* title, which should not not exceed a
+    -- sane length.
+    ppWindow :: String -> String
+    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
+
+    blue, lowWhite, magenta, red, white, yellow :: String -> String
+    magenta  = xmobarColor "#ff79c6" ""
+    blue     = xmobarColor "#bd93f9" ""
+    white    = xmobarColor "#f8f8f2" ""
+    yellow   = xmobarColor "#f1fa8c" ""
+    red      = xmobarColor "#ff5555" ""
+    lowWhite = xmobarColor "#bbbbbb" ""
+
 
 myManageHook = composeAll
   [ className =? "Gimp" --> doFloat
   , isDialog            --> doFloat
   ]
 
+
+myFadeHook = composeAll [                 opaque
+                        , isUnfocused --> transparency 0.01
+                        ]
+
+
 myStartupHook = do
-  --spawn "picom"
+--  spawn "picom"
+  spawnOnce "picom"
+  spawn "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
+  spawnOnce "bash ~/bin/trayer_launcher.sh"
+  spawnOnce "~/bin/myxkeyboardsetting.sh"
+--for java swing gui
+  setWMName "LG3D"
+  spawnOnce "xbanish -t 5"
+--  spawnOnce "caffeine"
 --
 --  spawn "xdotool windowraise `xdotool search --all --name xmobar`"
 --  spawn "xcompmgr -cfF"
 ----  spawnOnce "feh --bg-scale ~/Downloads/Wonder_Lake_and_Denali.jpg" 
 ----
-  spawnOnce "feh --bg-fill ~/Downloads/Wonder_Lake_and_Denali.jpg" 
-  spawnOnce "bash ~/bin/trayer_launcher.sh"
-  spawnOnce "~/bin/myxkeyboardsetting.sh"
 --
 --  spawn "pasystray"
---for java swing gui
 --
-  setWMName "LG3D"
 --
 
 myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
@@ -127,16 +162,22 @@ myBorderWidth = 1
 --myLayout = avoidStruts  $ (tiled |||  reflectTiled ||| Mirror tiled ||| Grid ||| Full)
 --myLayout = avoidStruts  $ (tiled |||  Mirror tiled ||| Full)
 --myLayout = layoutHook defaultConfig
-myLayout = windowNavigation $ smartBorders $ 
-    Simplest
+--myLayout = windowNavigation $ smartBorders $ 
+myLayout = windowNavigation $ smartBorders . avoidStruts $ 
+    Full
+    ||| fixMastered 0.01 0.5 (tabbed shrinkText tabConfig)
+    ||| (reflectHoriz $  fixMastered 0.01 0.5 (tabbed shrinkText tabConfig) )
     ||| (combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
+    ||| (reflectHoriz $ combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
     ||| BSP.emptyBSP
-    ||| Tall 1 (1/100) (1/2)
-    ||| Full
     ||| tabbed shrinkText tabConfig
     ||| simplestFloat
-    ||| (combineTwo (TwoPane 0.01 0.5) (Full) (Simplest))
-    ||| (Mirror $ combineTwo (TwoPane 0.03 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
+    -- ||| (combineTwo (TwoPane 0.01 0.5) (Full) (Simplest))
+    ||| (combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (Full) )
+--    ||| (Mirror $ combineTwo (TwoPane 0.01 0.5) (tabbed shrinkText tabConfig) (tabbed shrinkText tabConfig))
+--    ||| Simplest
+--    ||| Full
+--    ||| Tall 1 (1/100) (1/2)
 --    ||| spiral(6/7)
 --    ||| Mirror ( Tall 1 (1/100) (1/2) )
 --    ||| Simplest
@@ -166,10 +207,12 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     , ((myModMask, xK_F12), spawn "systemctl suspend")
       -- launcher keys
     , ((myModMask, xK_p), spawn "dmenu_run")
-    --, ((myModMask, xK_a), sendMessage ToggleStruts)
+    , ((myModMask .|. shiftMask, xK_p), spawn "dmenu_run")
+    , ((myModMask, xK_a), sendMessage ToggleStruts)
     , ((myModMask, xK_z), sendMessage ToggleStruts)
     , ((myModMask, xK_f), fullFloatFocused)
-    , ((myModMask, xK_r), rectFloatFocused)
+    ---, ((myModMask .|. shiftMask, xK_r), rectFloatFocused)
+    --, ((myModMask, xK_r), rectFloatFocused)
     -- Push window back into tiling.
     , ((myModMask, xK_t), withFocused $ windows . W.sink)
       -- Shrink and expand
@@ -245,3 +288,4 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     -- Function to rectFloat a window
     rectFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery
                           (doRectFloat $ RationalRect 0.02 0.05 0.96 0.9) f
+

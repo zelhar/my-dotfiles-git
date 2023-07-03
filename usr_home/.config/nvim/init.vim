@@ -49,16 +49,20 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "not just haskell.
 
 "haskell plugins
-Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
-Plug 'neovimhaskell/haskell-vim' "syntax highlighter
+"Plug 'Twinside/vim-hoogle' "haskell hoogle plgin
+"Plug 'neovimhaskell/haskell-vim' "syntax highlighter
+Plug 'itchyny/vim-haskell-indent'
 
 "snakemake
-Plug 'snakemake/snakefmt'
-Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
+"Plug 'snakemake/snakefmt'
+"Plug 'snakemake/snakemake', {'rtp': 'misc/vim'}
 
 "julia
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'kdheepak/JuliaFormatter.vim'
+
+"rust
+Plug 'rust-lang/rust.vim'
 
 "" Initialize plugin system
 call plug#end()
@@ -78,6 +82,7 @@ set termguicolors
 "Switch on syntax highlighting if it wasn't on yet.
 if !exists("syntax_on")
     syntax on
+    syntax sync maxlines=500
 endif
 
 set nocompatible
@@ -155,6 +160,8 @@ set clipboard=unnamed,unnamedplus
 
 "Compile a Latex File with xelatex
 nnoremap <Leader>xe :!xelatex -synctex=1 -interaction=nonstopmode -shell-escape
+vnoremap <Leader>l :!pandoc -f latex -t plain<CR>
+
 
 "wraps selected text in ()
 vnoremap <Leader>0 di()<Esc>hpe
@@ -179,7 +186,8 @@ nnoremap <A-l> <C-w>l
 
 "when popup window is on, make esc return to normal mode
 inoremap <expr> <Esc> pumvisible() ? "\<C-y>\<C-c>" : "\<Esc>"
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <expr> <cr> coc#pum#visible() ? "\<C-e>\<CR>" : "\<CR>"
+"inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 "inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-y>\<Tab>" : "\<Tab>"
@@ -199,8 +207,11 @@ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 "inoremap kk <Esc>
 "vnoremap jk <Esc>
 "vnoremap kj <Esc>
-inoremap <C-l> <right>
-inoremap <C-]> <Esc>ea
+inoremap <A-l> <right>
+inoremap <A-h> <left>
+inoremap <A-j> <down>
+inoremap <A-k> <up>
+"inoremap <C-]> <Esc>ea
 
 
 "highlight all matches to search results
@@ -375,7 +386,8 @@ if !has("gui_running")
      "colorscheme bushfire
      "colorscheme zelhar-darkblue
      "colorscheme afterglow
-     colorscheme ayu
+     "colorscheme ayu
+     colorscheme PaperColor
 endif
 
 "coc-nvim
@@ -411,11 +423,15 @@ augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   "autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  "autocmd FileType typescript,json,python,r setl formatexpr=CocAction('formatSelected')
   autocmd FileType typescript,json,python,r,haskell setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   "autoread whenever cursor stops moving
-  au CursorHold,CursorHoldI * checktime
+  " au CursorHold,CursorHoldI * checktime
+  autocmd BufNew,BufAdd,BufWinEnter * call DisableCocDictionarySources()
+  "autocmd BufAdd call DisableCocDictionarySources()
+  "autocmd BufWinEnter call DisableCocDictionarySources()
 augroup end
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -427,7 +443,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-nnoremap <silent> Z :HoogleInfo<CR>
+"nnoremap <silent> Z :HoogleInfo<CR>
 "nnoremap <silent> Z :call <SID>hoogle_info()<CR>
 "function! s:hoogle_info()
 "    "execute '!' . &keywordprg . " " . expand('<cword>')
@@ -451,3 +467,42 @@ au BufNewFile,BufRead Snakefile,*.smk set filetype=snakemake
 "let g:vim_markdown_folding_disabled = 1
 "let g:vim_markdown_fenced_languages = ['{r}=r']
 "let g:pandoc#syntax#conceal#use = 0
+
+" toggle dictionary sources in coc-nevim
+let b:coc_disabled_sources = ['dictionary']
+function! DisableCocDictionarySources()
+    if !exists('b:coc_disabled_sources')
+        let b:coc_disabled_sources = ['dictionary']
+    elseif join(b:coc_disabled_sources) !~ 'dictionary'
+        let b:coc_disabled_sources = ['dictionary']
+    endif
+endfunction
+
+function! ToggleCocDictionarySources()
+    if !exists('b:coc_disabled_sources')
+        let b:coc_disabled_sources = []
+    endif
+    if join(b:coc_disabled_sources) =~ 'dictionary'
+        let b:coc_disabled_sources = filter(b:coc_disabled_sources, "v:val != 'dictionary'")
+    else 
+        let b:coc_disabled_sources = b:coc_disabled_sources + ['dictionary']
+    endif
+endfunction
+command -nargs=0 ToggleCocDictionarySources call ToggleCocDictionarySources()
+
+function! ToggleHebrew()
+    if &rl
+        set norl
+        set keymap=
+    else
+        set rl
+        set keymap=hebrew
+    end
+endfunction
+imap <f2> <c-o>:call ToggleHebrew()<cr>
+map <f2> :call ToggleHebrew()<cr>
+command -nargs=0 ToggleHebrew call ToggleHebrew()
+
+
+"autocmd BufNew :call DisableCocDictionarySources()
+"autocmd BufNew let b:coc_disabled_sources = ['dictionary']

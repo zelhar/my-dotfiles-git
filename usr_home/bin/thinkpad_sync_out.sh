@@ -35,12 +35,15 @@ rsync -r -t -P -v -l --delete-excluded --ignore-errors \
     --exclude '.wine*/' \
     --exclude 'R/*' \
     --exclude 'miniconda3/*' \
+    --exclude 'mambaforge/*' \
+    --exclude '**/mambaforge/*' \
     --exclude 'my_aur_gits/*' \
     --exclude 'share/Steam/*' \
     --exclude '*.paradox*' \
     --exclude '**/temp/*' \
     --exclude '.config/Brave*/*' \
     --exclude '.config/Slack/*' \
+    --exclude '.config/skypeforlinux/*' \
     --exclude '.oh-my-zsh/' \
     --exclude '*/.node*/' \
     --exclude '*/.ghcup*/**' \
@@ -52,9 +55,11 @@ rsync -r -t -P -v -l --delete-excluded --ignore-errors \
     --exclude '.julia/*' \
     --exclude '**/conda/*' \
     --exclude '**/.git/*' \
+    --exclude '**/.git/***' \
     --exclude '**/.vpython-root/*' \
     --exclude 'Jts/*' \
     --exclude '.zoom/*' \
+    --exclude './mambaforge/***' \
     /home/zelhar \
     /run/media/zelhar/Yiftach_4TB_BKP/Yiftach/Backups/yjk-thinkpad-archarch/
 #    --exclude '~/.*/*' \

@@ -50,21 +50,6 @@ fi
 #Jupyter Notebook and Lab
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zelhar/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zelhar/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zelhar/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zelhar/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=100000
 export SAVEHIST=100000
@@ -73,3 +58,22 @@ export HISTFILE=~/.bash_history
 #setopt HIST_FIND_NO_DUPS
 #setopt inc_append_history
 #setopt share_history
+#
+#alias brave='brave --disk-cache-dir="/tmp/brave-cache"'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zelhar/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zelhar/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/zelhar/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zelhar/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+. "$HOME/.cargo/env"

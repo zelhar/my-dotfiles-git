@@ -13,18 +13,39 @@
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "yapf",
+    "pyright.completion.snippetSupport": false,
+    "jedi.completion.disableSnippets": true,
+    //"python.linting.pytypeEnabled": false,
     "python.linting.pylintArgs": [
         "--generated-members=numpy.*, torch.*, pyro.*",
         "--errors-only"
     ],
+    //"rust-analyzer.server.path": "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer",
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
             "args": ["--lsp"],
             "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-            "filetypes": ["haskell", "lhaskell", "lhs", "hs"]
+            "filetypes": ["haskell", "lhaskell", "lhs", "hs"],
+            "settings" : {
+                "haskell" : {
+                    "checkParents" : "CheckOnSave",
+                    "checkProject" : true,
+                    "maxCompletions" : 20,
+                    "formattingProvider" : "ormolu",
+                    "plugin" : {
+                        "stan" : {"globalOn" : true },
+                        "ghcide-completions" : {
+                            //"snippetsOn" : false 
+                            "config": { "snippetsOn" : false }
+                        }
+                    }
+                }
+            }
         }
     },
     "suggest.autoTrigger": "always",
-    "r.lsp.path": "/usr/bin/R"
+    "r.lsp.path": "/usr/bin/R",
+    //#"coc.source.dictionary.enable": false,
+    "coc.source.dictionary.shortcut": "D"
 }

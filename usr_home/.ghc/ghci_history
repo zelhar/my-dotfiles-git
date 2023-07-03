@@ -1,96 +1,100 @@
 :q
+init "foo"
+inits "foo"
+T.length txt
+T.length sample
+sample
+T.length txt
+T.length smaple
+T.lines txt
+T.lines txtx
+TIO.putStrLn $ T.unlines $ paragraphs txt
+TIO.putStrLn txt
+txt = justifyTextR g 68 sample
+g <- R.newStdGen 
+txt = justifyTextR 68 sample
+txt = justifyTextR sample 68
+txt = justifyTextR sample
+txt <- justifyTextR sample
+TIO.putStrLn $ T.unlines $ paragraphs sample
+length $ paragraphs sample
+len $ paragraphs sample
+paragraphs sample
+sample <- sampleio 
 :q
-:hoogle null
-null
 :q
-tail []
-head []
+:l app/Main.hs
 :q
-:hoogle getArgs
-:hoogle getArgs
-tail $ tail x
-:hoogle pop
-pop
-pop x
-x = [1,2..]
+1 > 0
+x > 1
+x::Int; x=x+1
 :q
-head [1,2..]
-head [1..]
-head [1,..]
-head [1,2,..]
-fst
-fst [1,2..]
-fst [1..]
-[1,2..]
-..
-[1,2,3, ...]
-[1,2]
-[1,2,...]
-[1,2,..]
-fst [1...]
-fst [1 ..]
-:hoogle getArgs
-:q
-main
-main
+typeOf tick
+typeOf znum
+foo = znum
+typeOf mnumerator
+typeOf znum'
+typeOf znum
+typeOf fii
+fii = (tick >>= (\x -> tick))
+runState foo 0
+foo = (get >>= (\s -> tick))
+runState (get >>= tick) 0
+get 1
+runState get 2 0
+:hdoc get
+:t get
+typeOf get
+runState get 2
+runState get 0
+app (znum' "foo") 0
 :r
-:hoogle IO Str
-:hoogle IO 
-main
-main "sdfsad\n"
-main
-:l test_io.hs 
+app (znum "ABb") 0
+app (znum "A") 0
+app (znum "foo") 1
+:t znum
+:l states2
 :q
-show t
-t
-t = Node 1 [Node 2 [], Node 3 []]
-t
-t = Node 1 []
-:m Data.Tree 
-:q
-t = Node 1 [Node 2 [], Node 3 [Nil, Nil] ]
-t
-t = Node 1 [Nil,  Nil]
-data Tree a = Nil | Node a [Tree a]
-:q
-:q
-f 1
-f
-f = \x -> x+1
-x :: String
-:set -XUnicodeSyntax 
-:q
-:info do
-:hoogle! do
-:hoogle do
-:q
-:hoogle map
-hoogle
-:hoogle map
-(hoogle map)
-hoogle $ map
-hoogle map
-:q
-:q
-:q
-:q
-:!hoogle map
-:hoogle map
-hoogle fst
-hoogle (+)
-:show language
-:show bindings
-:help
-hoogle 
-hodoc 4
-hdoc
-hoogle "show"
-show (+)
-show 1
-sho 1
-show map
-hoogle $ show map
-:!hoogle "map"
-hoogle mapM
-hoogle?
-hoogle map
+:t znum
+:r
+:t znum
+znum "foo"
+app (znum "foo") 0
+:r
+app (znum "foo") 0
+app (znum [1..4]) 0
+runState (znum [1..4]) 0
+runState (mnumerator [1..4]) 0
+:r
+runState (mnumerator [1..4]) 0
+runState (znum [1..4]) 0
+runState (znum "foo") 0
+:r
+typeOf foo
+foo
+foo :: ZT Int Int = Z (\s -> (s,s+1))
+:r
+runState (mnumerator "goo") 8
+runState (mnumerator "goo") 0
+runState (mnumerator' "goo") 0
+runState (mnumerator' "") 0
+runState (mnumerator' "foo") 0
+runState (numerator' "goo") 0
+runState (numerator' "goo")
+runState (numerator "") 0
+runState (numerator "foo") 0
+runState numerator "foo" 0
+foo = do {n <- tick; putStr (show n)}
+sy:: State Int [Int]; sy = return (ticker : [])
+:r
+sy:: State Int [Int]; sy = return (tick : [])
+runState sx 3
+runState sx 0
+sx:: State Int [Int]; sx = return []
+typeOf get
+typeOf (mnumerator' [])
+typeOf g
+g = mnumerator' l
+g = mnumerator' g
+l = "foo"
+show $ typeOf 9

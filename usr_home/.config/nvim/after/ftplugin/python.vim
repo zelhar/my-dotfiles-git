@@ -7,3 +7,4 @@ setlocal shiftwidth=4
 "setlocal equalprg=autopep8\ -
 setlocal equalprg=black\ -q\ -
 setlocal textwidth=80
+"let b:coc_disabled_sources = ["dictionary"]

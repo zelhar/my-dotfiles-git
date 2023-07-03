@@ -217,12 +217,12 @@ def recursive_mkdir(path):
         return False
 
 
-def check_make_dir(path):
-    """Checks that given path is valid directory and has wite permission.
-    Creates the directory if it doesn't exist"""
-    dir_path = os.path.abspath(path)
-    check = validate_bkp_dir(abs_path)
-    return None
+#def check_make_dir(path):
+#    """Checks that given path is valid directory and has wite permission.
+#    Creates the directory if it doesn't exist"""
+#    dir_path = os.path.abspath(path)
+#    check = validate_bkp_dir(abs_path)
+#    return None
 
 
 #if (__name__ == '__main__'):

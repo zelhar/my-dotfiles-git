@@ -1,0 +1,2 @@
+# brave with cache dir in /temp
+/usr/bin/brave --disk-cache-dir="/tmp/brave-cache" "$@"

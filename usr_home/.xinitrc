@@ -49,6 +49,7 @@ case $session in
 #    xmonad            ) exec /usr/bin/xmonad;;
     xmonad            ) exec ~/bin/xmonadsession.sh;;
     xmonadss            ) exec ~/bin/xmonadsession_singlescreen.sh;;
+    xmonadd           ) exec ~/bin/xmonadsession-dual.sh;;
 #    ymonad            ) exec .myxmonadsession; exec /usr/bin/xmonad;;
 #    #xmonad            ) exec dbus-launch /usr/bin/xmonad;;
 #    lxde              ) exec startlxde;;

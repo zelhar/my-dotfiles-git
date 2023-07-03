@@ -3,5 +3,4 @@ channels:
   - conda-forge
   - bioconda
   - defaults
-  - alubbock
 auto_activate_base: false

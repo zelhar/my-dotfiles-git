@@ -13,10 +13,14 @@ fi
 killall -q trayer
 while pgrep -u $UID -x trayer >/dev/null; do sleep 1; done
 
-exec trayer --edge top --align right --SetDockType true --SetPartialStrut true \
- --expand true --width 10 --transparent true --tint 0x696969 --height 20 \
- --monitor primary --alpha 60 -l &
+# backup
+#exec trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+# --expand true --width 10 --transparent true --tint 0x696969 --height 20 \
+# --monitor primary --alpha 60 -l &
 
+exec trayer --edge top --align right --SetDockType true --SetPartialStrut true \
+ --expand true --width 10 --transparent false --tint 0x696969 --height 20 \
+ --monitor primary --alpha 60 -l &
 
 #exec trayer --edge top --align right --SetDockType true --SetPartialStrut true \
 # --expand true --width 10 --transparent true --tint 0x191970 --height 23 \

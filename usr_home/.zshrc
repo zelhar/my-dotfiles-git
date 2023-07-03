@@ -69,7 +69,7 @@ MODE_INDICATOR="%F{yellow}««««««%f"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  #stack
+  stack
   #tmux
   #tmuxinator
   #tmux-cssh
@@ -78,6 +78,7 @@ plugins=(
   web-search
   zsh-interactive-cd
   conda-zsh-completion
+  rust
 #  zsh_reload
 )
 
@@ -145,6 +146,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 #export VISUAL=nvim
 #export BROWSER=qutebrowser
 export BROWSER=brave
+#alias brave='brave --disk-cache-dir="/tmp/brave-cache"'
 #export EDITOR="vim --remote-tab-silent "
 #gvim () { command gvim --remote-tab-silent "$@" || command gvim "$@"; }
 #vim () { command vim --remote-tab-silent "$@" || command vim "$@"; }
@@ -180,6 +182,8 @@ then
     PATH=$HOME/.luarocks/bin:$PATH
     PATH=$HOME/.ghcup/bin:$PATH
     #PATH=$PATH:$HOME/.ghcup/bin
+    # add .cargo/bin for rust
+    PATH=$HOME/.cargo/bin:$PATH
     export PATH
 fi
 
@@ -189,7 +193,7 @@ fi
 export npm_config_prefix=~/node_modules
 
 # not sure about that, I enabled for conda tab completion
-autoload -Uz compinit promptinit
+#autoload -Uz compinit promptinit
 #compinit
 #promptinit
 #autoload -Uz compinit
@@ -227,7 +231,7 @@ stty -ixon
 #Jupyter Notebook and Lab
 #export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
-#alias ipython="ipython --no-autoindent --matplotlib --pylab"
+alias ipython="ipython --no-autoindent --matplotlib --pylab --TerminalInteractiveShell.auto_match=0"
 alias import="-0-0-0-0-0-0-0" #cancel this cpmmand which hangs the Xsystem
 alias rscript="Rscript --no-init-file --slave"
 
@@ -250,24 +254,7 @@ alias prep23="ssh -v -N -L localhost:8888:localhost:$PORT1 bih-front"
 alias prep24="ssh -v -N -L $PORT2:localhost:$PORT2 bih-front"
 alias prep25="ssh -v -N -L $PORT3:localhost:$PORT3 bih-front"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zelhar/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zelhar/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zelhar/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zelhar/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PROJECT=/data/analysis/ag-reils/ag-reils-shared-students
-
-alias condact="conda activate test"
+#alias condact="conda activate test"
 alias cytoscapefunfun="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
 # MY personal zsh plugins
 #export MYPLUGINS="$HOME/.config/zsh/plugins"
@@ -277,3 +264,19 @@ alias cite="python ~/bin/scholar.py"
 
 # R environment (for knime to work with Rserve)
 export R_LIBS=$HOME/R/library
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zelhar/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zelhar/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/zelhar/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zelhar/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
