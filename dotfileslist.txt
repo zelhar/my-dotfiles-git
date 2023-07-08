@@ -9,6 +9,7 @@
 .condarc
 .ghci
 .gvimrc
+.inputrc
 .mime.types
 .tmux.conf
 .urxvt

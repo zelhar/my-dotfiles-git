@@ -138,6 +138,8 @@ inetutils 2.4-1
 inkscape 1.2.2-9
 iproute2 6.4.0-1
 iputils 20221126-2
+iw 5.19-2
+iwd 2.6-1
 jdk-openjdk 20.0.1.u9-3
 jdk8-openjdk 8.372.u07-1
 jedi-language-server 0.40.0-2
@@ -390,6 +392,14 @@ virtualbox-guest-iso 7.0.8-1
 virtualbox-host-modules-arch 7.0.8-18
 visual-studio-code-bin 1.79.2-1
 vlc 3.0.18-11
+vmware-horizon-client 2303-1
+vmware-horizon-html5mmr 2303-1
+vmware-horizon-integrated-printing 2303-1
+vmware-horizon-mmr 2303-1
+vmware-horizon-rtav 2303-1
+vmware-horizon-smartcard 2303-1
+vmware-horizon-tsdr 2303-1
+vmware-horizon-usb 2303-1
 volumeicon 0.5.1-5
 vulkan-radeon 23.1.3-1
 w3m 0.5.3.git20230121_1-1
@@ -400,6 +410,7 @@ which 2.21-6
 wireguard-tools 1.0.20210914-1
 wmctrl 1.07-6
 words 2.1-7
+wpa_supplicant_gui 2.10-1
 x11vnc 1:0.9.16-7
 xbanish 1.8-1
 xbindkeys 1.8.7-4
