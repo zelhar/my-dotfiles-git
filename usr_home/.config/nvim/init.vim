@@ -386,8 +386,8 @@ if !has("gui_running")
      "colorscheme bushfire
      "colorscheme zelhar-darkblue
      "colorscheme afterglow
-     "colorscheme ayu
-     colorscheme PaperColor
+     colorscheme ayu
+     "colorscheme PaperColor
 endif
 
 "coc-nvim

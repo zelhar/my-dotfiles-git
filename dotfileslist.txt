@@ -1,3 +1,5 @@
+#.xmobarrc
+#.xmonad/xmonad.hs
 .Renviron
 .Rprofile
 .Xmodmap
@@ -9,7 +11,9 @@
 .condarc
 .ghci
 .gvimrc
+.init.vim.minmalistic.bak
 .inputrc
+.ipython/profile_default/*.py
 .mime.types
 .tmux.conf
 .urxvt
@@ -18,24 +22,21 @@
 .xbindkeysrc
 .xinitrc
 .xkb
-#.xmobarrc
-#.xmonad/xmonad.hs
 .xpprc
 .xscreensaver
 .xserverrc
+.zshenv
 .zshrc
 XF86keysym.h
 bin
 dictionaries
-.init.vim.minmalistic.bak
 problem_with_suspend.txt
 
 
 # and now configs:
 
-.ghc/
-.vim/
-.mlterm/
+#.config/rtv
+#.config/tuir
 .config/alacritty
 .config/bashtop
 .config/bpytop
@@ -44,23 +45,38 @@ problem_with_suspend.txt
 .config/cppman
 .config/dunst
 .config/enchant
+.config/flameshot
 .config/fontconfig
 .config/i3
+.config/llpp.conf
+.config/mimeapps
+.config/mimeapps.list
 .config/neofetch
 .config/nvim
+.config/obs-studio
+.config/pdfarranger
 .config/picom
 .config/polybar
+.config/powermanagementprofilesrc
+.config/pycodestyle
 .config/ranger
-#.config/rtv
+.config/sioyek
 .config/stylish-haskell
-.config/sxiv
+.config/sway
 .config/sxhkd
-#.config/tuir
+.config/sxiv
+.config/systemd
 .config/termonad
-.config/zathura
-.config/mimeapps.list
-.config/xmonad/xmonad.hs
-.config/xmonad/stack.yaml
+.config/user-dirs.dir
+.config/volumeicon
 .config/xmobar/xmobarrc
+.config/xmonad/build
+.config/xmonad/stack.yaml
+.config/xmonad/xmonad.hs
+.config/zathura
+.ghc/
+.mlterm/
+.vim/
 
 #.xmonad/stack.yaml
+

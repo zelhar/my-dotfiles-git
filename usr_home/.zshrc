@@ -85,11 +85,23 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Lines configured by zsh-newuser-install
+setopt autocd extendedglob nomatch
+unsetopt beep
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/zelhar/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
 
 #History settings
 HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=100000
-export SAVEHIST=100000
+export SAVEHIST=1000000
 export HISTFILESIZE=100000
 export HISTFILE=~/.zhistory
 setopt HIST_FIND_NO_DUPS

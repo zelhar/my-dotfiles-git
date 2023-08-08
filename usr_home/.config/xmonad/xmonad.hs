@@ -71,10 +71,16 @@ import XMonad.Hooks.SetWMName
 main :: IO ()
 main = xmonad
       . ewmhFullscreen 
-     -- . xmobarProp 
-     -- . (withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey)
       . ewmh =<< xmobar myConfig
---main = xmonad . ewmhFullscreen . ewmh =<< xmobar  myConfig
+
+
+--main :: IO ()
+--main = xmonad
+--      . ewmhFullscreen 
+--      . ewmh 
+--      . xmobarProp 
+--      . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+--      $ myConfig
 
 myConfig =
   def
@@ -143,6 +149,10 @@ myStartupHook = do
 --for java swing gui
   setWMName "LG3D"
   spawnOnce "xbanish -t 5"
+  spawnOnce "udiskie -at"
+  spawnOnce "pasystray"
+  spawnOnce "flameshot" 
+  spawnOnce "xfce4-clipman"
 --  spawnOnce "caffeine"
 --
 --  spawn "xdotool windowraise `xdotool search --all --name xmobar`"
@@ -207,18 +217,19 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     , ((myModMask, xK_F12), spawn "systemctl suspend")
       -- launcher keys
     , ((myModMask, xK_p), spawn "dmenu_run")
-    , ((myModMask .|. shiftMask, xK_p), spawn "dmenu_run")
+    --, ((myModMask .|. shiftMask, xK_p), spawn "dmenu_run")
     , ((myModMask, xK_a), sendMessage ToggleStruts)
     , ((myModMask, xK_z), sendMessage ToggleStruts)
+    , ((myModMask, xK_t), withFocused $ windows . W.sink)
     , ((myModMask, xK_f), fullFloatFocused)
+    --
     ---, ((myModMask .|. shiftMask, xK_r), rectFloatFocused)
     --, ((myModMask, xK_r), rectFloatFocused)
     -- Push window back into tiling.
-    , ((myModMask, xK_t), withFocused $ windows . W.sink)
       -- Shrink and expand
     --, ((myModMask, xK_Right), sendMessage Expand)
     --, ((myModMask, xK_Left),  sendMessage Shrink)
-    
+    --
     -- Window Navigation
     -- window swapping
     , ((myModMask .|. shiftMask,  xK_m   ), windows W.swapMaster)
