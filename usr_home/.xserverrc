@@ -1,4 +1,5 @@
 #!/bin/sh
+# .xserverrc
 #exec /usr/bin/X -nolisten tcp "$@" -keeptty
 #exec /usr/bin/X -nolisten tcp "$@" --
 #exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
