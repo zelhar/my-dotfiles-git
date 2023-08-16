@@ -10,7 +10,8 @@ function ZelharBackup()
     "pyfile $HOME/.vim/plugin/zelhar-backup/vimBackup01.py
     "pyfile $HOME/.config/nvim/**/plugin/zelhar-backup/vimBackup01.py
     "py3file $HOME/.config/nvim/**/plugin/zelhar-backup/vimBackup02.py
-    py3file $HOME/.config/nvim/**/plugin/zelhar-backup/vimBackup03.py
+    "py3file $HOME/.config/nvim/**/plugin/zelhar-backup/vimBackup03.py
+    py3file $HOME/.config/nvim/**/plugin/zelhar-backup/vimBackup.py
 endfunction
 "
 "autocmd BufWrite,FileWritePost * :call ZelharBackup()

@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="simple" # set by `omz`
 #ZSH_THEME="random"
 
 # Set list of themes to pick from when loading at random
@@ -266,8 +266,6 @@ alias prep23="ssh -v -N -L localhost:8888:localhost:$PORT1 bih-front"
 alias prep24="ssh -v -N -L $PORT2:localhost:$PORT2 bih-front"
 alias prep25="ssh -v -N -L $PORT3:localhost:$PORT3 bih-front"
 
-#alias condact="conda activate test"
-alias cytoscapefunfun="JAVA_HOME=/usr/lib/jvm/java-8-openjdk cytoscape"
 # MY personal zsh plugins
 #export MYPLUGINS="$HOME/.config/zsh/plugins"
 #source "$MYPLUGINS/web-search/web-search.plugin.zsh"
@@ -276,22 +274,6 @@ alias cite="python ~/bin/scholar.py"
 
 # R environment (for knime to work with Rserve)
 export R_LIBS=$HOME/R/library
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zelhar/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zelhar/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/zelhar/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zelhar/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!

@@ -15,25 +15,25 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   arviz                          0.16.1        pyhd8ed1ab_0             conda-forge
   astroid                        2.15.6        py311h38be061_0          conda-forge
   asttokens                      2.2.1         pyhd8ed1ab_0             conda-forge
-  async-lru                      2.0.3         pyhd8ed1ab_0             conda-forge
+  async-lru                      2.0.4         pyhd8ed1ab_0             conda-forge
   async-timeout                  4.0.2         pyhd8ed1ab_0             conda-forge
   atk-1.0                        2.38.0        hd4edc92_1               conda-forge
   attmap                         0.13.2        pyhd8ed1ab_0             conda-forge
   attrs                          23.1.0        pyh71513ae_1             conda-forge
   autopep8                       2.0.2         pyhd8ed1ab_0             conda-forge
-  aws-c-auth                     0.7.0         hf8751d9_2               conda-forge
+  aws-c-auth                     0.7.0         hbbaa140_3               conda-forge
   aws-c-cal                      0.6.0         h93469e0_0               conda-forge
   aws-c-common                   0.8.23        hd590300_0               conda-forge
   aws-c-compression              0.2.17        h862ab75_1               conda-forge
   aws-c-event-stream             0.3.1         h9599702_1               conda-forge
   aws-c-http                     0.7.11        hbe98c3e_0               conda-forge
   aws-c-io                       0.13.28       h3870b5a_0               conda-forge
-  aws-c-mqtt                     0.8.14        h2e270ba_2               conda-forge
+  aws-c-mqtt                     0.9.0         h2e270ba_0               conda-forge
   aws-c-s3                       0.3.13        heb0bb06_2               conda-forge
-  aws-c-sdkutils                 0.1.11        h862ab75_1               conda-forge
+  aws-c-sdkutils                 0.1.12        h862ab75_0               conda-forge
   aws-checksums                  0.1.16        h862ab75_1               conda-forge
-  aws-crt-cpp                    0.20.3        he9c0e7f_4               conda-forge
-  aws-sdk-cpp                    1.10.57       hbc2ea52_17              conda-forge
+  aws-crt-cpp                    0.21.0        h87b6960_2               conda-forge
+  aws-sdk-cpp                    1.10.57       h7062fed_18              conda-forge
   babel                          2.12.1        pyhd8ed1ab_1             conda-forge
   backcall                       0.2.0         pyh9f0ad1d_0             conda-forge
   backports                      1.0           pyhd8ed1ab_3             conda-forge
@@ -41,6 +41,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   beautifulsoup4                 4.12.2        pyha770c72_0             conda-forge
   binutils_impl_linux-64         2.40          hf600244_0               conda-forge
   binutils_linux-64              2.40          hbdbef99_1               conda-forge
+  biothings_client               0.2.6         pyhd8ed1ab_0             conda-forge
   black                          23.7.0        py311h38be061_1          conda-forge
   blas                           2.116         mkl                      conda-forge
   blas-devel                     3.9.0         16_linux64_mkl           conda-forge
@@ -58,6 +59,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   cached_property                1.5.2         pyha770c72_1             conda-forge
   cachetools                     5.3.1         pyhd8ed1ab_0             conda-forge
   cairo                          1.16.0        h35add3b_1015            conda-forge
+  cattrs                         23.1.2        pyhd8ed1ab_0             conda-forge
   certifi                        2023.7.22     pyhd8ed1ab_0             conda-forge
   cffi                           1.15.1        py311h409f033_3          conda-forge
   cfitsio                        4.2.0         hd9d235c_0               conda-forge
@@ -66,18 +68,18 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   click                          8.1.6         unix_pyh707e725_0        conda-forge
   cloudpickle                    2.2.1         pyhd8ed1ab_0             conda-forge
   colorama                       0.4.6         pyhd8ed1ab_0             conda-forge
-  comm                           0.1.3         pyhd8ed1ab_0             conda-forge
+  comm                           0.1.4         pyhd8ed1ab_0             conda-forge
   cons                           0.4.6         pyhd8ed1ab_0             conda-forge
   contourpy                      1.1.0         py311h9547e67_0          conda-forge
   cpuonly                        2.0           0                        pytorch    
   cycler                         0.11.0        pyhd8ed1ab_0             conda-forge
   dataclasses                    0.8           pyhc8e2a94_3             conda-forge
-  datasets                       2.13.1        pyhd8ed1ab_0             conda-forge
+  datasets                       2.14.4        pyhd8ed1ab_0             conda-forge
   dav1d                          1.2.1         hd590300_0               conda-forge
-  debugpy                        1.6.7         py311hcafe171_0          conda-forge
+  debugpy                        1.6.8         py311hb755f60_0          conda-forge
   decorator                      5.1.1         pyhd8ed1ab_0             conda-forge
   defusedxml                     0.7.1         pyhd8ed1ab_0             conda-forge
-  dill                           0.3.6         pyhd8ed1ab_1             conda-forge
+  dill                           0.3.7         pyhd8ed1ab_0             conda-forge
   entrypoints                    0.4           pyhd8ed1ab_0             conda-forge
   etuples                        0.3.9         pyhd8ed1ab_0             conda-forge
   exceptiongroup                 1.1.2         pyhd8ed1ab_0             conda-forge
@@ -86,7 +88,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   fastprogress                   1.0.3         pyhd8ed1ab_0             conda-forge
   ffmpeg                         4.3           hf484d3e_0               pytorch    
   filelock                       3.12.2        pyhd8ed1ab_0             conda-forge
-  flake8                         6.0.0         pyhd8ed1ab_0             conda-forge
+  flake8                         6.1.0         pyhd8ed1ab_0             conda-forge
   flit-core                      3.9.0         pyhd8ed1ab_0             conda-forge
   font-ttf-dejavu-sans-mono      2.37          hab24e00_0               conda-forge
   font-ttf-inconsolata           3.000         h77eed37_0               conda-forge
@@ -95,10 +97,11 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   fontconfig                     2.14.2        h14ed4e7_0               conda-forge
   fonts-conda-ecosystem          1             0                        conda-forge
   fonts-conda-forge              1             0                        conda-forge
-  fonttools                      4.41.1        py311h459d7ec_0          conda-forge
+  fonttools                      4.42.0        py311h459d7ec_0          conda-forge
   fqdn                           1.5.1         pyhd8ed1ab_0             conda-forge
   freetype                       2.12.1        hca18f0e_1               conda-forge
   fribidi                        1.0.10        h36c2ea0_0               conda-forge
+  frozendict                     2.3.8         py311h459d7ec_0          conda-forge
   frozenlist                     1.4.0         py311h459d7ec_0          conda-forge
   fsspec                         2023.6.0      pyh1a96a4e_0             conda-forge
   gcc                            12.3.0        h8d2909c_1               conda-forge
@@ -131,32 +134,33 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   imageio                        2.31.1        pyh24c5eb1_0             conda-forge
   importlib-metadata             6.8.0         pyha770c72_0             conda-forge
   importlib_metadata             6.8.0         hd8ed1ab_0               conda-forge
-  importlib_resources            6.0.0         pyhd8ed1ab_1             conda-forge
+  importlib_resources            6.0.1         pyhd8ed1ab_0             conda-forge
   iniconfig                      2.0.0         pyhd8ed1ab_0             conda-forge
-  ipykernel                      6.25.0        pyh71e2992_0             conda-forge
+  ipykernel                      6.25.1        pyh71e2992_0             conda-forge
   ipython                        8.14.0        pyh41d4057_0             conda-forge
-  ipywidgets                     8.0.7         pyhd8ed1ab_0             conda-forge
+  ipywidgets                     8.1.0         pyhd8ed1ab_0             conda-forge
   isoduration                    20.11.0       pyhd8ed1ab_0             conda-forge
   isort                          5.12.0        pyhd8ed1ab_1             conda-forge
-  jedi                           0.18.2        pyhd8ed1ab_0             conda-forge
+  itsdangerous                   2.1.2         pyhd8ed1ab_0             conda-forge
+  jedi                           0.19.0        pyhd8ed1ab_0             conda-forge
   jinja2                         3.1.2         pyhd8ed1ab_1             conda-forge
-  joblib                         1.3.0         pyhd8ed1ab_1             conda-forge
+  joblib                         1.3.2         pyhd8ed1ab_0             conda-forge
   jpeg                           9e            h0b41bf4_3               conda-forge
   json5                          0.9.14        pyhd8ed1ab_0             conda-forge
   jsonpointer                    2.0           py_0                     conda-forge
-  jsonschema                     4.18.4        pyhd8ed1ab_0             conda-forge
+  jsonschema                     4.19.0        pyhd8ed1ab_0             conda-forge
   jsonschema-specifications      2023.7.1      pyhd8ed1ab_0             conda-forge
-  jsonschema-with-format-nongpl  4.18.4        pyhd8ed1ab_0             conda-forge
+  jsonschema-with-format-nongpl  4.19.0        pyhd8ed1ab_0             conda-forge
   jupyter-lsp                    2.2.0         pyhd8ed1ab_0             conda-forge
   jupyter_client                 8.3.0         pyhd8ed1ab_0             conda-forge
   jupyter_core                   5.3.1         py311h38be061_0          conda-forge
-  jupyter_events                 0.6.3         pyhd8ed1ab_1             conda-forge
+  jupyter_events                 0.7.0         pyhd8ed1ab_2             conda-forge
   jupyter_server                 2.7.0         pyhd8ed1ab_0             conda-forge
   jupyter_server_terminals       0.4.4         pyhd8ed1ab_1             conda-forge
-  jupyterlab                     4.0.3         pyhd8ed1ab_0             conda-forge
+  jupyterlab                     4.0.4         pyhd8ed1ab_0             conda-forge
   jupyterlab_pygments            0.2.2         pyhd8ed1ab_0             conda-forge
   jupyterlab_server              2.24.0        pyhd8ed1ab_0             conda-forge
-  jupyterlab_vim                 0.16.0        pyhd8ed1ab_0             conda-forge
+  jupyterlab_vim                 4.0.2         pyhd8ed1ab_0             conda-forge
   jupyterlab_widgets             3.0.8         pyhd8ed1ab_0             conda-forge
   jxrlib                         1.1           h7f98852_2               conda-forge
   kernel-headers_linux-64        2.6.32        he073ed8_16              conda-forge
@@ -171,7 +175,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   lerc                           4.0.0         h27087fc_0               conda-forge
   libabseil                      20230125.3    cxx17_h59595ed_0         conda-forge
   libaec                         1.0.6         hcb278e6_1               conda-forge
-  libarrow                       12.0.1        h657c46f_6_cpu           conda-forge
+  libarrow                       12.0.1        h10ac928_8_cpu           conda-forge
   libavif                        0.11.1        h8182462_2               conda-forge
   libblas                        3.9.0         16_linux64_mkl           conda-forge
   libbrotlicommon                1.0.9         h166bdaf_9               conda-forge
@@ -179,7 +183,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   libbrotlienc                   1.0.9         h166bdaf_9               conda-forge
   libcblas                       3.9.0         16_linux64_mkl           conda-forge
   libcrc32c                      1.1.2         h9c3ff4c_0               conda-forge
-  libcurl                        8.2.0         hca28451_0               conda-forge
+  libcurl                        8.2.1         hca28451_0               conda-forge
   libdeflate                     1.17          h0b41bf4_0               conda-forge
   libedit                        3.1.20191231  he28a2e2_2               conda-forge
   libev                          4.33          h516909a_1               conda-forge
@@ -195,18 +199,18 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   libgomp                        13.1.0        he5830b7_0               conda-forge
   libgoogle-cloud                2.12.0        h840a212_1               conda-forge
   libgrpc                        1.56.2        h3905398_0               conda-forge
-  libhwloc                       2.9.1         nocuda_h7313eea_6        conda-forge
+  libhwloc                       2.9.2         nocuda_h7313eea_1008     conda-forge
   libiconv                       1.17          h166bdaf_0               conda-forge
   liblapack                      3.9.0         16_linux64_mkl           conda-forge
   liblapacke                     3.9.0         16_linux64_mkl           conda-forge
-  libllvm14                      14.0.6        hcd5def8_3               conda-forge
+  libllvm14                      14.0.6        hcd5def8_4               conda-forge
   libnghttp2                     1.52.0        h61bc06f_0               conda-forge
   libnsl                         2.0.0         h7f98852_0               conda-forge
   libnuma                        2.0.16        h0b41bf4_1               conda-forge
   libopenblas                    0.3.23        pthreads_h80387f5_0      conda-forge
   libpng                         1.6.39        h753d276_0               conda-forge
   libprotobuf                    4.23.3        hd1fb520_0               conda-forge
-  librsvg                        2.56.1        h98fae49_0               conda-forge
+  librsvg                        2.56.3        h98fae49_0               conda-forge
   libsanitizer                   12.3.0        h0f45ef3_0               conda-forge
   libsodium                      1.0.18        h36c2ea0_1               conda-forge
   libsqlite                      3.42.0        h2797004_0               conda-forge
@@ -220,13 +224,15 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   libuuid                        2.38.1        h0b41bf4_0               conda-forge
   libwebp-base                   1.3.1         hd590300_0               conda-forge
   libxcb                         1.13          h7f98852_1004            conda-forge
-  libxml2                        2.11.4        h0d562d8_0               conda-forge
+  libxml2                        2.11.5        h0d562d8_0               conda-forge
+  libxslt                        1.1.37        h0054252_1               conda-forge
   libzlib                        1.2.13        hd590300_5               conda-forge
   libzopfli                      1.0.3         h9c3ff4c_0               conda-forge
   llvm-openmp                    16.0.6        h4dfa4b3_0               conda-forge
   llvmlite                       0.40.1        py311ha6695c7_0          conda-forge
   logical-unification            0.4.6         pyhd8ed1ab_0             conda-forge
   logmuse                        0.2.6         pyh8c360ce_0             conda-forge
+  lxml                           4.9.3         py311h1a07684_0          conda-forge
   lz4-c                          1.9.4         hcb278e6_0               conda-forge
   markdown-it-py                 3.0.0         pyhd8ed1ab_0             conda-forge
   markupsafe                     2.1.3         py311h459d7ec_0          conda-forge
@@ -248,11 +254,12 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   multipledispatch               0.6.0         py_0                     conda-forge
   multiprocess                   0.70.15       py311h459d7ec_0          conda-forge
   munkres                        1.1.4         pyh9f0ad1d_0             conda-forge
+  mygene                         3.2.2         pyh5e36f6f_0             bioconda   
   mypy_extensions                1.0.0         pyha770c72_0             conda-forge
   natsort                        8.4.0         pyhd8ed1ab_0             conda-forge
   nbclient                       0.8.0         pyhd8ed1ab_0             conda-forge
   nbconvert-core                 7.7.3         pyhd8ed1ab_0             conda-forge
-  nbformat                       5.9.1         pyhd8ed1ab_0             conda-forge
+  nbformat                       5.9.2         pyhd8ed1ab_0             conda-forge
   ncurses                        6.4           hcb278e6_0               conda-forge
   nest-asyncio                   1.5.6         pyhd8ed1ab_0             conda-forge
   nettle                         3.6           he412f7d_0               conda-forge
@@ -263,16 +270,16 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   openblas                       0.3.23        pthreads_h855a84d_0      conda-forge
   openh264                       2.1.1         h780b84a_0               conda-forge
   openjpeg                       2.5.0         hfec8fc6_2               conda-forge
-  openssl                        3.1.1         hd590300_1               conda-forge
+  openssl                        3.1.2         hd590300_0               conda-forge
   opt_einsum                     3.3.0         pyhd8ed1ab_1             conda-forge
   orc                            1.9.0         h385abfd_1               conda-forge
-  overrides                      7.3.1         pyhd8ed1ab_0             conda-forge
+  overrides                      7.4.0         pyhd8ed1ab_0             conda-forge
   packaging                      23.1          pyhd8ed1ab_0             conda-forge
   pandas                         2.0.3         py311h320fe9a_1          conda-forge
   pandocfilters                  1.5.0         pyhd8ed1ab_0             conda-forge
   pango                          1.50.14       heaa33ce_1               conda-forge
   parso                          0.8.3         pyhd8ed1ab_0             conda-forge
-  pathspec                       0.11.1        pyhd8ed1ab_0             conda-forge
+  pathspec                       0.11.2        pyhd8ed1ab_0             conda-forge
   patsy                          0.5.3         pyhd8ed1ab_0             conda-forge
   pcre2                          10.40         hc3806b6_0               conda-forge
   pep8                           1.7.1         py_0                     conda-forge
@@ -283,9 +290,9 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   pip                            23.2.1        pyhd8ed1ab_0             conda-forge
   pixman                         0.40.0        h36c2ea0_0               conda-forge
   pkgutil-resolve-name           1.3.10        pyhd8ed1ab_0             conda-forge
-  platformdirs                   3.9.1         pyhd8ed1ab_0             conda-forge
+  platformdirs                   3.10.0        pyhd8ed1ab_0             conda-forge
   pluggy                         1.2.0         pyhd8ed1ab_0             conda-forge
-  polars                         0.18.8        py311h46250e7_0          conda-forge
+  polars                         0.18.11       py311h46250e7_0          conda-forge
   pooch                          1.7.0         pyha770c72_3             conda-forge
   prometheus_client              0.17.1        pyhd8ed1ab_0             conda-forge
   prompt-toolkit                 3.0.39        pyha770c72_0             conda-forge
@@ -294,22 +301,23 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   pthread-stubs                  0.4           h36c2ea0_1001            conda-forge
   ptyprocess                     0.7.0         pyhd3deb0d_0             conda-forge
   pure_eval                      0.2.2         pyhd8ed1ab_0             conda-forge
-  pyarrow                        12.0.1        py311h39c9aba_6_cpu      conda-forge
-  pycodestyle                    2.10.0        pyhd8ed1ab_0             conda-forge
+  pyarrow                        12.0.1        py311h39c9aba_8_cpu      conda-forge
+  pycodestyle                    2.11.0        pyhd8ed1ab_0             conda-forge
   pycparser                      2.21          pyhd8ed1ab_0             conda-forge
-  pyflakes                       3.0.1         pyhd8ed1ab_0             conda-forge
-  pygments                       2.15.1        pyhd8ed1ab_0             conda-forge
-  pylint                         2.17.4        pyhd8ed1ab_0             conda-forge
-  pymc                           5.6.1         hd8ed1ab_0               conda-forge
-  pymc-base                      5.6.1         pyhd8ed1ab_0             conda-forge
+  pyflakes                       3.1.0         pyhd8ed1ab_0             conda-forge
+  pygments                       2.16.1        pyhd8ed1ab_0             conda-forge
+  pyld                           2.0.3         pyhd8ed1ab_1             conda-forge
+  pylint                         2.17.5        pyhd8ed1ab_0             conda-forge
+  pymc                           5.7.2         hd8ed1ab_0               conda-forge
+  pymc-base                      5.7.2         pyhd8ed1ab_0             conda-forge
   pynndescent                    0.5.10        pyh1a96a4e_0             conda-forge
   pynvim                         0.4.3         pyhd8ed1ab_1             conda-forge
   pyparsing                      3.0.9         pyhd8ed1ab_0             conda-forge
   pyro-api                       0.1.2         pyhd8ed1ab_0             conda-forge
-  pyro-ppl                       1.8.4         pyhd8ed1ab_0             conda-forge
+  pyro-ppl                       1.8.6         pyhd8ed1ab_0             conda-forge
   pysocks                        1.7.1         pyha2e5f31_6             conda-forge
-  pytensor                       2.12.3        py311hb755f60_3          conda-forge
-  pytensor-base                  2.12.3        py311h320fe9a_3          conda-forge
+  pytensor                       2.14.2        py311hb755f60_0          conda-forge
+  pytensor-base                  2.14.2        py311h320fe9a_0          conda-forge
   pytest                         7.4.0         pyhd8ed1ab_0             conda-forge
   python                         3.11.4        hab00c5b_0_cpython       conda-forge
   python-dateutil                2.8.2         pyhd8ed1ab_0             conda-forge
@@ -328,17 +336,18 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   rdma-core                      28.9          h59595ed_1               conda-forge
   re2                            2023.03.02    h8c504da_0               conda-forge
   readline                       8.2           h8228510_1               conda-forge
-  referencing                    0.30.0        pyhd8ed1ab_0             conda-forge
-  regex                          2023.6.3      py311h459d7ec_0          conda-forge
+  referencing                    0.30.2        pyhd8ed1ab_0             conda-forge
+  regex                          2023.8.8      py311h459d7ec_0          conda-forge
   requests                       2.31.0        pyhd8ed1ab_0             conda-forge
-  responses                      0.18.0        pyhd8ed1ab_0             conda-forge
+  requests-cache                 1.1.0         pyhd8ed1ab_0             conda-forge
   rfc3339-validator              0.1.4         pyhd8ed1ab_0             conda-forge
   rfc3986-validator              0.1.1         pyh9f0ad1d_0             conda-forge
-  rich                           13.4.2        pyhd8ed1ab_0             conda-forge
+  rich                           13.5.1        pyhd8ed1ab_0             conda-forge
+  rocm-smi                       5.6.0         h59595ed_1               conda-forge
   rpds-py                        0.9.2         py311h46250e7_0          conda-forge
   s2n                            1.3.46        h06160fa_0               conda-forge
   sacremoses                     0.0.53        pyhd8ed1ab_0             conda-forge
-  safetensors                    0.3.1         py311h46250e7_0          conda-forge
+  safetensors                    0.3.2         py311h46250e7_0          conda-forge
   scanpy                         1.9.3         pyhd8ed1ab_0             conda-forge
   scikit-image                   0.21.0        py311hb755f60_0          conda-forge
   scikit-learn                   1.3.0         py311hc009520_0          conda-forge
@@ -357,7 +366,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   stdlib-list                    0.8.0         pyhd8ed1ab_0             conda-forge
   sympy                          1.12          pypyh9d50eac_103         conda-forge
   sysroot_linux-64               2.12          he073ed8_16              conda-forge
-  tbb                            2021.9.0      hf52228f_0               conda-forge
+  tbb                            2021.10.0     h00ab1b0_0               conda-forge
   terminado                      0.17.1        pyh41d4057_0             conda-forge
   threadpoolctl                  3.2.0         pyha21a80b_0             conda-forge
   tifffile                       2023.7.18     pyhd8ed1ab_0             conda-forge
@@ -365,12 +374,12 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   tk                             8.6.12        h27826a3_0               conda-forge
   tokenizers                     0.13.3        py311h1b04a43_0          conda-forge
   tomli                          2.0.1         pyhd8ed1ab_0             conda-forge
-  tomlkit                        0.11.8        pyha770c72_0             conda-forge
+  tomlkit                        0.12.1        pyha770c72_0             conda-forge
   toolz                          0.12.0        pyhd8ed1ab_0             conda-forge
   torchaudio                     2.0.2         py311_cpu                pytorch    
   torchvision                    0.15.2        py311_cpu                pytorch    
   tornado                        6.3.2         py311h459d7ec_0          conda-forge
-  tqdm                           4.65.0        pyhd8ed1ab_1             conda-forge
+  tqdm                           4.66.0        pyhd8ed1ab_0             conda-forge
   traitlets                      5.9.0         pyhd8ed1ab_0             conda-forge
   transformers                   4.31.0        pyhd8ed1ab_0             conda-forge
   typing                         3.10.0.0      pyhd8ed1ab_0             conda-forge
@@ -378,21 +387,24 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   typing_extensions              4.7.1         pyha770c72_0             conda-forge
   typing_utils                   0.1.0         pyhd8ed1ab_0             conda-forge
   tzdata                         2023c         h71feb2d_0               conda-forge
-  ubiquerg                       0.6.2         pyhd8ed1ab_0             conda-forge
+  ubiquerg                       0.6.3         pyhd8ed1ab_0             conda-forge
   ucx                            1.14.1        hf587318_2               conda-forge
+  ujson                          5.7.0         py311hcafe171_0          conda-forge
   umap-learn                     0.5.3         py311h38be061_1          conda-forge
   uri-template                   1.3.0         pyhd8ed1ab_0             conda-forge
+  url-normalize                  1.4.3         pyhd8ed1ab_0             conda-forge
   urllib3                        2.0.4         pyhd8ed1ab_0             conda-forge
   veracitools                    0.1.3         py_0                     conda-forge
   wcwidth                        0.2.6         pyhd8ed1ab_0             conda-forge
   webcolors                      1.13          pyhd8ed1ab_0             conda-forge
   webencodings                   0.5.1         py_1                     conda-forge
   websocket-client               1.6.1         pyhd8ed1ab_0             conda-forge
-  wheel                          0.41.0        pyhd8ed1ab_0             conda-forge
+  wheel                          0.41.1        pyhd8ed1ab_0             conda-forge
   widgetsnbextension             4.0.8         pyhd8ed1ab_0             conda-forge
   wrapt                          1.15.0        py311h2582759_0          conda-forge
   xarray                         2023.7.0      pyhd8ed1ab_0             conda-forge
   xarray-einstats                0.6.0         pyhd8ed1ab_0             conda-forge
+  xlsx2csv                       0.8.1         pyhd8ed1ab_0             conda-forge
   xorg-kbproto                   1.0.7         h7f98852_1002            conda-forge
   xorg-libice                    1.1.1         hd590300_0               conda-forge
   xorg-libsm                     1.2.4         h7391055_0               conda-forge
@@ -407,7 +419,7 @@ List of packages in environment: "/home/zelhar/micromamba/envs/mdc"
   xxhash                         0.8.1         h0b41bf4_0               conda-forge
   xz                             5.2.6         h166bdaf_0               conda-forge
   yaml                           0.2.5         h7f98852_2               conda-forge
-  yapf                           0.33.0        pyhd8ed1ab_1             conda-forge
+  yapf                           0.40.1        pyhd8ed1ab_0             conda-forge
   yarl                           1.9.2         py311h459d7ec_0          conda-forge
   zeromq                         4.3.4         h9c3ff4c_1               conda-forge
   zfp                            1.0.0         h27087fc_3               conda-forge

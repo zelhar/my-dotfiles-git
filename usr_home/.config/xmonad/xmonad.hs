@@ -1,73 +1,57 @@
 ---module MyMain where
 import XMonad
 --------------------------------------------------------------------------------
-import           Data.Map                    (Map)
 import qualified Data.Map                    as M
 import           Data.Monoid                 (appEndo)
-
-
 --------------------------------------------------------------------------------
-import           XMonad.Layout.Circle        (Circle (..))
-import           XMonad.Layout.PerWorkspace  (onWorkspace)
-import           XMonad.Layout.SimplestFloat (simplestFloat)
-import           XMonad.StackSet             (RationalRect (..), currentTag)
---import           XMonad.Prompt               (defaultXPConfig)
-import           XMonad.Prompt.Shell         (shellPrompt)
-import System.Exit
-import XMonad.Util.Run
-import XMonad.Util.SpawnOnce
-
-import XMonad.Config.Xfce
-import XMonad.Layout
-import XMonad.Layout.NoBorders
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.TwoPane
-import XMonad.Layout.TwoPanePersistent
-import XMonad.Layout.Combo
-import XMonad.Layout.ComboP
-import XMonad.Layout.Tabbed
-import XMonad.Layout.Accordion
-import XMonad.Layout.Simplest
-import XMonad.Layout.SimplestFloat
-import XMonad.Layout.Grid
-import XMonad.Layout.Reflect
-import XMonad.Layout.Spiral
-import XMonad.Layout.Cross
-import XMonad.Layout.Column
-import XMonad.Layout.Master
-import qualified XMonad.Layout.BinarySpacePartition as BSP
-import qualified XMonad.StackSet as W
-import XMonad.Layout.TabBarDecoration
-
-import XMonad.Layout.WindowNavigation
-import XMonad.Actions.WindowNavigation
---------------------------------------------------------------------------------
---My additional imports
---import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
-import XMonad.Util.EZConfig
-import XMonad.Util.Loggers
-import XMonad.Util.Ungrab
-import XMonad.Hooks.EwmhDesktops
 import Graphics.X11.ExtraTypes.XF86
+import System.Exit
 import XMonad.Actions.CycleWS
-import XMonad.Util.Paste
-import XMonad.Util.Themes
-import XMonad.Actions.WindowMenu
 import XMonad.Actions.GridSelect
 import XMonad.Actions.Promote
+import XMonad.Actions.WindowMenu
+import XMonad.Actions.WindowNavigation
+import XMonad.Config.Xfce
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.InsertPosition
-import XMonad.Hooks.FadeWindows
+import XMonad.Layout
+import XMonad.Layout.Accordion
+import XMonad.Layout.Column
+import XMonad.Layout.Combo
+import XMonad.Layout.ComboP
+import XMonad.Layout.Cross
+import XMonad.Layout.Grid
+import XMonad.Layout.Master
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Reflect
+import XMonad.Layout.ResizableTile
+import XMonad.Layout.Simplest
+import XMonad.Layout.SimplestFloat
+import XMonad.Layout.Spiral
+import XMonad.Layout.TabBarDecoration
+import XMonad.Layout.Tabbed
+import XMonad.Layout.TwoPane
+import XMonad.Layout.TwoPanePersistent
+import XMonad.Layout.WindowNavigation
+import XMonad.Util.EZConfig
+import XMonad.Util.Loggers
+import XMonad.Util.Paste
+import XMonad.Util.Run
+import XMonad.Util.SpawnOnce
+import XMonad.Util.Themes
+import XMonad.Util.Ungrab
+import qualified XMonad.Layout.BinarySpacePartition as BSP
+import qualified XMonad.StackSet as W
 
 
 ----------
-  --fix java swing gui fuckup
-import XMonad.Hooks.SetWMName
-
 main :: IO ()
 main = xmonad
       . ewmhFullscreen 
@@ -99,6 +83,11 @@ myConfig =
     , logHook = fadeWindowsLogHook myFadeHook
     , handleEventHook = fadeWindowsEventHook
     }
+  `additionalKeysP`
+    [ ("M-S-z", spawn "xscreensaver-command -lock")
+    , ("M-C-s", unGrab *> spawn "scrot -s"        )
+    ]
+
 
 myXmobarPP :: PP
 myXmobarPP = def
@@ -204,7 +193,7 @@ myLayout = windowNavigation $ smartBorders . avoidStruts $
 
 --------------------------------------------------------------------------------
 -- A list of custom keys
-myKeys :: XConfig Layout -> Map (ButtonMask, KeySym) (X ())
+myKeys :: XConfig Layout -> M.Map (ButtonMask, KeySym) (X ())
 myKeys (XConfig {modMask = myModMask}) = M.fromList $
     [ -- Some programs
       ((myModMask, xK_F1), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
@@ -280,8 +269,7 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
     --trying to define screen brightness and volume keys
     , ((0, 0x1008FF02), spawn "lux -a 5%")    
     , ((0, 0x1008FF03), spawn "lux -s 5%")    
-    --paste from Primary(=selection) and xClipboard
-    --, ((myModMask, xK_Insert), pasteSelection)
+    , ((myModMask, xK_Insert), pasteSelection)
     --, ((myModMask .|. controlMask, xK_p), pasteSelection)
     --, ((mod1Mask, xK_Insert), pasteSelection)
     --, ((0, xK_Insert), spawn "xsel | xvkbd -xsendevent -file -")
@@ -298,5 +286,5 @@ myKeys (XConfig {modMask = myModMask}) = M.fromList $
 
     -- Function to rectFloat a window
     rectFloatFocused = withFocused $ \f -> windows =<< appEndo `fmap` runQuery
-                          (doRectFloat $ RationalRect 0.02 0.05 0.96 0.9) f
+                          (doRectFloat $ W.RationalRect 0.02 0.05 0.96 0.9) f
 

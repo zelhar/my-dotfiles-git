@@ -1,2 +1,1 @@
-/home/zelhar/mambaforge/envs/torch
 /home/zelhar/micromamba/envs/mdc
