@@ -10,7 +10,7 @@ rsync -tlPvr --delete-excluded --delete --ignore-errors \
 #backup installed packages list
 pacman -Qe > ./package_list.txt
 micromamba list -n mdc > mdc_micromamba_env.txt
-mamba list -n torch > torch_mamba_env.txt
+#mamba list -n torch > torch_mamba_env.txt
 #conda list -n test > ./conda_test_env_package_list.txt
 
 cp -p -r /etc/pacman.conf ./usr_home/etc/
