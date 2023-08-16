@@ -1,11 +1,12 @@
 #!/bin/bash
-rsync -tlPvr --delete-excluded --delete --ignore-errors \
-    --munge-links \
+#rsync -tlPvr --delete-excluded --delete --ignore-errors \
+rsync -tPvr --delete-excluded --delete --ignore-errors \
     --files-from='./dotfileslist.txt' \
     --exclude '.git/*' \
     --exclude '.cache/' \
     --exclude '.netrwhist' \
     /home/zelhar ./usr_home/
+    #--munge-links \
 
 #backup installed packages list
 pacman -Qe > ./package_list.txt
