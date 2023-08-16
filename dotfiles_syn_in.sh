@@ -5,6 +5,7 @@ rsync -tPvr --delete-excluded --delete --ignore-errors \
     --exclude '.git/*' \
     --exclude '.cache/' \
     --exclude '.netrwhist' \
+    --copy-links \
     /home/zelhar ./usr_home/
     #--munge-links \
 
